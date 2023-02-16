@@ -18,17 +18,17 @@ form {
     border-style: none;
 }
 
-a {
-    color: var(--accent-text);
+.link {
+    color: var(--base-text);
     cursor: pointer;
 }
 
-a:hover {
-    color: var(--base-text);
+.link:hover {
+    color: var(--accent-text);
 }
 
-a:visited {
-    color: var(--accent-text);
+.link:visited {
+    color: var(--base-text);
 }
 
 .profile-pic {
@@ -40,4 +40,8 @@ a:visited {
     border-style: none;
     background-color: var(--bg-color);
     border-bottom: 0.5rem dotted var(--accents-color);
+}
+
+.heading-txt {
+    color: var(--accent-text);
 }
