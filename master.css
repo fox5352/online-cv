@@ -1,0 +1,43 @@
+:root {
+    --bg-color: #BFEAF5;
+    --accents-color: #98A8F8;
+    --base-text: #36575C;
+    --accent-text: #3FBA8D;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--base-text);
+}
+
+form {
+    border-style: none;
+}
+
+a {
+    color: var(--accent-text);
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--base-text);
+}
+
+a:visited {
+    color: var(--accent-text);
+}
+
+.profile-pic {
+    background-color: var(--accents-color);
+    border-radius: 50%;
+}
+
+.hline {
+    border-style: none;
+    background-color: var(--bg-color);
+    border-bottom: 0.5rem dotted var(--accents-color);
+}
