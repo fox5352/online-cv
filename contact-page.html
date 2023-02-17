@@ -10,36 +10,46 @@
 </head>
 
 <body>
-    <header class="head">
-        <center>
-            <h1 class="'heading-txt">Christopher Vos</h1>
-        </center>
+    <header class="container">
+        <div class="heading-txt h-aline">
+            <h3 class="'heading-txt">Contact Me</h3>
+        </div>
     </header>
-    <main class="main-body">
+    <main class="container">
+        <div class="h-aline">
+            <form action="mailto:voschristopher53@gmail.com" method="post" enctype="text/plain" target="">
+                <fieldset class="form-block ">
 
-        <hr class="hline">
-
-        <center>
-            <form action="mailto:voschristopher53@gmail.com" method="post" enctype="text/plain">
-                <fieldset style="width: 40vw;">
                     <legend>Send me a messages?</legend>
-                    <label for="">Your name: </label><input type="text" name="yourName"><br>
-                    <label for="">Your email :</label><input type="email" name="yourEmail" id=""><br>
 
-                    <label for="">Any messages?</label><br>
-                    <textarea name="yourMessage" id="" cols="71" rows="10"></textarea><br>
+                    <div class="input-item">
+                        <label class="label" for="your-name">Your name: </label>
+                        <input class="your-name input-block" type="text" name="yourName">
+                    </div>
 
-                    <input type="submit" value="Send">
+                    <div class="input-item">
+                        <label class="label" for="your-email">Your email :</label>
+                        <input class="your-email input-block" type="email" name="yourEmail" id="">
+                    </div>
+
+                    <div class="input-item">
+                        <label class="label" for="your-message">Any messages?</label>
+                        <textarea class="your-message input-block" name="yourMessage" id="" cols="71"
+                            rows="10"></textarea>
+                    </div>
+
+                    <div class="input-item">
+                        <input class="btn" type="submit" value="Send">
+                    </div>
+
                 </fieldset>
             </form>
-        </center>
-
-        <hr class="hline">
+        </div>
     </main>
-    <footer class="bottom-navbar">
-        <center>
-            <a class="link" href="index.html"><button type="button">Back</button></a>
-        </center>
+    <footer class="container">
+        <div class="h-aline">
+            <a href="index.html"><input class="btn" type="button" value="Back"></a>
+        </div>
     </footer>
 </body>
 
