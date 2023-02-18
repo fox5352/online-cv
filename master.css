@@ -47,6 +47,10 @@ a .link:visited {
     color: var(--base-text);
 }
 
+.font-m {
+    font-size: 18px;
+}
+
 .profile-pic {
     background-color: var(--accents-color);
     border-radius: 50%;
@@ -97,6 +101,26 @@ a .link:visited {
 .input-block {
     margin: 0.5em 0;
     flex-basis: 60%;
+    color: var(--base-text);
+}
+
+.input-block {
+    color: var(--base-text);
+
+    box-sizing: border-box;
+    border: 2px dashed var(--accents-color);
+
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+
+    outline: none;
+}
+
+.input-block:focus {
+    color: var(--accent-text);
+    box-sizing: border-box;
+    border: 2px dashed var(--accent-text);
+    /* outline: 3px dashed var(--accent-text); */
 }
 
 textarea {
@@ -119,12 +143,13 @@ textarea {
 }
 
 .btn:hover {
-    border-color: var(--accents-color);
+    border-color: var(--accent-text);
+    cursor: pointer;
 }
 
 .btn:active {
-    color: var(--accent-text);
-    border-color: var(--accent-text);
+    color: var(--base-text);
+    border-color: var(--base-text);
 }
 
 .image {
