@@ -111,9 +111,29 @@ a .link:visited {
 
 /* main body */
 
-/* educations section */
-.education {}
+/* Skills section */
+.table-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 75%;
+}
 
+.table-container>.table-item {
+    display: flex;
+    flex-shrink: 0;
+    width: 236px;
+    margin: 0;
+    margin-left: 0.5rem;
+    padding: 5px;
+}
+
+.table-item>.item-1 {
+    min-width: 90px;
+}
+
+.table-item.item-2 {
+    min-width: 109px;
+}
 
 
 .form {
@@ -233,6 +253,10 @@ textarea {
     }
 
     .md-box {
+        max-width: 100%;
+    }
+
+    .table-container {
         max-width: 100%;
     }
 }
