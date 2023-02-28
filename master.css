@@ -14,16 +14,18 @@ body {
     color: var(--base-text);
 }
 
+/* decorations */
+
+.pad-b {
+    margin-bottom: 10px;
+}
+
 .list ul {
     list-style: none;
 }
 
 .list {
     margin: 0 auto;
-}
-
-.pad-b {
-    margin-bottom: 10px;
 }
 
 a.border {
@@ -51,20 +53,68 @@ a .link:visited {
     font-size: 18px;
 }
 
-.profile-pic {
-    background-color: var(--accents-color);
-    border-radius: 50%;
-}
-
 .hline {
     border-style: none;
     background-color: var(--bg-color);
     border-bottom: 0.5rem dotted var(--accents-color);
 }
 
-.heading-txt {
+.h-aline {
+    width: 100%;
+    text-align: center;
+}
+
+.center-txt {
+    align-items: center;
+}
+
+.padding-l-2 {
+    padding-left: 2rem;
+}
+
+.heading-txt-primary {
+    color: var(--accents-color);
+}
+
+.heading-txt-secondary {
     color: var(--accent-text);
 }
+
+.lg-box {
+    max-width: 80%;
+}
+
+.md-box {
+    max-width: 60%;
+    line-height: 1.2;
+}
+
+/* header */
+
+.container {
+    display: flex;
+    margin-bottom: 1em;
+    flex-direction: row;
+}
+
+.profile-pic {
+    background-color: var(--accents-color);
+    border-radius: 50%;
+}
+
+.content {
+    flex-basis: 60%;
+    flex-shrink: 1;
+    margin: auto 0;
+}
+
+
+/* main body */
+
+/* educations section */
+.education {}
+
+
 
 .form {
     display: flex;
@@ -79,16 +129,6 @@ a .link:visited {
     border: 0.5rem dotted var(--accents-color);
 }
 
-.container {
-    display: flex;
-    margin-bottom: 1em;
-    flex-direction: row;
-}
-
-.h-aline {
-    width: 100%;
-    text-align: center;
-}
 
 .input-item {
     display: flex;
@@ -160,17 +200,7 @@ textarea {
     margin-right: 1em;
 }
 
-.content {
-    flex-basis: 60%;
-    flex-shrink: 1;
-    margin: auto 0;
-}
-
-.center-txt {
-    align-items: center;
-}
-
-@media (max-width: 680px) {
+@media (max-width: 780px) {
     header .container {
         flex-direction: column;
     }
@@ -200,5 +230,9 @@ textarea {
         outline: none;
         resize: none;
         /* border: 1px solid grey; */
+    }
+
+    .md-box {
+        max-width: 100%;
     }
 }

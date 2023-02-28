@@ -13,16 +13,16 @@
 <body>
     <!-- head os the landing page -->
 
-    <header>
+    <header class="">
         <hr class="hline">
         <div class="container">
             <div class="image">
-                <img class="profile-pic" src="resources/me.png" alt="">
+                <img class="profile-pic" src="resources/Blank-Profile-pic.png" alt="">
             </div>
 
             <div class="content">
                 <div class="center-txt">
-                    <h1 class="heading-txt">Christopher Vos</h1>
+                    <h1 class="heading-txt-primary">Christopher Vos</h1>
                     <p>I am a web aspiring developer, I enjoy problem solving and have 1+ years of python programing
                         experience</p>
                     <a href="contact-page.html"><input class="btn" type="button" value="Contact info"></a>
@@ -35,67 +35,92 @@
     <!-- main body of the page -->
     <main>
         <!-- Education section -->
-        <section>
-            <h2 class="heading-txt">Education</h2>
+        <section class="education padding-l-2">
+            <h2 class="heading-txt-primary">Education</h2>
             <dl>
-                <h3 class="heading-txt">udemy</h3>
+                <!-- UDEMY -->
+                <h3 class="heading-txt-secondary">udemy </h3>
 
-                <dt>
-                    <a class="link" href="https://www.udemy.com/user/christopher-james-vos/" target="_blank">
-                        The Complete Python Bootcamp From Zero to Hero in Python
-                    </a>
-                </dt>
-                <dd class="pad-b">
-                    have a grate understanding of the language and advanced programing concepts such as <strong><em>oop,
-                            data
-                            structures</em></strong> and
-                    <strong><em>gui development with kivy</em></strong>
-                </dd>
+                <!-- item 1 -->
+                <div class="md-box">
+                    <dt>
+                        <a class="link" href="https://www.udemy.com/user/christopher-james-vos/" target="_blank">
+                            The Complete Python Bootcamp From Zero to Hero in Python
+                        </a>
+                    </dt>
+                    <dd class="pad-b">
+                        have a grate understanding of the language and advanced programing concepts such as
+                        <strong><em>oop,
+                                data
+                                structures</em></strong> and
+                        <strong><em>gui development with kivy</em></strong>
+                    </dd>
+                </div>
 
-                <dt>
-                    <a class="link" href="https://www.udemy.com/user/christopher-james-vos/" target="_blank">
-                        Git & GitHub Crash Course: Create a Repository From Scratch!
-                    </a>
-                </dt>
-                <dd class="pad-b">
-                    knowledge on how to use renamed page to try to fix the linking issue with the contacts link source
-                    control concepts such as <strong> creating, cloning, commit,
-                        pushing,
-                        pulling </strong>and <strong>merging</strong> Repository's
-                </dd>
+                <!-- item 2 -->
+                <div class="md-box">
+                    <dt>
+                        <a class="link" href="https://www.udemy.com/user/christopher-james-vos/" target="_blank">
+                            Git & GitHub Crash Course: Create a Repository From Scratch!
+                        </a>
+                    </dt>
+                    <dd class="pad-b">
+                        knowledge on how to use renamed page to try to fix the linking issue with the contacts link
+                        source
+                        control concepts such as <strong> creating, cloning, commit,
+                            pushing,
+                            pulling </strong>and <strong>merging</strong> Repository's
+                    </dd>
+                </div>
 
-                <h3 class="heading-txt">sololearn</h3>
+                <!-- SOLOLEARN -->
+                <h3 class="heading-txt-secondary">sololearn</h3>
 
-                <dt><a class="link" href="https://www.sololearn.com/profile/15616478" target="_blank">jQuery</a></dt>
-                <dd class="pad-b">
-                    able to traverse and manipulate the <strong>D.O.M</strong> and styling, and use the <strong>Event
-                        handlers</strong> and
-                    <strong>Animation/Effects</strong> built
-                    in jQuery
-                </dd>
+                <!-- item 1 -->
+                <div class="md-box">
+                    <dt><a class="link" href="https://www.sololearn.com/profile/15616478" target="_blank">jQuery</a>
+                    </dt>
+                    <dd class="pad-b">
+                        able to traverse and manipulate the <strong>D.O.M</strong> and styling, and use the
+                        <strong>Event
+                            handlers</strong> and
+                        <strong>Animation/Effects</strong> built
+                        in jQuery
+                    </dd>
+                </div>
 
-                <dt><a class="link" href="https://www.sololearn.com/profile/15616478" target="_blank">Responsive Web
-                        Design</a></dt>
-                <dd class="pad-b">
-                    have a understanding on how to maximize the usage of the screen and keep clutter to a minimum.
-                </dd>
+                <!-- item 2 -->
+                <div class="md-box">
+                    <dt><a class="link" href="https://www.sololearn.com/profile/15616478" target="_blank">Responsive Web
+                            Design</a></dt>
+                    <dd class="pad-b">
+                        have a understanding on how to maximize the usage of the screen and keep clutter to a minimum.
+                    </dd>
+                </div>
 
-                <h3 class="heading-txt">The Odin Project</h3>
+                <!-- THE ODIN PROJECT -->
+                <h3 class="heading-txt-secondary">The Odin Project</h3>
 
-                <dt><a class="link" href="https://www.theodinproject.com/" target="_blank">learn full-stack web
-                        development</a></dt>
-                <dd class="pad-b">
-                    this site is dedicated to teaching you everything you need to know to become a full-stack developer
-                    theres two paths they offer javascript or ruby on rails
-                </dd>
+                <!-- item 1 -->
+                <div class="md-box">
+                    <dt><a class="link" href="https://www.theodinproject.com/" target="_blank">learn full-stack web
+                            development</a></dt>
+                    <dd class="pad-b">
+                        this site is dedicated to teaching you everything you need to know to become a full-stack
+                        developer
+                        theres two paths they offer javascript or ruby on rails
+                    </dd>
+                </div>
             </dl>
         </section>
 
         <hr class="hline">
-
+        <!-- TODO:this next -->
         <!-- Skills and rating my confidence in them -->
-        <section>
-            <h3 class="heading-txt">Skills</h3>
+        <section class="padding-l-2">
+            <h3 class="heading-txt-secondary">Skills</h3>
+            <!-- 
+             -->
             <table cellspacing="7">
                 <tbody>
                     <tr>
@@ -107,25 +132,21 @@
                         <td>React ⭐️⭐️⭐️☆☆</td>
                     </tr>
                     <!-- <tr>
-                        <td>Bootstrap 4 ⭐☆☆☆☆</td>
+                        <td>MongoDB ⭐️☆☆☆☆</td>
                         <td>Node ⭐️☆☆☆☆</td>
                     </tr>
                     <tr>
                         <td>Express ⭐️☆☆☆☆</td>
                         <td>APIs ⭐️☆☆☆</td>
                     </tr> -->
-                    <tr>
-                        <td>SQL ⭐️⭐️⭐️☆☆</td>
-                        <td>MongoDB ⭐️☆☆☆☆</td>
-                    </tr>
                     <!-- <tr>
                         <td>Authentication ⭐️☆☆☆☆</td>
                         <td>Firebase ⭐️☆☆☆☆</td>
-                    </tr>
+                    </tr>-->
+
                     <tr>
-                        <td>excel ⭐️⭐️⭐️⭐️⭐️</td>
-                        <td>word ⭐️⭐️⭐️⭐️⭐️</td>
-                    </tr> -->
+                        <td>SQL ⭐️⭐️⭐️☆☆</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
@@ -133,8 +154,8 @@
         <hr class="hline">
 
         <!-- Hobbes -->
-        <section>
-            <h3 class="heading-txt">My hobbes</h3>
+        <section class="padding-l-2">
+            <h3 class="heading-txt-secondary">My hobbes</h3>
             <ul>
                 <li>Gaming</li>
                 <li>programing</li>
@@ -145,8 +166,8 @@
 
         <hr class="hline">
 
-        <section>
-            <h3 class="heading-txt">
+        <section class="padding-l-2">
+            <h3 class="heading-txt-secondary">
                 My projects
             </h3>
             <dl>
