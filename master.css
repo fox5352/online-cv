@@ -23,14 +23,6 @@ body {
     margin-bottom: 10px;
 }
 
-.list ul {
-    list-style: none;
-}
-
-.list {
-    margin: 0 auto;
-}
-
 a.border {
     border-bottom: 0.5rem dotted var(--accents-color);
 }
@@ -198,64 +190,52 @@ a .link:visited {
 }
 
 /* Project section */
-
-.form {
-    display: flex;
-    justify-content: center;
-    flex-shrink: 1;
+.projects {
+    padding-left: 16px;
 }
 
-.form-block {
-    width: 50%;
-    height: 40%;
-    border: none;
-    border: 0.5rem dotted var(--accents-color);
+.projects dt,
+.projects dd {
+    font-size: 18px;
 }
 
-
-.input-item {
-    display: flex;
+/* Education section*/
+.education {
+    padding-left: 16px;
 }
 
-.label {
-    flex-basis: 40%;
-}
-
-.input-block {
-    margin: 0.5em 0;
-    flex-basis: 60%;
-    color: var(--base-text);
-}
-
-.input-block {
-    color: var(--base-text);
-
-    box-sizing: border-box;
-    border: 2px dashed var(--accents-color);
-
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-
-    outline: none;
-}
-
-.input-block:focus {
-    color: var(--accent-text);
-    box-sizing: border-box;
-    border: 2px dashed var(--accent-text);
-    /* outline: 3px dashed var(--accent-text); */
-}
-
-textarea {
-    resize: none;
+/* Contact Page */
+.contact{
     width: 100%;
-    min-height: 100px;
-    padding: 5px;
-    overflow-y: scroll;
-    box-sizing: border-box;
+    height: 100vh;
+}
+
+.list {
+    margin: calc(100vh - 50%) auto;
+    width: 350px;
+
+    border-radius: 15px;
+    border: 0.5rem dotted var(--accents-color);
+    background-color: var(--bg-color);  
+}
+.list .heading-txt-secondary{
+    padding: 0;
+    padding-left: 16px;
+    margin: 5px 0;
+}
+
+.list ul {
+    margin: 8px 0 15px;
+}
+.list ul li {
+    margin: 3px 0;
 }
 
 @media (max-width: 780px) {
+    /*  */
+    .md-box {
+        max-width: 100%;
+    }
 
     /* HEADER */
     header .container {
@@ -280,26 +260,7 @@ textarea {
         margin: 0 auto;
         justify-content: center;
     }
-
     /* MAIN */
-
-
-    .input-item {
-        flex-direction: column;
-    }
-
-    .input-block textarea {
-        float: left;
-        width: 100%;
-        min-height: 240px;
-        outline: none;
-        resize: none;
-        /* border: 1px solid grey; */
-    }
-
-    .md-box {
-        max-width: 100%;
-    }
 
     /* SKILL */
     .skill-table {
@@ -309,4 +270,5 @@ textarea {
     .table-container {
         width: 50%;
     }
+
 }
