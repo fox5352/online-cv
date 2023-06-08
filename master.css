@@ -85,6 +85,10 @@ a .link:visited {
 }
 
 /* header */
+.header {
+    margin-top: 15px;
+}
+
 .container {
     display: flex;
     flex-direction: row;
