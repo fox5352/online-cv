@@ -4,9 +4,11 @@
     --base-text: #36575C;
     --accent-text: #3FBA8D;
 }
+
 * {
     box-sizing: border-box;
 }
+
 body {
     width: 70vw;
 
@@ -18,7 +20,7 @@ body {
     color: var(--base-text);
     border-left: 6px dotted var(--accents-color);
     border-right: 6px dotted var(--accents-color);
-    background-color: var(--bg-color);  
+    background-color: var(--bg-color);
 }
 
 /* GLOBAL */
@@ -33,16 +35,19 @@ body {
 
 /* HEADER section */
 .header {}
-.container{
+
+.container {
     display: flex;
 
     padding: 10px 8px 5px;
 }
+
 .image {
     padding: 5px;
     margin: 0;
 }
-.profile-pic{
+
+.profile-pic {
     width: 230px;
     height: 230px;
 
@@ -50,15 +55,19 @@ body {
 
     border-radius: 35%;
 }
+
 .heading-1 {
     color: var(--accent-text);
 }
+
 .content {
     padding: 0px 12px;
 }
+
 .summary {
     line-height: 1.5;
 }
+
 .header-btn {
     padding: 0;
     margin: 0;
@@ -70,6 +79,7 @@ body {
     border-radius: 6px;
     background-color: var(--accents-color);
 }
+
 .header-btn a {
     color: azure;
     text-decoration: none;
@@ -77,20 +87,22 @@ body {
 
 /* MAIN section */
 /* SKills */
-.skill{
+.skill {
     display: flex;
     flex-direction: column;
 
     padding: 0px 8px;
     margin: 0;
 }
+
 .heading-2 {
     padding: 0;
     margin: 0;
 
     color: var(--accent-text);
 }
-.skill-table{
+
+.skill-table {
     display: flex;
     flex-wrap: wrap;
     /* justify-content: space-around; */
@@ -98,42 +110,49 @@ body {
     padding: 0px 10px;
     margin: 0;
 }
-.table-container{
+
+.table-container {
     display: flex;
     flex-direction: column;
     min-width: 190px;
 
     width: calc(100% / 4);
 }
+
 .table-container a {
     text-decoration: none;
 
     color: var(--accent-text);
 }
+
 .heading-3 {
     color: var(--accents-color);
 }
+
 .table-item {
     display: flex;
 
     padding: 10px 5px;
     margin: 0 6px;
 }
+
 .table-item p {
     flex-basis: 30%;
 
     padding: 0 5px;
 }
+
 /* PROJECTS */
-.projects{
+.projects {
     padding: 0 8px;
 }
+
 .projects dt {
     font-size: 19px;
     color: var(--accents-color);
 }
 
-dd{
+dd {
     line-height: 1.4;
 }
 
@@ -141,27 +160,28 @@ dd{
     color: var(--base-text);
     text-decoration: none;
 }
-.link:hover{
+
+.link:hover {
     color: var(--accent-text);
     text-decoration: wavy;
 }
 
-.education{
+.education {
     padding: 0 8px;
 }
 
-.hobbies{}
+.hobbies {}
 
 /* CONTACT PAGE */
 .contact {
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
 
     padding: 0;
     margin: 0;
 }
 
-.contact .heading-3{
+.contact .heading-3 {
     text-align: center;
     font-size: 30px;
 
@@ -206,7 +226,7 @@ dd{
 
 
 @media screen and (max-width: 810px) {
-    .container{
+    .container {
         flex-direction: column;
     }
 }
