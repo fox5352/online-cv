@@ -5,37 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="master.css">
     <link rel="shortcut icon" href="resources/fox.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="master.css">
     <title>Christopher's CV</title>
 </head>
 
-<body>
-    <!-- head os the landing page -->
-    <header class="header">
+<body class="mx-auto">
+
+    <!-- header -->
+    <header class="flex">
         <div class="container">
-            <div class="image">
+            <div class="w-[100%] image">
                 <!-- TODO: add image of me -->
                 <img class="profile-pic" src="resources/online-cv.png" alt="">
             </div>
 
             <div class="content">
-                <div class="center-txt">
-                    <h1 class="heading-1">Christopher Vos</h1>
-                    <p class="summary">
+                <div class="center-txt items-center">
+                    <h1 class="heading-1 text-2xl">Christopher Vos</h1>
+                    <p class="summary pl-1">
                         Aspiring full stack Web developer with a proficiency in front end technologies such as 
                         <strong>javascript, jQuery, ReactJS</strong> and back  end technologies such as <strong>Node, Express, mongoDB, Postgres</strong>.
                         thats complemented by a solid foundation in UX design principles.
                         Demonstrated understanding of best coding practices. Eager to contribute in creating dynamic and responsive websites
                     </p>
                 </div>
+
+                <ul class="flex">
+                    <!-- TODO: add github account -->
+                    <li class="pr-2 py-3">
+                        <a href="https://github.com/fox5352" class="link"><i class="bi bi-github pr-1 text-lg"></i>GitHub</a>
+                    </li>
+                    <li class="pr-2 py-3">
+                        <a class="link" href="https://www.linkedin.com/in/christopher-vos-6469b7284" target="_blank"><i class="bi bi-linkedin pr-1 text-lg"></i>inkedin</a>
+                    </li>   
+                    <!-- <li class="px-2 py-3">
+                        <a href="mailto:voschristophe53@gmail.com" class="link"><i class=""></i>email me</a>
+                    </li> -->
+                </ul>
+
             </div>
         </div>  
     </header>
 
     <hr class="hline">
+
     <!-- main body of the page -->
     <main>
+
         <!-- SKILLS-->
         <section class="skill">
             <h2 class="heading-2">Skills</h2>
@@ -147,7 +166,7 @@
             </h3>
             <dl>
                 <dt>Simon Game</dt>
-                <dd class="pad-b">
+                <dd class="pad-b pl-3 pb-2">
                     <a href="https://fox5352.github.io/simon-game/" target="_blank" class="link">
                         A static page Simon Game made with javascript and jQuery
                     </a>
@@ -156,7 +175,7 @@
 
             <dl>
                 <dt>TodoBuddy</dt>
-                <dd class="pad-b">
+                <dd class="pad-b pl-3 pb-2">
                     <a href="https://todo-buddy-300.netlify.app/" target="_blank" class="link">
                         A front end react Todo list app that stores data locally
                     </a>
@@ -165,7 +184,7 @@
 
             <dl>
                 <dt>eBooks example site</dt>
-                <dd>
+                <dd class="pad-b pl-3 pb-2">
                     <a href="https://ebooks-example.netlify.app/" target="_blank" class="link">
                         This is a e-Commerce example web site using react that does token based authentication.
                     </a>
@@ -193,28 +212,25 @@
 
                 <h3 class="heading-3">Udemy</h3>
                 
-                <dt>
+                <dt class="pl-2">
                     <a class="link" href="https://www.udemy.com/user/christopher-james-vos/">
                         The Complete 2023 Web Development Bootcamp
                     </a>
                 </dt>
-                <dd class="pad-b">
+                <dd class="pad-b pl-4 pb-2">
                     Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, MongoDB
                 </dd>
-
-                <!-- UDEMY -->
-                <h3 class="heading-3">Udemy </h3>
 
                 <!-- TODO:add full stack development-->
                 
                 
                 <!-- Python -->
-                <dt>
+                <dt class="pl-2">
                     <a class="link" href="https://www.udemy.com/user/christopher-james-vos/" target="_blank">
                         The Complete Python Bootcamp From Zero to Hero in Python
                     </a>
                 </dt>
-                <dd class="pad-b">
+                <dd class="pad-b pl-4 pb-2">
                     have a grate understanding of the language and advanced programming concepts such as
                     <strong>oop, inherence data structures</strong> and <strong>gui development with Kivy</strong>
                 </dd>
@@ -222,8 +238,8 @@
                 <!-- School -->
                 <h3 class="heading-3">High School</h3>
 
-                <dt>WestCliff Skills school</dt>
-                <dd class="pad-b">
+                <dt class="pl-2">WestCliff Skills school</dt>
+                <dd class="pad-b pl-4 pb-2">
                     Westcliff School of Skills is a school for learners who cannot progress in the mainstream and are then referred to a school of skills. At the school, the learners are taught a skill which will enable them to enter the labour market. Every learner receives academic as well as technical training. Technical training is given in different subject areas depending on the learner’s ability and interest. This skill helps the learner to either continue with his/her technical training or enter the world of work, after school.
                 </dd>
                 
@@ -237,38 +253,6 @@
         <section class="skills">
 
         </section> -->
-
-        <hr class="hline">
-        <!-- Hobbes -->
-        <section class="contact">
-            <div class="list">
-                <h3 class="heading-3">Contact Info</h3>
-                <ul>
-                    <!-- TODO: add github account -->
-                    <li>
-                        <a href="https://github.com/fox5352" class="link">GitHub</a>
-                    </li>
-                    <li>
-                        <a class="link" href="https://www.linkedin.com/in/christopher-vos-6469b7284" target="_blank">linkedin</a>
-                    </li>   
-                    <li>
-                        <a href="mailto:voschristophe53@gmail.com" class="link">email me</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        
-        <hr class="hline">
-        
-        <section class="hobbies">
-            <h3 class="heading-txt-secondary">My hobbes</h3>
-            <ul>
-                <li>Gaming</li>
-                <li>programing</li>
-                <li>learning</li>
-                <li>skateboarding</li>
-            </ul>
-        </section>
 
     </main>    
     <hr class="hline" style="padding-bottom: 25px;">
