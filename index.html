@@ -7,11 +7,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="shortcut icon" href="resources/fox.ico" type="image/x-icon">
-    <link rel="stylesheet" href="master.css">
+    <!-- load defaults -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- header component styling -->
+    <link rel="stylesheet" href="styles/header.css">
+    <!-- footer component styling -->
+    <link rel="stylesheet" href="styles/footer.css">
 
     <title>Christopher's CV</title>
 </head>
 <body>
-    
+    <div id="root">
+        <!-- header -->
+        <div class="header">
+            <!-- activity block -->
+            <div class="header-block">
+                <div class="activities">
+                    <button id="activities-btn" class="header-btn">activities</button>
+                    <div id="activities-menu" class="activities-menu">
+                    <div id="activities-grid" class="activities-grid">
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- time block -->
+            <div class="header-block">
+                <h3 id="time">00:00</h3>
+            </div>
+
+            <!-- settings block -->
+            <div class="header-block">
+                <div class="settings">
+                    <button id="setting-btn" class="header-btn">
+                        <div><!-- TODO: setting icon--></div>
+                        Setting
+                    </button>
+
+                    <div id="setting-menu" class="setting-menu">
+                        <ul class="settings-row">
+                            <li class="setting-block">
+                                <button id="toogle-mode" class="setting-item">
+                                    <div>
+                                    <!-- TODO: add icon -->
+                                    </div>
+                                    light
+                                </button>
+                            </li>
+                            <li class="setting-block">
+                                <a class="setting-item" href="http://github.com/fox5352" target="_blank" rel="noopener noreferrer">Github</a>
+                            </li>
+                            <li class="setting-block">
+                                <button id="toggle-screen" class="setting-item"><div><!-- TODO: add icon --></div> fullscreen</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <!-- TODO:main screen -->
+
+        <!-- footer -->
+        <div class="footer">
+            <div class="footer-block">
+            <button id="app-man-btn" class="app-man">
+                :::
+            </button>
+            <div id="app-man-menu" class="app-man-menu">
+                <div class="app-manger">
+                <!-- TODO: grid of apps that have my skills on it-->
+                </div>
+            </div>
+            </div>
+            <div class="footer-block">
+            w
+            </div>
+        </div>
+    </div>
+    <script src="scripts/header.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/footer.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
