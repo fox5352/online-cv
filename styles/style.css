@@ -172,7 +172,7 @@ body {
 
   bottom: 0px;
   right: 0px;
-  z-index: 2;
+  z-index: 20;
 
   padding: 10px;
 
@@ -270,9 +270,12 @@ body {
   display: flex;
   width: 100%;
   height: 70%;
+
 }
 .app-shortcut>.icon svg {
   fill: var(--ac-one);
+  width: 100%;
+  margin: 0 auto;
 }
 
 .app-shortcut>label {
@@ -303,13 +306,13 @@ body {
 
   padding: 0 2px;
 
-  min-width: 25vw;
+  width: 100%;
   height: 37px;
 
   color: var(--fg-two);
   font-size: 18px;
 
-  border-radius: 8px 8px 0 0;
+  /* border-radius: 8px 8px 0 0; */
   background-color: var(--bg-two);
 }
 .footer-block {
@@ -319,6 +322,9 @@ body {
   padding: 0 4px;
 
   height: 100%;
+}
+.footer-block:nth-child(1) {
+  margin-left: 10px;
 }
 .footer-block:nth-last-child(1){
   flex-basis: 100%;
@@ -358,7 +364,7 @@ body {
 
   /* display: flex; */
 
-  width: 20vw;
+  width: 16vw;
 
   scale: 0;
   translate: 15px 101%;
@@ -373,7 +379,11 @@ body {
   scale: 1;
   translate: 15px -101%;
 }
-.app-manger {
+/* app manager box */
+.app-manager {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+
   width: 100%;
   height: 100%;
 
@@ -382,6 +392,47 @@ body {
   border-radius: 8px;
   border: 1px solid var(--ac-one);
 }
+.app-manager-shortcut {
+  display: flex;
+
+  height: 70px;
+  width: 100% ;
+
+  padding: 3px;
+  margin: 4px;
+
+  color: #fff;
+  text-align: center;
+
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--ac-two);
+
+  position: relative;
+}
+.app-manager-shortcut>.icon {
+  display: flex;
+  width: 100%;
+  height: 70%;
+}
+.app-manager-shortcut>.icon svg {
+  fill: var(--ac-one);
+  width: 100%;
+  margin: 0 auto;
+}
+.app-manager-shortcut>label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 21px;
+  width: 100%;
+
+  font-size: smaller;
+
+  z-index: 2;
+}
+
 /* active bar */
 .footer-block>.active-app {
   display: flex;
@@ -407,8 +458,13 @@ body {
   border-color: var(--ac-one);
 }
 /* active-app */
+.active-app>.icon svg {
+  fill: var(--ac-one);
+  width: 100%;
+  margin: 0 auto;
+}
 
-/* About Me App */
+/* ---------------------------------------- About Me App ------------------------------------------------- */
 .aboutMe-link {
   text-decoration: none;
   color: inherit;
@@ -421,6 +477,8 @@ body {
   height: 100%;
 
   overflow-y: auto;
+
+  color: var(--fg-one);
 
   background-color: var(--bg-one);
 }

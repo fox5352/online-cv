@@ -24,7 +24,6 @@ template.innerHTML = `
 
       width: 50%;
       height: 50%;
-      resize: both;
 
       overflow: hidden;
 
@@ -90,10 +89,12 @@ template.innerHTML = `
       width: 100%;
       height: calc(100% - 25px);
 
-      overflow-y: auto;
-
       box-sizing: border-box;
       background-color: inherit;
+    }
+    .slot {
+      width: 100%;
+      height: 100%;
     }
   </style>
 
@@ -108,7 +109,7 @@ template.innerHTML = `
       </div>
     </div>
     <div class="window">
-      <slot></slot>
+      <slot class="slot"></slot>
     </div>
   </div> 
 `;

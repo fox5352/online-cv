@@ -26,8 +26,8 @@ class App {
 
     // apps shortcuts list
     this.appsShortcutsList = [
-      {id:"aboutMe", app:(id, icon)=> new AboutMe(id, icon, attributes) },
-      {id:"mySkills", app:(id, icon)=> new Skills(id, icon, attributes) }
+      {id:"aboutMe", menuId:"aboutMe-menu-shortcut" , app:(id, icon)=> new AboutMe(id, icon, attributes) },
+      {id:"mySkills", menuId:"mySkills-menu-shortcut" , app:(id, icon)=> new Skills(id, icon, attributes) }
     ]
 
     this.activeAppsList = []
@@ -99,6 +99,33 @@ class App {
   }
 
   loadFooter() {
+    // adds eventlistener to app menu shortcuts
+    for (let index = 0; index < this.appsShortcutsList.length; index++) {
+      const shortcutId = this.appsShortcutsList[index].menuId
+
+      document.getElementById(shortcutId)?.addEventListener("click", event=>{
+        const appId = `${this.appsShortcutsList[index].id}`;
+        let isActive = false
+
+        // filter returns if app already in list
+        for (let activeIndex = 0; activeIndex < this.activeAppsList.length; activeIndex++) {
+          if (this.activeAppsList[activeIndex].appId == this.appsShortcutsList[index].id) {
+            isActive = true;
+            continue
+          }
+        }
+
+        if (isActive) {
+          document.getElementById(`${this.appsShortcutsList[index].id}-app`).setAttribute("window-showing", "1");;
+        }else{
+          this.appsShortcutsList[index].app(appId, `<div class="icon">:::</div>`);
+          this.activeAppsList.push({appId, ButtonId:`${this.appsShortcutsList[index].id}-button`});
+        }
+        document.getElementById("app-man-btn").classList.toggle("app-man-toggle");
+        document.getElementById("app-man-menu").classList.toggle("app-man-menu-toggle");
+      })
+    }
+    
     // app-manger-btn
     document.getElementById("app-man-btn").addEventListener("click", event=>{
       document.getElementById("app-man-btn").classList.toggle("app-man-toggle");
