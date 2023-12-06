@@ -11,6 +11,22 @@
   --ac-one: #da9020; /* TODO: change to goldish color */
   --ac-two: rgba(217, 143, 33, 0.7);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg-font: monospace;
+  
+    --fg-one: rgba(0,0,0,1);
+    --fg-two:  rgba(255, 251, 245, 1);
+  
+    --bg-one:  rgba(255, 251, 245, 1);
+    --bg-two: rgba(0, 0, 0, 1);
+
+    --ac-one: #dc143c;
+    --ac-two: #bd0f32;
+  }  
+}
+
 *, *::before,*::after {
   padding: 0;
   margin: 0;
@@ -381,8 +397,8 @@ body {
 }
 /* app manager box */
 .app-manager {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+  display: flex;
+  flex-wrap: wrap;
 
   width: 100%;
   height: 100%;
@@ -394,9 +410,9 @@ body {
 }
 .app-manager-shortcut {
   display: flex;
+  flex-basis: 30%;
 
   height: 70px;
-  width: 100% ;
 
   padding: 3px;
   margin: 4px;
@@ -562,4 +578,47 @@ body {
 .aboutMe-section p {
   font-size: 16px;
   padding-left: 5px;
+}
+
+/* ---------------------------------------- My Skills app ------------------------------------------------- */
+.mySkills-innerWindow {
+  width: 100%;
+  height: 100%;
+
+  overflow-y: auto;;
+
+  color: var(--fg-one);
+
+  background-color: var(--bg-one);
+}
+.mySkills-container {
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  border: 3px solid var(--ac-one);
+  border-top: 0;
+  border-bottom: 0;
+}
+.mySkills-header {}
+
+.mySkills-section {
+  margin: 10px 0 0;
+  padding-left: 8px;
+
+  border-bottom: 2px dashed var(--ac-two);
+}
+.mySkills-section:nth-child(1) {
+  padding-top: 10px;
+  margin: 0;
+
+  border-bottom: 3px solid var(--ac-one);
+}
+.mySkills-section:nth-last-child(1){
+  border: none;
+}
+.mySkills-section p {
+  padding: 5px 0;
+  padding-left: 8px ;
+  font-size: 15px;
 }

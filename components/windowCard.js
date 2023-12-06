@@ -10,9 +10,24 @@ template.innerHTML = `
       --bg-one: rgba(255, 251, 245, 1);
       --bg-two: rgba(0, 0, 0, 1);
     
-      --ac-one: #da9020; 
+      --ac-one: #da9020;
       --ac-two: rgba(217, 143, 33, 0.7);
+
       --animation-duration: 300ms;
+    }
+    @media (prefers-color-scheme: dark) {
+      :host {
+        --fg-font: monospace;
+      
+        --fg-two: rgba(0,0,0,1);
+        --fg-two:  rgba(255, 251, 245, 1);
+      
+        --bg-one:  rgba(255, 251, 245, 1);
+        --bg-two: rgba(0, 0, 0, 1);
+      
+        --ac-one: #dc143c;
+        --ac-two: #bd0f32;
+      }  
     }
 
     .body {
