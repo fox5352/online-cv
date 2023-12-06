@@ -14,9 +14,20 @@ class App {
     ]
     this.imageIndex = Math.round(Math.random() * this.backgroundImages.length - 1);
 
+    const windowHeight = document.querySelector("body").offsetHeight;
+
+    let attributes = {
+      ["top-limit"]:"0px",["bottom-limit"]:"0px",
+      ["window-showing"]:"1", ["fg-font"]:"monospace", ['window-size']:`0px`
+    }
+    //   ,["fg-one"]:"rgba(0,0,0,1)", ["fg-two"]:"rgba(255, 251, 245, 1)", 
+    //   ["bg-one"]:"rgba(255, 251, 245, 1)", ["bg-two"]:"rgba(0, 0, 0, 1)", ["ac-one"]:"#da9020"
+    // }
+
     // apps shortcuts list
     this.appsShortcutsList = [
-      {id:"aboutMe", app:(tag)=> new AboutMe(tag) },
+      {id:"aboutMe", app:(id, icon)=> new AboutMe(id, icon, attributes) },
+      {id:"mySkills", app:(id, icon)=> new Skills(id, icon, attributes) }
     ]
 
     this.activeAppsList = []
@@ -50,37 +61,34 @@ class App {
 
   loadMain() {
     const root = document.getElementById("root");
-
     
-    // adds eventlisterns to app shortcuts
+    // adds eventlistener to app shortcuts
     for (let index = 0; index < this.appsShortcutsList.length; index++) {
       const shortcutId = `${this.appsShortcutsList[index].id}-shortcut`;
 
       document.getElementById(shortcutId)?.addEventListener("dblclick", event=>{
-        const appId = `${this.appsShortcutsList[index].id}-app`;
-        this.appsShortcutsList[index].app(appId, "<span></span>");
-        this.activeAppsList.push(appId);
+        const appId = `${this.appsShortcutsList[index].id}`;
+        this.appsShortcutsList[index].app(appId, "<span>w</span>");
+        this.activeAppsList.push({appId, ButtonId:`${this.appsShortcutsList[index].id}-button`});
       })
     }
 
-    // 
-
     // set first wallpaper and updates every 25 seconds
-      const update_background = () => {
-        // TODO: fit image to screen
-        root.style.backgroundImage = `url(${this.backgroundImages[this.imageIndex]})`;
-        root.style.backgroundSize = "stretch";
-
-        if (this.imageIndex == this.backgroundImages.length - 1) {
-          this.imageIndex = 0;
-        }else {
-          this.imageIndex ++;
-        }
+    const update_background = () => {
+      // TODO: fit image to screen
+      root.style.backgroundImage = `url(${this.backgroundImages[this.imageIndex]})`;
+      root.style.backgroundSize = "stretch";
+      if (this.imageIndex == this.backgroundImages.length - 1) {
+        this.imageIndex = 0;
+      }else {
+        this.imageIndex ++;
       }
-      update_background()
-      setInterval(() => {
-        update_background();
-      }, 1000 * 25);
+    }
+    
+    update_background()
+    setInterval(() => {
+      update_background();
+    }, 1000 * 25);
   }
 
   loadFooter() {
@@ -91,9 +99,7 @@ class App {
     });
   }
   
-  updateLoop(){
-
-  }
+  updateLoop(){}
 };
 
 const load = ()=>{

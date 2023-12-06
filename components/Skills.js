@@ -1,7 +1,7 @@
 
-class AboutMe extends AppWindow {
+class Skills extends AppWindow {
   constructor(id, icon, attributes){
-    attributes.title = "About Me"
+    attributes.title = "My Skills";
     super(id, icon, attributes)
   }
 };

@@ -234,6 +234,7 @@ body {
 
   cursor: pointer;
 }
+
 /* main */
 #main {
   display: flex;
@@ -276,6 +277,7 @@ body {
 
   z-index: 2;
 }
+
 /* app specifics */
 
 /* footer */
@@ -374,6 +376,10 @@ body {
 }
 /* active bar */
 .footer-block>.active-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   height: 100%;
   width: 30px;
 

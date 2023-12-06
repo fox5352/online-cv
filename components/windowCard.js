@@ -119,6 +119,8 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
 
   constructor(){
     super();
+    // update loop
+    this.eventLoop = false
 
     // fullScreen properties
     this.isFullScreen = false;
@@ -166,10 +168,10 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     this.shadowRoot
       .getElementById("drag-bar")
       .addEventListener("click", event=>this.handleMouseDown(event));
-         
-    this.addAttributes();
-    this.attributeChangedCallback();
-
+    
+    this.eventLoop = setInterval(() => {
+      this.attributeChangedCallback();
+    }, 1000/2);
   }
 
   // Invoked when the custom element is disconnected from the document's DOM.
@@ -189,6 +191,9 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     this.shadowRoot
       .getElementById("drag-bar")
       .removeEventListener("mousedown", event=>this.dragWindow(event));
+
+    clearInterval(this.eventLoop);
+    this.eventLoop = false;
   }
 
   // Invoked when the custom element is moved to a new document.
@@ -196,11 +201,14 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
 
   // Invoked when one of the custom element's attributes is added, removed, or changed.
   attributeChangedCallback() {
-    this.addAttributes()
+    this.addAttributes();
 
     // title
     if (this.attributesList.title) {
       this.shadowRoot.getElementById("window-title").innerHTML = this.attributesList.title;
+    }
+    if (this.attributesList['window-showing']) {
+      this.shadowRoot.getElementById("root").style.scale = this.attributesList['window-showing']
     }
     // TODO: add fg-font, fg-one, fg-two, bg-one, bg-two, ac-one, to css var
   }
@@ -217,8 +225,11 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
   
   // toggle window size
   collapseWindow(event){
-    event.stopPropagation()
-    this.shadowRoot.getElementById("root").style.scale = 0
+    const attr = this.attributes.getNamedItem("window-showing");
+    attr.value = 0;
+    this.attributes.setNamedItem(attr);
+
+    this.attributeChangedCallback();
   }
 
   toggleFullScreen(event){
@@ -291,7 +302,7 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
       windowTag.style.left = `${(this.mouseX - this.offsetX)}px`;
       // if allowed to move within top and bottom of container
       if ((this.mouseY - this.offsetY) > Number(topLimit) && (this.mouseY + containerHeight) < ((viewportHeight + 15) - bottomLimit)) {
-        windowTag.style.top = `${(this.mouseY - this.offsetY - 25 )}px`;
+        windowTag.style.top = `${(this.mouseY - this.offsetY - 27 )}px`;
       }
     }
   }
