@@ -9,6 +9,7 @@
   --bg-two: rgba(0, 0, 0, 1);
 
   --ac-one: #da9020; /* TODO: change to goldish color */
+  --ac-two: rgba(217, 143, 33, 0.7);
 }
 *, *::before,*::after {
   padding: 0;
@@ -234,7 +235,48 @@ body {
   cursor: pointer;
 }
 /* main */
+#main {
+  display: flex;
+  
+  height: calc(100% - 33px - 37px);
+  width: 100%;
 
+  overflow: hidden;
+  
+  position: relative;
+}
+/* apps */
+.app-shortcut {
+  display: flex;
+
+  height: 70px;
+  width: 67px;
+
+  padding: 3px;
+  margin: 4px;
+
+  color: #fff;
+
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--ac-two);
+
+  position: relative;
+}
+.app-shortcut>.icon {
+  display: flex;
+}
+.app-shortcut>label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 21px;
+  width: 100%;
+
+  z-index: 2;
+}
+/* app specifics */
 
 /* footer */
 .footer {
@@ -274,7 +316,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0);
   border-left: 1px solid var(--ac-one);
 }
-
+/* app menu */
 .app-man {
   width: 30px;
   height: 100%;
@@ -321,7 +363,6 @@ body {
   scale: 1;
   translate: 15px -101%;
 }
-
 .app-manger {
   width: 100%;
   height: 100%;
@@ -330,4 +371,23 @@ body {
 
   border-radius: 8px;
   border: 1px solid var(--ac-one);
+}
+/* active bar */
+.footer-block>.active-app {
+  height: 100%;
+  width: 30px;
+
+  margin: 2px;
+
+  color: var(--fg-two);
+  font-size: 18px;
+
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: var(--bg-two);
+  transition: all 300ms linear;
+}
+.footer-block>.active-app:hover {
+  color: var(--ac-one);
+  border-color: var(--ac-one);
 }

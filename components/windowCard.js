@@ -113,7 +113,6 @@ template.innerHTML = `
   </div> 
 `;
 
-
 // define component
 customElements.define("window-card", class WindowCard extends HTMLElement {
   static windowsOpen = 0;
@@ -126,8 +125,8 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
 
     // attributes
     this.attributesList = {
-      ['top-limit']: 0,
-      ['bottom-limit']: 0,
+      ['top-limit']: `0px`,
+      ['bottom-limit']: `0px`,
     };
 
     // dragging properties
@@ -144,10 +143,6 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
 
     // add to deep clone of temple to shadow dom
     this.shadowRoot.append(template.content.cloneNode(true));
-    
-    this.addAttributes();
-    this.attributeChangedCallback();
-
     // increment list
     WindowCard.windowsOpen++;
   }
@@ -171,6 +166,10 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     this.shadowRoot
       .getElementById("drag-bar")
       .addEventListener("click", event=>this.handleMouseDown(event));
+         
+    this.addAttributes();
+    this.attributeChangedCallback();
+
   }
 
   // Invoked when the custom element is disconnected from the document's DOM.
@@ -208,8 +207,6 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
 
   // gets attributes and adds them to a list
   addAttributes(){
-    // clear attributes
-    this.attributesList = {};
 
     //loop list of attributes
     for (let index = 0; index < this.attributes.length; index++) {
@@ -233,8 +230,9 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
       windowTag.style.top = this.attributesList["top-limit"];
       // sizing
       windowTag.style.width = `calc(100%)`;
-      windowTag.style.height = `calc(100% - ${this.attributesList["top-limit"]} - ${this.attributesList["bottom-limit"]})`;
+      windowTag.style.height = "100%"// `calc( - ${this.attributesList["top-limit"]} - ${this.attributesList["bottom-limit"]})`;
       windowTag.style.borderRadius = "0";
+
 
       this.isFullScreen = !this.isFullScreen     
     }else {
@@ -267,7 +265,7 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
         document.addEventListener("mousemove", event=>this.setMousePos(event));
         this.loop = setInterval(() => {
           this.updatePosition();
-        }, 1000/60);
+        }, 1000/30);
         event.target.innerHTML = "click to stop dragging"
         event.target.classList.toggle("drag-bar-toggle")
       }else{
@@ -293,7 +291,7 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
       windowTag.style.left = `${(this.mouseX - this.offsetX)}px`;
       // if allowed to move within top and bottom of container
       if ((this.mouseY - this.offsetY) > Number(topLimit) && (this.mouseY + containerHeight) < ((viewportHeight + 15) - bottomLimit)) {
-        windowTag.style.top = `${(this.mouseY - this.offsetY)}px`;
+        windowTag.style.top = `${(this.mouseY - this.offsetY - 25 )}px`;
       }
     }
   }
