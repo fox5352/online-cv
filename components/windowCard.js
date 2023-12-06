@@ -171,7 +171,7 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     
     this.eventLoop = setInterval(() => {
       this.attributeChangedCallback();
-    }, 1000/2);
+    }, 1000/30);
   }
 
   // Invoked when the custom element is disconnected from the document's DOM.
