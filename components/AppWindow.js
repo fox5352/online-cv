@@ -5,7 +5,6 @@ class AppWindow {
     this.activeButton = this.createActiveButton(id, icon)
     this.innerWindow = this.createInnerWindow();
 
-
     // append attributes
     this.attributes = attributes;
     this.appendAttributes();

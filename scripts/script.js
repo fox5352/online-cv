@@ -65,9 +65,16 @@ class App {
     // adds eventlistener to app shortcuts
     for (let index = 0; index < this.appsShortcutsList.length; index++) {
       const shortcutId = `${this.appsShortcutsList[index].id}-shortcut`;
-
       document.getElementById(shortcutId)?.addEventListener("dblclick", event=>{
         const appId = `${this.appsShortcutsList[index].id}`;
+
+        // filter returns if app already in list
+        for (let activeIndex = 0; activeIndex < this.activeAppsList.length; activeIndex++) {
+          if (this.activeAppsList[activeIndex].appId == this.appsShortcutsList[index].id) {
+            return
+          }
+        }
+
         this.appsShortcutsList[index].app(appId, "<span>w</span>");
         this.activeAppsList.push({appId, ButtonId:`${this.appsShortcutsList[index].id}-button`});
       })

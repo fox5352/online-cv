@@ -397,3 +397,101 @@ body {
   color: var(--ac-one);
   border-color: var(--ac-one);
 }
+
+/* About Me App */
+.aboutMe-link {
+  text-decoration: none;
+  color: inherit;
+}
+.aboutMe-link:hover {
+  color: var(--ac-one);
+}
+.aboutMe-innerWindow {
+  width: 100%;
+  height: 100%;
+
+  overflow-y: auto;
+
+  background-color: var(--bg-one);
+}
+/* header */
+.aboutMe-header {
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  max-width: 1000px;
+
+  padding-bottom: 15px;
+  margin: 0 auto;
+
+  border-bottom: 3px dotted var(--ac-one);
+}
+.aboutMe-left-block {
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: center;
+
+  max-width: 300px;
+}
+.aboutMe-image-box, 
+.aboutMe-image-box> img {
+  border-radius: 12%;
+  border: 1px solid var(--ac-one);
+}
+.aboutMe-image-box> img {
+  width: 100%;
+  height: 100%;
+}
+.aboutMe-right-block {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 200px;
+
+  margin: 10px;
+}
+.aboutMe-info>* {
+  margin: 4px;
+}
+/* .info h2 */
+.aboutMe-links-list {
+  display: grid;
+  grid-template-columns: auto auto;
+
+  max-width: 250px;
+
+  padding: 0 10px;
+  margin: 5px 10px;
+}
+
+/* main */
+.aboutMe-main {
+  max-width: 1000px;
+
+  padding: 0 8px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+
+  border-bottom: 3px dotted var(--ac-one);
+}
+.aboutMe-section {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--ac-one);
+}
+.aboutMe-section:last-child {
+  border-bottom: none;
+}
+.aboutMe-section h2 {
+  font-size: 19px;
+}
+.aboutMe-section p {
+  font-size: 16px;
+  padding-left: 5px;
+}

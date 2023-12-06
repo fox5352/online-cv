@@ -2,18 +2,16 @@ const template = document.createElement("template");
 template.innerHTML = `
   <style>
     :host {
-      --fg-font: fantasy; 
-      --fg-size: 17px;
-
-      --fg-one: #ffff;
-      --fg-two: #ffff;
-
-      --bg-one: #444444;
-      --bg-two: #444444;
-
-      --ac-one: #ffff;
-      --ac-two: #ffff;
-
+      --fg-font: monospace;
+    
+      --fg-one: rgba(0,0,0,1);
+      --fg-two: rgba(255, 251, 245, 1);
+    
+      --bg-one: rgba(255, 251, 245, 1);
+      --bg-two: rgba(0, 0, 0, 1);
+    
+      --ac-one: #da9020; 
+      --ac-two: rgba(217, 143, 33, 0.7);
       --animation-duration: 300ms;
     }
 
@@ -30,10 +28,10 @@ template.innerHTML = `
 
       overflow: hidden;
 
-      color: var(--fg-one);
+      color: var(--fg-two);
 
       border-radius: 8px 8px 0 0;
-      background-color: var(--bg-one);
+      background-color: var(--bg-two);
 
       transition: all var(--animation-duration) linear;
     }
@@ -61,7 +59,7 @@ template.innerHTML = `
       transform: scale(0.95);
     }
     .drag-bar-toggle {
-      color: var(--bg-one);
+      color: var(--bg-two);
       background-color: var(--ac-one);
     }
     .controls {
@@ -86,11 +84,13 @@ template.innerHTML = `
 
       border-color: var(--ac-one);
       color: var(--ac-one);
-      background-color: var(--bg-one);
+      background-color: var(--bg-two);
     }
     .window {
       width: 100%;
       height: calc(100% - 25px);
+
+      overflow-y: auto;
 
       box-sizing: border-box;
       background-color: inherit;
@@ -302,7 +302,7 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
       windowTag.style.left = `${(this.mouseX - this.offsetX)}px`;
       // if allowed to move within top and bottom of container
       if ((this.mouseY - this.offsetY) > Number(topLimit) && (this.mouseY + containerHeight) < ((viewportHeight + 15) - bottomLimit)) {
-        windowTag.style.top = `${(this.mouseY - this.offsetY - 27 )}px`;
+        windowTag.style.top = `${(this.mouseY - this.offsetY - 30 )}px`;
       }
     }
   }
