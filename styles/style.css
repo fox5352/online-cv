@@ -172,6 +172,7 @@ body {
 
   bottom: 0px;
   right: 0px;
+  z-index: 2;
 
   padding: 10px;
 
@@ -257,6 +258,7 @@ body {
   margin: 4px;
 
   color: #fff;
+  text-align: center;
 
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -266,7 +268,13 @@ body {
 }
 .app-shortcut>.icon {
   display: flex;
+  width: 100%;
+  height: 70%;
 }
+.app-shortcut>.icon svg {
+  fill: var(--ac-one);
+}
+
 .app-shortcut>label {
   position: absolute;
   bottom: 0;
@@ -386,6 +394,7 @@ body {
   margin: 2px;
 
   color: var(--fg-two);
+  fill: var(--fg-two);
   font-size: 18px;
 
   border-radius: 6px;
@@ -397,6 +406,7 @@ body {
   color: var(--ac-one);
   border-color: var(--ac-one);
 }
+/* active-app */
 
 /* About Me App */
 .aboutMe-link {
