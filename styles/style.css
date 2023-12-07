@@ -2,29 +2,14 @@
 :root {
   --fg-font: monospace;
 
-  --fg-one: rgba(0,0,0,1);
-  --fg-two: rgba(255, 251, 245, 1);
+  --fg-one: #000000;
+  --fg-two: #fffbf5;
 
-  --bg-one: rgba(255, 251, 245, 1);
-  --bg-two: rgba(0, 0, 0, 1);
+  --bg-one: #fffbf5;
+  --bg-two: #000000;
 
   --ac-one: #da9020; /* TODO: change to goldish color */
-  --ac-two: rgba(217, 143, 33, 0.7);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fg-font: monospace;
-  
-    --fg-one: rgba(0,0,0,1);
-    --fg-two:  rgba(255, 251, 245, 1);
-  
-    --bg-one:  rgba(255, 251, 245, 1);
-    --bg-two: rgba(0, 0, 0, 1);
-
-    --ac-one: #dc143c;
-    --ac-two: #bd0f32;
-  }  
+  --ac-two: #d98f21b3;
 }
 
 *, *::before,*::after {

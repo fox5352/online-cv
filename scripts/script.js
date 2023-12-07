@@ -15,14 +15,15 @@ class App {
     this.imageIndex = Math.round(Math.random() * this.backgroundImages.length - 1);
 
     const windowHeight = document.querySelector("body").offsetHeight;
-
     let attributes = {
       ["top-limit"]:"0px",["bottom-limit"]:"0px",
-      ["window-showing"]:"1", ["fg-font"]:"monospace", ['window-size']:`0px`
+      ["window-showing"]:"1", ["fg-font"]:"monospace", ['window-size']:`${windowHeight}px`
     }
     //   ,["fg-one"]:"rgba(0,0,0,1)", ["fg-two"]:"rgba(255, 251, 245, 1)", 
     //   ["bg-one"]:"rgba(255, 251, 245, 1)", ["bg-two"]:"rgba(0, 0, 0, 1)", ["ac-one"]:"#da9020"
     // }
+
+    this.darkMode = false;
 
     // apps shortcuts list
     this.appsShortcutsList = [
@@ -31,6 +32,8 @@ class App {
     ]
 
     this.activeAppsList = []
+    
+
   }
 
   loaderHeader(){
@@ -40,8 +43,15 @@ class App {
       document.getElementById("setting-menu").classList.toggle("setting-menu-toggle")
     })
 
-    // document.getElementById("toggle-mode")// TODO: add ad dark mode switch
-    // TODO: add a fullscreen toggle
+    
+    // dark mode switch
+    document.getElementById("toggle-mode").addEventListener("click", ()=>{
+      this.toggleDarkMode();
+      document.getElementById("setting-btn").classList.toggle("header-btn-active");
+      document.getElementById("setting-menu").classList.toggle("setting-menu-toggle")
+    })
+    
+    // Fullscreen toggle
     document.getElementById("toggle-screen").addEventListener("click", ()=>{
       const isFullscreen = document.fullscreenElement
 
@@ -70,6 +80,30 @@ class App {
       const time_ms = new Date()
       updateTime();
     }, 1000);
+  }
+
+  checkPrefersDarkMode(){
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDarkMode) {
+      this.toggleDarkMode();
+    }
+  }
+
+  toggleDarkMode(){
+    this.darkMode = !this.darkMode;
+
+    document.documentElement.style.setProperty('--fg-one', this.darkMode ? "#000000": "#000000")
+    document.documentElement.style.setProperty('--fg-two', this.darkMode ? "#fffbf5": "#fffbf5")
+
+    document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#fffbf5": "#fffbf5")
+    document.documentElement.style.setProperty('--bg-two', this.darkMode ? "#000000": "#000000")
+
+    document.documentElement.style.setProperty('--ac-one', this.darkMode ? "#dc143c": "#da9020")
+    document.documentElement.style.setProperty('--ac-two', this.darkMode ? "#bd0f32": "#d98f21b3")
+
+    document.getElementById("toggle-mode").innerHTML = this.darkMode? "light mode": "dark mode";
+    console.log(this.darkMode);
+    
   }
 
   loadMain() {
@@ -151,7 +185,8 @@ class App {
 
 const load = ()=>{
   const app = new App();
-
+  
+  app.checkPrefersDarkMode();
   app.loaderHeader()
   app.loadMain();
   app.loadFooter();
