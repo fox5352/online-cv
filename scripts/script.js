@@ -41,7 +41,20 @@ class App {
     })
 
     // document.getElementById("toggle-mode")// TODO: add ad dark mode switch
-    // document.getElementById("toggle-screen")// TODO: add a fullscreen toggle
+    // TODO: add a fullscreen toggle
+    document.getElementById("toggle-screen").addEventListener("click", ()=>{
+      const isFullscreen = document.fullscreenElement
+
+      if (!isFullscreen) {
+        document.documentElement.requestFullscreen();
+        document.getElementById("toggle-screen").innerHTML = "window"
+      }else{
+        document.getElementById("toggle-screen").innerHTML = "fullscreen"
+        document.exitFullscreen();
+      }
+      document.getElementById("setting-btn").classList.toggle("header-btn-active");
+      document.getElementById("setting-menu").classList.toggle("setting-menu-toggle")
+    })
 
 
     // timer updater

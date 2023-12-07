@@ -39,6 +39,7 @@ template.innerHTML = `
 
       width: 50%;
       height: 50%;
+      resize: both;
 
       overflow: hidden;
 
@@ -47,7 +48,7 @@ template.innerHTML = `
       border-radius: 8px 8px 0 0;
       background-color: var(--bg-two);
 
-      transition: all var(--animation-duration) linear;
+      transition: all 170ms linear;
     }
     .control-bar {
       display: flex;
