@@ -12,8 +12,9 @@ class AppWindow {
     // create active button
     document.getElementById("main").appendChild(this.windowTag)
     document.getElementById("active-bar").appendChild(this.activeButton)
-  }
 
+    this.windowTag.setAttribute("shortcutid", `${id}-button`);
+  }
   createWindow(id){
     const tag = document.createElement('window-card');
     tag.id = `${id}-app`;
@@ -38,7 +39,6 @@ class AppWindow {
 
     return tag;
   }
-
   appendAttributes(){
     for (const key in this.attributes) {
       this.windowTag.setAttribute(key, this.attributes[key]);

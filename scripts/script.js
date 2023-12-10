@@ -32,8 +32,6 @@ class App {
     ]
 
     this.activeAppsList = []
-    
-
   }
 
   loaderHeader(){
@@ -92,18 +90,16 @@ class App {
   toggleDarkMode(){
     this.darkMode = !this.darkMode;
 
-    document.documentElement.style.setProperty('--fg-one', this.darkMode ? "#000000": "#000000")
+    document.documentElement.style.setProperty('--fg-one', this.darkMode ? "#fffbf5": "#000000")
     document.documentElement.style.setProperty('--fg-two', this.darkMode ? "#fffbf5": "#fffbf5")
 
-    document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#fffbf5": "#fffbf5")
+    document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#000000": "#fffbf5")
     document.documentElement.style.setProperty('--bg-two', this.darkMode ? "#000000": "#000000")
 
     document.documentElement.style.setProperty('--ac-one', this.darkMode ? "#dc143c": "#da9020")
     document.documentElement.style.setProperty('--ac-two', this.darkMode ? "#bd0f32": "#d98f21b3")
 
     document.getElementById("toggle-mode").innerHTML = this.darkMode? "light mode": "dark mode";
-    console.log(this.darkMode);
-    
   }
 
   loadMain() {
@@ -118,12 +114,13 @@ class App {
         // filter returns if app already in list
         for (let activeIndex = 0; activeIndex < this.activeAppsList.length; activeIndex++) {
           if (this.activeAppsList[activeIndex].appId == this.appsShortcutsList[index].id) {
-            return
+            // TODO: find a way to pass a function to the web component that decrements the app counter and checks here
           }
         }
 
-        this.appsShortcutsList[index].app(appId, "<span>w</span>");
-        this.activeAppsList.push({appId, ButtonId:`${this.appsShortcutsList[index].id}-button`});
+        const activeApp = this.appsShortcutsList[index].app(appId, "<span>w</span>");
+
+        this.activeAppsList.push({appId, ButtonId:`${this.appsShortcutsList[index].id}-button`, activeApp});
       })
     }
 
@@ -157,8 +154,7 @@ class App {
         // filter returns if app already in list
         for (let activeIndex = 0; activeIndex < this.activeAppsList.length; activeIndex++) {
           if (this.activeAppsList[activeIndex].appId == this.appsShortcutsList[index].id) {
-            isActive = true;
-            continue
+            // isActive = true;
           }
         }
 

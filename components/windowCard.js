@@ -136,6 +136,7 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
 
   constructor(){
     super();
+
     // update loop
     this.eventLoop = false
 
@@ -165,6 +166,7 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     // increment list
     WindowCard.windowsOpen++;
   }
+
   // Invoked when the custom element is first connected to the document's DOM.
   connectedCallback(){
     // collapse button
@@ -179,7 +181,9 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
 
     // close window remove from dom
     this.shadowRoot
-      .getElementById("close-btn")
+      .getElementById("close-btn").addEventListener("click", event=>{
+        this.closeWindow(event);
+      })
 
     // drag window
     this.shadowRoot
@@ -188,7 +192,9 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     
     this.eventLoop = setInterval(() => {
       this.attributeChangedCallback();
-    }, 1000/30);
+
+      this.setColors();
+    }, 1000/10);
   }
 
   // Invoked when the custom element is disconnected from the document's DOM.
@@ -228,6 +234,23 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
       this.shadowRoot.getElementById("root").style.scale = this.attributesList['window-showing']
     }
     // TODO: add fg-font, fg-one, fg-two, bg-one, bg-two, ac-one, to css var
+  }
+
+  // get the css colors
+  setColors(){
+    // TODO: get documents css vars in a array
+
+    if (fgColor) {
+      console.log(fgColor);
+    }
+    // setProperty('--fg-one', this.darkMode ? "#fffbf5": "#000000")
+    // document.documentElement.style.setProperty('--fg-two', this.darkMode ? "#fffbf5": "#fffbf5")
+
+    // document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#000000": "#fffbf5")
+    // document.documentElement.style.setProperty('--bg-two', this.darkMode ? "#000000": "#000000")
+
+    // document.documentElement.style.setProperty('--ac-one', this.darkMode ? "#dc143c": "#da9020")
+    // document.documentElement.style.setProperty('--ac-two', this.darkMode ? "#bd0f32": "#d98f21b3")
   }
 
   // gets attributes and adds them to a list
@@ -277,7 +300,14 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     }
   }
   
-  closeWindow(event){}
+  closeWindow(event){
+    const shortcutID = this.attributesList["shortcutid"];
+
+    document.getElementById(shortcutID).remove()
+    this.remove();
+
+    WindowCard.windowsOpen--;
+  }
 
   // dragWindow
   handleMouseDown(event){
