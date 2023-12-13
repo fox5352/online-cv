@@ -2,11 +2,17 @@
 class Skills extends AppWindow {
   constructor(id, icon, attributes){
     attributes.title = "My Skills";
-    // icon = `
-    // <div class="icon">
-    //   TODO: skills svg
-    // </div>
-    // `;
+    icon = `
+    <div class="icon">
+      <svg viewBox="553.286 170.515 412.078 410.302" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+        <rect x="553.286" y="205.151" width="67.496" height="375.666" style="fill:inherit"/>
+        <rect x="650.089" y="255.773" width="67.496" height="325.044" style="fill:inherit"/>
+        <rect x="733.57" y="335.702" width="67.496" height="243.339" style="fill:inherit"/>
+        <rect x="817.939" y="170.515" width="67.496" height="408.526" style="fill:inherit"/>
+        <rect x="897.868" y="416.519" width="67.496" height="158.97" style="fill:inherit"/>
+      </svg>
+    </div>
+    `;
     super(id, icon, attributes)
   }
   createInnerWindow(){

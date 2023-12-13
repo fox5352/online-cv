@@ -3,14 +3,12 @@ class App {
   constructor(){
     // TODO: use gen ai stock images
     // background image vars
+
+    // "resources/background/image2.jpg",
+    
     this.backgroundImages = [
-      "resources/image1.jpg",
-      "resources/image2.jpg",
-      "resources/image3.png",
-      "resources/image4.png",
-      "resources/image5.png",
-      "resources/image6.png",
-      "resources/image7.png",
+      "resources/background/image1.jpg",
+      "resources/background/image3.png",
     ]
     this.imageIndex = Math.round(Math.random() * this.backgroundImages.length - 1);
 
@@ -27,8 +25,9 @@ class App {
 
     // apps shortcuts list
     this.appsShortcutsList = [
-      {id:"aboutMe", menuId:"aboutMe-menu-shortcut" , app:(id, icon)=> new AboutMe(id, icon, attributes) },
-      {id:"mySkills", menuId:"mySkills-menu-shortcut" , app:(id, icon)=> new Skills(id, icon, attributes) }
+      {id:"aboutMe", menuId:"aboutMe-menu-shortcut" , app:(id, icon)=> new AboutMe(id, icon, attributes)},
+      {id:"mySkills", menuId:"mySkills-menu-shortcut" , app:(id, icon)=> new Skills(id, icon, attributes)},
+      {id:"myProjects", menuId:"myProjects-menu-shortcut", app:(id, icon)=> new Projects(id, icon, attributes)},
     ]
 
     this.activeAppsList = []
@@ -101,7 +100,7 @@ class App {
 
     document.getElementById("toggle-mode").innerHTML = this.darkMode? "light mode": "dark mode";
   }
-
+  
   loadMain() {
     const root = document.getElementById("root");
     
