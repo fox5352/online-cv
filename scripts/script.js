@@ -28,6 +28,7 @@ class App {
       {id:"aboutMe", menuId:"aboutMe-menu-shortcut" , app:(id, icon)=> new AboutMe(id, icon, attributes)},
       {id:"mySkills", menuId:"mySkills-menu-shortcut" , app:(id, icon)=> new Skills(id, icon, attributes)},
       {id:"myProjects", menuId:"myProjects-menu-shortcut", app:(id, icon)=> new Projects(id, icon, attributes)},
+      {id:"myResume", menuId:"", app:(id, icon)=> new Resume(id, icon, attributes)}
     ]
 
     this.activeAppsList = []
