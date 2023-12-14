@@ -130,7 +130,7 @@ class Projects extends AppWindow {
         <dl>
           <!-- TODO: add later -->
           <!-- TODO: add eBooks link & fact check -->
-          <dt><a href="http://" target="_blank" rel="noopener noreferrer">Ebooks-example</a></dt>
+          <dt><a href="https://ebooks-example.netlify.app/products" target="_blank" rel="noopener noreferrer">Ebooks-example</a></dt>
           <dd>
             This is a react project thats supposed to be an example of an e-commerce web site, 
             It fetches data from an <strong>api</strong> and does <strong>token bases authentication</strong> 
@@ -147,7 +147,7 @@ class Projects extends AppWindow {
           </dd>
 
           <!-- TODO: add todoBuddy link & fact check -->
-          <dt><a href="http://" target="_blank" rel="noopener noreferrer">TodoBuddy</a></dt>
+          <dt><a href="https://todo-buddy-300.netlify.app/" target="_blank" rel="noopener noreferrer">TodoBuddy</a></dt>
           <dd>
             This is a a react based project that uses local storage to store notes created and then displays them, 
             it uses <strong>React, redux</strong> and <strong>react router</strong>
@@ -161,7 +161,7 @@ class Projects extends AppWindow {
           </dd>
           
             <!-- TODO: add simon game link-->
-          <dt><a href="http://" target="_blank" rel="noopener noreferrer">simon game</a></dt>
+          <dt><a href="https://fox5352.github.io/simon-game/" target="_blank" rel="noopener noreferrer">simon game</a></dt>
           <dd>
             This was one of my first projects I built it uses <strong>jQuery, html</strong> 
             and <strong>css</strong>. The project is very basic but i kept it up to remind me of what I've learnt
@@ -177,7 +177,7 @@ class Projects extends AppWindow {
         <h2>Python</h2>
         <dl>
           <!-- Speech to text converter -->
-          <dt><a href="http://" target="_blank" rel="noopener noreferrer">Speech to text converter</a></dt>
+          <dt><a href="https://github.com/fox5352/Speech_to_text_converter" target="_blank" rel="noopener noreferrer">Speech to text converter</a></dt>
           <dd>
             A python script that converters input from a mic into text it uses the
             <strong> SpeechToText package </strong>and does multi core processing and does checks to stop race conditions
@@ -189,7 +189,7 @@ class Projects extends AppWindow {
           </dd>
           
           <!-- Windows Music Player -->
-          <dt><a href="http://" target="_blank" rel="noopener noreferrer">Windows Music Player</a></dt>
+          <dt><a href="https://github.com/fox5352/Windows-mp3-player" target="_blank" rel="noopener noreferrer">Windows Music Player</a></dt>
           <dd>
             This a a music player that uses <strong>pygame</strong> and <strong>Kivy, kivymd</strong> 
             it's and older project of mine
@@ -207,7 +207,7 @@ class Projects extends AppWindow {
       <div class="projects-section">
         <h2>Rust</h2>
         <dl>
-          <dt><a href="http://" target="_blank" rel="noopener noreferrer">Tic Tac Toe game</a></dt>
+          <dt><a href="https://github.com/fox5352/tic-tac-toe" target="_blank" rel="noopener noreferrer">Tic Tac Toe game</a></dt>
           <dd>So Rust i wanted to see what the hype was about and im pleasantly surprised I used this project to learn it, 
             And its really a great experience using this language, I've coded in both c and cpp in the past and the safety of rust is a 
             good welcome for me because I never really taped into the true power of c/cpp so its mostly just foot guns when using c/cpp so 
