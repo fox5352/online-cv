@@ -51,25 +51,27 @@ class AboutMe extends AppWindow {
         <!-- Section: How I got into coding -->
         <div class="aboutMe-section">
           <h2>How I got into coding:</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-            Ex minus iusto reiciendis aliquid, quos saepe aperiam beatae deserunt! 
-            Reprehenderit nostrum sunt ratione illum aliquam facere et culpa quaerat maiores nulla?
+          <p>
+              So the way I got into coding was from a mobile game I played, 
+              it made many references to the fact that it was made in python, 
+              and then I found a few free site to learn it and I was hooked.
+              The whole process of creating and problem solving is what keep me learning
           </p>
         </div>
         <!-- Section: My hobbies -->
         <div class="aboutMe-section">
           <h2>My hobbies</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-            Ex minus iusto reiciendis aliquid, quos saepe aperiam beatae deserunt! 
-            Reprehenderit nostrum sunt ratione illum aliquam facere et culpa quaerat maiores nulla?
+          <p>
+              So I have a few hobbies, the mostly revolve around creating and problem solving the first is <strong>Gaming</strong>
+              most of the game i play are puzzles and fps based, the second is <strong>Coding</strong> because its like a puzzle game, third is <strong>Welding</strong>
+              and <strong>any thing car related</strong>
           </p>
         </div>
         <!-- Section: How I spend my time -->
         <div class="aboutMe-section">
           <h2>How I spend my time</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-            Ex minus iusto reiciendis aliquid, quos saepe aperiam beatae deserunt! 
-            Reprehenderit nostrum sunt ratione illum aliquam facere et culpa quaerat maiores nulla?
+          <p>
+              I mostly spend my time learning new things and playing games and codling projects,
           </p>
         </div>
       </div>
