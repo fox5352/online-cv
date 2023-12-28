@@ -1,35 +1,7 @@
 const template = document.createElement("template");
 template.innerHTML = `
   <style>
-    :host {
-      --fg-font: monospace;
     
-      --fg-one: rgba(0,0,0,1);
-      --fg-two: rgba(255, 251, 245, 1);
-    
-      --bg-one: rgba(255, 251, 245, 1);
-      --bg-two: rgba(0, 0, 0, 1);
-    
-      --ac-one: #da9020;
-      --ac-two: rgba(217, 143, 33, 0.7);
-
-      --animation-duration: 300ms;
-    }
-    @media (prefers-color-scheme: dark) {
-      :host {
-        --fg-font: monospace;
-      
-        --fg-two: rgba(0,0,0,1);
-        --fg-two:  rgba(255, 251, 245, 1);
-      
-        --bg-one:  rgba(255, 251, 245, 1);
-        --bg-two: rgba(0, 0, 0, 1);
-      
-        --ac-one: #dc143c;
-        --ac-two: #bd0f32;
-      }  
-    }
-
     .body {
       position: absolute;
 
@@ -192,8 +164,6 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     
     this.eventLoop = setInterval(() => {
       this.attributeChangedCallback();
-
-      this.setColors();
     }, 1000/10);
   }
 
@@ -235,24 +205,6 @@ customElements.define("window-card", class WindowCard extends HTMLElement {
     }
     // TODO: add fg-font, fg-one, fg-two, bg-one, bg-two, ac-one, to css var
   }
-
-  // get the css colors
-  setColors(){
-    // TODO: get documents css vars in a array
-
-    if (fgColor) {
-      console.log(fgColor);
-    }
-    // setProperty('--fg-one', this.darkMode ? "#fffbf5": "#000000")
-    // document.documentElement.style.setProperty('--fg-two', this.darkMode ? "#fffbf5": "#fffbf5")
-
-    // document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#000000": "#fffbf5")
-    // document.documentElement.style.setProperty('--bg-two', this.darkMode ? "#000000": "#000000")
-
-    // document.documentElement.style.setProperty('--ac-one', this.darkMode ? "#dc143c": "#da9020")
-    // document.documentElement.style.setProperty('--ac-two', this.darkMode ? "#bd0f32": "#d98f21b3")
-  }
-
   // gets attributes and adds them to a list
   addAttributes(){
 

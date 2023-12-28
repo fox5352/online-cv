@@ -225,7 +225,7 @@ class Projects extends AppWindow {
         <h2>Others</h2>
         <!-- TODO: add more -->
         <dl>
-          <dt><a href="http://githib.com/fox5352" target="_blank" rel="noopener noreferrer">GitHub</a></dt>
+          <dt><a href="https://github.com/fox5352" target="_blank" rel="noopener noreferrer">GitHub</a></dt>
           <dd>
             Well all of my projects are on github, 
             I can do basic tasks like <strong>add, commits, pull, branch, merge</strong>, 

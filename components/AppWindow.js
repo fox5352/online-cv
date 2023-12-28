@@ -25,7 +25,7 @@ class AppWindow {
     tag.classList.add("active-app");
     tag.innerHTML = icon;
     tag.id = `${id}-button`;
-    // added a toggle uncollapse on click
+    
     tag.addEventListener("click", event=>{
       this.windowTag.setAttribute("window-showing", "1");
     })

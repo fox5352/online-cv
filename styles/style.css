@@ -5,11 +5,11 @@
   --fg-one: #000000;
   --fg-two: #fffbf5;
 
-  --bg-one: #fffbf5;
-  --bg-two: #000000;
+  --bg-one: #dcdcdc;
+  --bg-two: #301616;
 
   --ac-one: #da9020; /* TODO: change to goldish color */
-  --ac-two: #d98f21b3;
+  --ac-two: #d98f21;
 }
 
 *, *::before,*::after {

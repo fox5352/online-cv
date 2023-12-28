@@ -17,9 +17,6 @@ class App {
       ["top-limit"]:"0px",["bottom-limit"]:"0px",
       ["window-showing"]:"1", ["fg-font"]:"monospace", ['window-size']:`${windowHeight}px`
     }
-    //   ,["fg-one"]:"rgba(0,0,0,1)", ["fg-two"]:"rgba(255, 251, 245, 1)", 
-    //   ["bg-one"]:"rgba(255, 251, 245, 1)", ["bg-two"]:"rgba(0, 0, 0, 1)", ["ac-one"]:"#da9020"
-    // }
 
     this.darkMode = false;
 
@@ -90,10 +87,10 @@ class App {
   toggleDarkMode(){
     this.darkMode = !this.darkMode;
 
-    document.documentElement.style.setProperty('--fg-one', this.darkMode ? "#fffbf5": "#000000")
-    document.documentElement.style.setProperty('--fg-two', this.darkMode ? "#fffbf5": "#fffbf5")
+    document.documentElement.style.setProperty('--fg-one', this.darkMode ? "#fffbf5": "#191919")
+    document.documentElement.style.setProperty('--fg-two', this.darkMode ? "#dcdcdc": "#dcdcdc")
 
-    document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#000000": "#fffbf5")
+    document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#191919": "#dcdcdc")
     document.documentElement.style.setProperty('--bg-two', this.darkMode ? "#000000": "#000000")
 
     document.documentElement.style.setProperty('--ac-one', this.darkMode ? "#dc143c": "#da9020")
