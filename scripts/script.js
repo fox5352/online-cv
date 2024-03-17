@@ -8,9 +8,11 @@ class App {
     
     this.backgroundImages = [
       "resources/background/image1.jpg",
-      "resources/background/image3.png",
+      "resources/background/image2.jpg",
+      "resources/background/image3.jpg",
     ]
-    this.imageIndex = Math.round(Math.random() * this.backgroundImages.length - 1);
+    this.imageIndex = Math.floor(Math.random() * this.backgroundImages.length)
+    console.log(this.imageIndex);
 
     const windowHeight = document.querySelector("body").offsetHeight;
     let attributes = {
@@ -39,12 +41,13 @@ class App {
     })
 
     
+    // TODO: disable btn till i get a better theme
     // dark mode switch
-    document.getElementById("toggle-mode").addEventListener("click", ()=>{
-      this.toggleDarkMode();
-      document.getElementById("setting-btn").classList.toggle("header-btn-active");
-      document.getElementById("setting-menu").classList.toggle("setting-menu-toggle")
-    })
+    // document.getElementById("toggle-mode").addEventListener("click", ()=>{
+    //   this.toggleDarkMode();
+    //   document.getElementById("setting-btn").classList.toggle("header-btn-active");
+    //   document.getElementById("setting-menu").classList.toggle("setting-menu-toggle")
+    // })
     
     // Fullscreen toggle
     document.getElementById("toggle-screen").addEventListener("click", ()=>{
@@ -61,7 +64,6 @@ class App {
       document.getElementById("setting-menu").classList.toggle("setting-menu-toggle")
     })
 
-
     // timer updater
     const updateTime = () =>{
       const time_ms = new Date()
@@ -77,27 +79,13 @@ class App {
     }, 1000);
   }
 
-  checkPrefersDarkMode(){
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDarkMode) {
-      this.toggleDarkMode();
-    }
-  }
-
-  toggleDarkMode(){
-    this.darkMode = !this.darkMode;
-
-    document.documentElement.style.setProperty('--fg-one', this.darkMode ? "#fffbf5": "#191919")
-    document.documentElement.style.setProperty('--fg-two', this.darkMode ? "#dcdcdc": "#dcdcdc")
-
-    document.documentElement.style.setProperty('--bg-one', this.darkMode ? "#191919": "#dcdcdc")
-    document.documentElement.style.setProperty('--bg-two', this.darkMode ? "#000000": "#000000")
-
-    document.documentElement.style.setProperty('--ac-one', this.darkMode ? "#dc143c": "#da9020")
-    document.documentElement.style.setProperty('--ac-two', this.darkMode ? "#bd0f32": "#d98f21b3")
-
-    document.getElementById("toggle-mode").innerHTML = this.darkMode? "light mode": "dark mode";
-  }
+  // TODO: disable this till i do a better theme
+  // checkPrefersDarkMode(){
+  //   const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  //   if (prefersDarkMode) {
+  //     this.toggleDarkMode();
+  //   }
+  // }
   
   loadMain() {
     const root = document.getElementById("root");
@@ -178,8 +166,7 @@ class App {
 
 const load = ()=>{
   const app = new App();
-  
-  app.checkPrefersDarkMode();
+
   app.loaderHeader()
   app.loadMain();
   app.loadFooter();
