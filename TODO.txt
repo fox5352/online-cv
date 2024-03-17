@@ -1,0 +1,7 @@
+TODO: add click handler to app-man-menu to close the menu when the user clicks off the menu
+
+TODO: get a better color palette
+TODO: reimplement the theme toggle functionality after better color palette
+
+TODO: get better background images
+TODO: add different background color to the app window than the apps background
