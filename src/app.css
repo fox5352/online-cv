@@ -1,0 +1,53 @@
+
+:root {
+  color-scheme: light dark;
+  
+  --font: "Oswald", sans-serif;  
+
+  --primary-100:#c21d03;
+  --primary-200:#fd5732;
+  --primary-300:#ffb787;
+
+  --accent-100:#393939;
+  --accent-200:#bebebe;
+
+  --text-fg:#232121;
+  --text-ac:#ffffff;
+
+  --bg-100:#fbfbfb;
+  --bg-200:#f1f1f1;
+  --bg-300:#c8c8c8;
+    
+  --duration: 300ms;
+  --bounce-ease: cubic-bezier(.4,-0.46,.39,1.4);
+  --zip: cubic-bezier(.59,-0.08,.16,.87);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* color: rgba(255, 255, 255, 0.87); */
+    /* background-color: #242424; */
+  }
+}
+
+*, *:after, *::before {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-weight: 400;
+  font-style: normal;
+  font-family: var(--font);
+  font-optical-sizing: auto;
+
+  color: var(--text-fg);
+  font-size: 1rem;
+
+  background-color: var(--bg-300);
+}
+
+a {
+  color: var(--text-fg);
+}
+
