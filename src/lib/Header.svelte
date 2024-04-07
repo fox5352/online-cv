@@ -1,7 +1,17 @@
 <script>
+	import { onMount } from "svelte";
+  import { fade } from "svelte/transition";
+  import staggerLoad from "./utils/staggerLoad"
+
   let active = false;
+  let displayHeader = false;
 
   // TODO: stagger load header title animation
+  onMount(()=>{
+    setTimeout(() => {
+      displayHeader = !displayHeader;
+    }, 500);
+  })
 
   // ----------- mobile nav menu ----------- 
   function toggleMenu() {
@@ -15,18 +25,23 @@
       document.removeEventListener('click', closeMenuOnClick);
     }
   }
-
+  out:fade
   function closeMenuOnClick() {
     active = false;
     document.removeEventListener('click', closeMenuOnClick);
   }
 
-  // ----------- other nav menu ----------- -->
-
+  // ----------- other nav menu -----------
 </script>
 
 <header class="header" id="header">
-  <h1 class="header__title">My Portfolio</h1>
+  <!-- svelte-ignore a11y-missing-content -->
+  <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+  {#if displayHeader}
+    <h1 transition:staggerLoad class="header__title">My Portfolio</h1>
+  {:else}
+    <h1 class="header__title"></h1>
+  {/if}
 
   <nav class="header__nav">
     <!-- ----------- mobile nav menu ----------- -->
@@ -54,6 +69,26 @@
       </li>
     </ul>
     <!-- ----------- other nav menu ----------- -->
+    <ul class="header__nav--menu">
+      <li class="header__nav--menu-item">
+        <a href="#home">Home</a>
+      </li>
+      <li class="header__nav--menu-item">
+        <a href="#about">About</a>
+      </li>
+      <li class="header__nav--menu-item">
+        <a href="#projects">Projects</a>
+      </li>
+      <li class="header__nav--menu-item">
+        <a href="#skills">Skills</a>
+      </li>
+      <li class="header__nav--menu-item">
+        <a href="#education">Education</a>
+      </li>
+      <li class="header__nav--menu-item">
+        <a href="#footer">Socials</a>
+      </li>
+    </ul>
   </nav>
 </header>
 
@@ -64,6 +99,7 @@
     justify-content: space-between;
     
     max-width: 86%;
+    min-height: 40px;
 
     padding: .3em .7em;
     margin: 3px auto;
@@ -220,12 +256,61 @@
     background-color: var(--primary-100);
   }
   /* ----------- other nav menu ----------- */
+  .header__nav--menu {
+    display: none;
+    scale: 0;
+  }
+  .header__nav--menu-item,
+  .header__nav--menu-item a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+  }
+  .header__nav--menu-item {
+    display: flex;
+    align-items: center;
 
+    padding: 0 5px;
+    
+    color:  var(--accent-200);
+    
+    border: 1px solid transparent;
+    border-right: 1px solid var(--accent-200);
+
+    transition: all var(--duration) var(--zip);
+    background-color: transparent;
+  }
+  .header__nav--menu-item:nth-child(1) {
+    border-left: 1px solid var(--accent-200);
+  }
+  .header__nav--menu-item:hover {
+    border-color: var(--primary-100);
+    border-radius: 4px;
+    background-color: var(--primary-100);
+  }
+  .header__nav--menu-item:active {
+    scale: 0.95;
+  }
 
   /* ----------- 440px up ----------- */
-  @media screen and (min-width: 440px){
-    .header__title {
-      
+  @media screen and (min-width: 550px){
+    /* ----------- mobile nav menu ----------- */
+    .header__nav--list,
+    .header__nav--list *,
+    .header__button {
+      display: none;
+      scale: 0;
+    }
+    /* ----------- other nav menu ----------- */
+    .header__nav--menu {
+      display: flex;
+      justify-content: center;
+      scale: 1;
+
+      height: 100%;
+
+      list-style: none;
     }
   }
 </style>
