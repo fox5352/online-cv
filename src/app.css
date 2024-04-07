@@ -1,4 +1,3 @@
-
 :root {
   color-scheme: light dark;
   
@@ -28,6 +27,11 @@
     /* color: rgba(255, 255, 255, 0.87); */
     /* background-color: #242424; */
   }
+}
+
+*:focus {
+  outline-color: var(--primary-300);
+  scale: 1.1;
 }
 
 *, *:after, *::before {
