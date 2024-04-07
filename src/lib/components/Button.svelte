@@ -4,11 +4,16 @@
 
 <style>
   .btn {
-    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    
     margin: .25em 0;
     padding: .4em;
-
+    
+    font-size: 1rem;
+    text-align: center;
     color: var(--primary-200);
 
     border: 3px solid var(--primary-200);
