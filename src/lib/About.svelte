@@ -2,6 +2,8 @@
   import Visible from "./utils/visible.svelte";
   import Button from "./components/Button.svelte";
 
+  import img from "../assets/me.jpg"
+
 </script>
 
 
@@ -27,7 +29,7 @@
       </div>
       <div class="about_right">
         <Visible let:visible>
-          <img class="img-active" src="/me.jpg" alt="me sitting on the beach">
+          <img class="img-active" loading="eager" src={img} alt="me sitting on the beach">
         </Visible>
       </div>
     </div>
@@ -175,24 +177,24 @@
     object-fit: cover;
 
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateY(-100%);
   }
   .about_right .img-active {
-    animation: shift 1s linear 1 forwards;
+    animation: shift 2s linear 1 forwards;
   }
 
   @keyframes shift {
     0% {
       opacity: 0;
-      transform: translateX(-100%);
+      transform: translateY(-100%);
     }
     50% {
       opacity: 0.5;
-      transform: translateX(0);
+      transform: translateY(0);
     }
     100% {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
 
