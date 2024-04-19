@@ -2,6 +2,8 @@
   import Visible from "./utils/visible.svelte";
   import Button from "./components/Button.svelte";
 
+  import staggerLoad from "./utils/staggerLoad"
+
   import image from "../assets/me.jpg"
   
   // background: url("/bam-ezgif.com-video-to-gif-converter.gif");
@@ -25,10 +27,18 @@
               <span class={visible ? "about-title-span":""}>Software Developer</span>
             </Visible>
           </h3>
+          <Visible let:visible>
+            {#if visible}
+              <p class="about-content">
+                A problem solver and a quick learner, always eager to face challenges and utilize new technologies. For instance, this site is built with Svelte, showcasing my solid foundation in UX design principles. I possess a demonstrated understanding of best coding practices and am enthusiastic about contributing to the creation of dynamic and responsive websites.
+              </p>
+            {/if}
+          </Visible>
           <div>
             <Button>
               <a class="about-link" href="#footer">Contact Me</a>
             </Button>
+            
           </div>
       </div>
 
@@ -38,12 +48,6 @@
         </Visible>
       </div>
     </div>
-    
-    <!-- <div class="about-intro-bottom">
-      <p>
-        I come from a background in mechanics. I'm a problem solver and a quick learner, always eager to face challenges and utilize new technologies. For instance, this site is built with Svelte, showcasing my solid foundation in UX design principles. I possess a demonstrated understanding of best coding practices and am enthusiastic about contributing to the creation of dynamic and responsive websites.
-      </p>
-    </div> -->
   </div>
 </section>
 
@@ -126,6 +130,9 @@
     flex-wrap: wrap;
     
     margin-bottom: .65em;
+  }
+  .about-content {
+    font-size: 0.9375rem;
   }
   .about-title-span {
     margin-bottom: .5em;
@@ -278,7 +285,9 @@
     }
     .about-title {
       margin: 0;
-    }
+    }.about-content {
+    padding-right: 0.5rem;
+  }
     /* ------------- right side ------------- */
     .about-right {
       flex-basis: 50%;
