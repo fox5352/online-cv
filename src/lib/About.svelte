@@ -205,7 +205,7 @@
     position: relative;
   }
   .about-right .img-active {
-    width: 100%;
+    width: 101%;
     height: 100%;
 
     object-fit: cover;
