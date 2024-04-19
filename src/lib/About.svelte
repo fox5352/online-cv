@@ -2,7 +2,11 @@
   import Visible from "./utils/visible.svelte";
   import Button from "./components/Button.svelte";
 
-  import img from "../assets/me.jpg"
+  import image from "../assets/me.jpg"
+  
+  // background: url("/bam-ezgif.com-video-to-gif-converter.gif");
+  // background-size: cover;
+
 </script>
 
 
@@ -30,7 +34,7 @@
 
       <div class="about-right">
         <Visible let:visible>
-          <img class="img-active" loading="eager" src={img} alt="me sitting on the beach">
+          <img class="img-active" loading="eager" src={image} alt="me sitting on the beach">
         </Visible>
       </div>
     </div>
@@ -190,6 +194,9 @@
     width: 100% !important;
     max-height: 320px;
 
+    background: url("/bam-ezgif.com-video-to-gif-converter.gif");
+    background-size: cover;
+    
     border-radius: 4px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3),
               inset 0 0 10px rgba(0, 0, 0, 0.2);
@@ -204,6 +211,7 @@
     object-fit: cover;
     opacity: 0;
     transform: translateY(-100%);
+    
   }
   .about-right .img-active {
     animation: shift 2s linear 1 forwards;
@@ -216,6 +224,14 @@
     }
     50% {
       opacity: 0.5;
+      transform: translateY(0);
+    }
+    70% {
+      opacity: 0.6;
+      transform: translateY(0);
+    }
+    80% {
+      opacity: 0.7;
       transform: translateY(0);
     }
     100% {
