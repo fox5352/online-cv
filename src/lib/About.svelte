@@ -8,34 +8,34 @@
 
 <section class="about" id="about">
   <!-- ------------ introduction ------------ -->
-  <div class="about__section about__intro">
-    <div class="about__intro--top">
+  <div class="about-section about-intro">
+    <div class="about-intro-top">
 
-      <div class="about_left">
-          <h2 class="about__name">
+      <div class="about-left">
+          <h2 class="about-name">
             Hi, I'm <span>Christopher</span>
           </h2>
-          <h3 class="about__title">
+          <h3 class="about-title">
             junior 
             <Visible let:visible>
-              <span class={visible ? "about__title--span":""}>Software Developer</span>
+              <span class={visible ? "about-title-span":""}>Software Developer</span>
             </Visible>
           </h3>
           <div>
             <Button>
-              <a class="about__link" href="#footer">Contact Me</a>
+              <a class="about-link" href="#footer">Contact Me</a>
             </Button>
           </div>
       </div>
 
-      <div class="about_right">
+      <div class="about-right">
         <Visible let:visible>
           <img class="img-active" loading="eager" src={img} alt="me sitting on the beach">
         </Visible>
       </div>
     </div>
     
-    <!-- <div class="about__intro-bottom">
+    <!-- <div class="about-intro-bottom">
       <p>
         I come from a background in mechanics. I'm a problem solver and a quick learner, always eager to face challenges and utilize new technologies. For instance, this site is built with Svelte, showcasing my solid foundation in UX design principles. I possess a demonstrated understanding of best coding practices and am enthusiastic about contributing to the creation of dynamic and responsive websites.
       </p>
@@ -54,45 +54,62 @@
     margin: 0 auto;
   }
   /* ------------- top ------------- */
-  .about__intro--top {
+  .about-intro-top {
     display: flex;
+    flex-direction: column-reverse;
 
     padding: 1.8em;
     margin: .5em 0;
 
     width: 100%;
-    height: 320px;
+    height: auto;
 
     border-radius: .625em;
-    background: var(--accent-100);
+    background: var(--bg-one);
+    box-shadow: 0 1px 3px 0 var(--ac-two), 0 1px 2px -1px var(--ac-two);
+
+
     position: relative;
     z-index: 1;
   }
+  .about-intro-top:hover {
+    box-shadow: 0 1px 3px 0 var(--ac-one), 0 1px 2px -1px var(--ac-one);
+    transition: all var(--duration) var(--bounce-ease);
+  }
+  .about-intro-top:hover .about-left .about-title .about-title-span::after  {
+    transition: all var(--duration) var(--bounce-ease);
+    background: var(--ac-one);
+  }
   /* ------------- left side ------------- */
-  .about_left {
-    flex-basis: 70%;
+  .about-left {
+    flex-basis: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     
-    color: var(--bg-200);
-    border-right: 2px solid var(--primary-200);
+    color: var(--fg-one);
+    border-right: none;
+    border-top: 2px solid var(--ac-one);
   }
 
-  .about__name {
+  .about-name {
     display: flex;
     flex-wrap: wrap;
+
+    margin-top: .65em;
 
     font-family: inherit;
     
     position: relative;
   }
-  .about__name span {
+  .about-name span {
     font-size: 2rem;
 
-    color: var(--primary-200);
+    color: var(--ac-two);
+    
   }
-  .about__name:hover > span{
+  .about-name:hover > span{
     position: relative;
     top: 0;
     left: 0;
@@ -100,11 +117,13 @@
 
     animation: glitch 250ms linear 1;
   }
-  .about__title {
+  .about-title {
     display: flex;
     flex-wrap: wrap;
+    
+    margin-bottom: .65em;
   }
-  .about__title--span {
+  .about-title-span {
     margin-bottom: .5em;
     padding-left: .125em;
 
@@ -112,7 +131,7 @@
 
     position: relative;
   }
-  .about__title--span::after {
+  .about-title-span::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -121,7 +140,7 @@
     width: 0%;
     height: 2px;
 
-    background: var(--primary-200);
+    background: var(--ac-two);
     animation: slide 2s forwards;
     animation-delay: 1s;
   }
@@ -133,16 +152,20 @@
     }
     25% {
       top: -10px;
+      color: var(--ac-one);
     }
     50% {
       left: 10px;
+      color: var(--ac-one);
     }
     75% {
       top: 10px;
+      color: var(--ac-one);
     }
     100% {
       top: 0;
       left: 0;
+      color: var(--ac-one);
     }
 
   }
@@ -156,17 +179,16 @@
     }
   }
 
-  .about__link {
+  .about-link {
     display: flex;
     text-decoration: none;
     color: inherit;
   }
 
   /* ------------- right side ------------- */
-  .about_right {
-    flex-basis: 50%;
-    /* max-width: 300px; */
-
+  .about-right {
+    width: 100% !important;
+    max-height: 320px;
 
     border-radius: 4px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3),
@@ -175,18 +197,15 @@
     overflow: hidden;
     position: relative;
   }
-  .about_right .img-active {
+  .about-right .img-active {
     width: 100%;
     height: 100%;
 
-    /* TODO: stretch to fit */
-
     object-fit: cover;
-    /* object-fit: ; */
     opacity: 0;
     transform: translateY(-100%);
   }
-  .about_right .img-active {
+  .about-right .img-active {
     animation: shift 2s linear 1 forwards;
   }
 
@@ -206,40 +225,38 @@
   }
 
   /* 0 to 940px */
-  @media screen and (max-width: 940px) {
-    .about__intro--top {
-      flex-direction: column-reverse;
-      
-      height: auto;
-    }
+  @media screen and (min-width: 940px) {
+
     /* ------------- left side ------------- */
-    .about_left {
-      flex-basis: 100%;
-
-      margin-top: 1.25em;
-
-      border-right: none;
-      border-top: 2px solid var(--primary-200);
+    .about-intro-top {
+      flex-direction: row;
+      height: 320px;
     }
-    .about__name {
-      margin-top: .65em;
+    .about-left {
+      flex-basis: 90%;
+
+      margin-top: 0px;
+      
+      border: none;
+      border-right: 2px solid var(--ac-one);
     }
-    .about__name span {
+    .about-name {
+      margin: 0;
+    }
+    .about-name span {
       font-size: 1.6rem;
       line-height: 1.45;
       padding-left: .125em;
     }
-    .about__title {
-      margin-bottom: .65em;
+    .about-title {
+      margin: 0;
     }
     /* ------------- right side ------------- */
-    .about_right {
-      /* display: none; */
-      width: 100% !important;
-      max-height: 320px;
+    .about-right {
+      flex-basis: 50%;
     }
-    .about_right img {
-      object-fit: contain;
+    .about-right img {
+      object-fit: fill;
     }
   }
 

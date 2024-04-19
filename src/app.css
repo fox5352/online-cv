@@ -10,20 +10,6 @@
   --ac-two: #9AC2C9;
   
   --bg-one: seashell;
-/* 
-  --primary-100: #c21d03;
-  --primary-200: #fd5732;
-  --primary-300: #ffb787;
-
-  --accent-100: #393939;
-  --accent-200: #bebebe;
-
-  --text-fg: #232121;
-  --text-ac: #ffffff;
-
-  --bg-100: #fbfbfb;
-  --bg-200: #f1f1f1;
-  --bg-300: #c8c8c8; */
  
   --duration: 300ms;
   --bounce-ease: cubic-bezier(.4,-0.46,.39,1.4);
