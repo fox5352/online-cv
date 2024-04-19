@@ -223,15 +223,27 @@
       transform: translateY(-100%);
     }
     50% {
-      opacity: 0.5;
+      opacity: 0.4;
       transform: translateY(0);
     }
     70% {
-      opacity: 0.6;
+      opacity: 0.5 ;
       transform: translateY(0);
     }
     80% {
+      opacity: 0.55;
+      transform: translateY(0);
+    }
+    85% {
+      opacity: 0.6;
+      transform: translateY(0);
+    }
+    90% {
       opacity: 0.7;
+      transform: translateY(0);
+    }
+    95% {
+      opacity: 0.8;
       transform: translateY(0);
     }
     100% {
