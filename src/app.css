@@ -3,20 +3,28 @@
   
   --font: "Oswald", sans-serif;  
 
-  --primary-100:#c21d03;
-  --primary-200:#fd5732;
-  --primary-300:#ffb787;
+  --fg-one: #2A2B2A;
+  --fg-two: #f0f8ff;
+  
+  --ac-one: #A63D40;
+  --ac-two: #9AC2C9;
+  
+  --bg-one: seashell;
+/* 
+  --primary-100: #c21d03;
+  --primary-200: #fd5732;
+  --primary-300: #ffb787;
 
-  --accent-100:#393939;
-  --accent-200:#bebebe;
+  --accent-100: #393939;
+  --accent-200: #bebebe;
 
-  --text-fg:#232121;
-  --text-ac:#ffffff;
+  --text-fg: #232121;
+  --text-ac: #ffffff;
 
-  --bg-100:#fbfbfb;
-  --bg-200:#f1f1f1;
-  --bg-300:#c8c8c8;
-    
+  --bg-100: #fbfbfb;
+  --bg-200: #f1f1f1;
+  --bg-300: #c8c8c8; */
+ 
   --duration: 300ms;
   --bounce-ease: cubic-bezier(.4,-0.46,.39,1.4);
   --zip: cubic-bezier(.59,-0.08,.16,.87);
@@ -30,7 +38,7 @@
 }
 
 *:focus {
-  outline-color: var(--primary-300);
+  /* outline-color: var(--primary-300); */
   scale: 1.1;
 }
 
@@ -45,14 +53,13 @@ body {
   font-style: normal;
   font-family: var(--font);
   font-optical-sizing: auto;
-
-  color: var(--text-fg);
+  color: var(--fg-one);
   font-size: 1rem;
 
-  background-color: var(--bg-300);
+  background-color: var(--bg-one);
 }
 
 a {
-  color: var(--text-fg);
+  color: var(--fg-one);
 }
 

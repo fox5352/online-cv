@@ -3,7 +3,6 @@
   import Button from "./components/Button.svelte";
 
   import img from "../assets/me.jpg"
-
 </script>
 
 
@@ -11,6 +10,7 @@
   <!-- ------------ introduction ------------ -->
   <div class="about__section about__intro">
     <div class="about__intro--top">
+
       <div class="about_left">
           <h2 class="about__name">
             Hi, I'm <span>Christopher</span>
@@ -27,12 +27,14 @@
             </Button>
           </div>
       </div>
+
       <div class="about_right">
         <Visible let:visible>
           <img class="img-active" loading="eager" src={img} alt="me sitting on the beach">
         </Visible>
       </div>
     </div>
+    
     <!-- <div class="about__intro-bottom">
       <p>
         I come from a background in mechanics. I'm a problem solver and a quick learner, always eager to face challenges and utilize new technologies. For instance, this site is built with Svelte, showcasing my solid foundation in UX design principles. I possess a demonstrated understanding of best coding practices and am enthusiastic about contributing to the creation of dynamic and responsive websites.
@@ -165,17 +167,22 @@
     flex-basis: 50%;
     /* max-width: 300px; */
 
+
+    border-radius: 4px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3),
               inset 0 0 10px rgba(0, 0, 0, 0.2);
 
     overflow: hidden;
     position: relative;
   }
-  .about_right img {
+  .about_right .img-active {
     width: 100%;
     height: 100%;
-    object-fit: cover;
 
+    /* TODO: stretch to fit */
+
+    object-fit: cover;
+    /* object-fit: ; */
     opacity: 0;
     transform: translateY(-100%);
   }
