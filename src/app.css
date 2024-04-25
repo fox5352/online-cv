@@ -7,13 +7,16 @@
   --fg-two: #f0f8ff;
   
   --ac-one: #A63D40;
-  --ac-two: #9AC2C9;
+  --ac-two: cadetblue;
   
-  --bg-one: seashell;
+  --bg-one: aliceblue;
  
   --duration: 300ms;
   --bounce-ease: cubic-bezier(.4,-0.46,.39,1.4);
   --zip: cubic-bezier(.59,-0.08,.16,.87);
+}
+body {
+  color: aliceblue;
 }
 
 @media (prefers-color-scheme: dark) {

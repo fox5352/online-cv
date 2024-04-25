@@ -2,12 +2,9 @@
   import Visible from "./utils/visible.svelte";
   import Button from "./components/Button.svelte";
 
-  import staggerLoad from "./utils/staggerLoad"
-
   import image from "../assets/me.jpg"
-  
-  // background: url("/bam-ezgif.com-video-to-gif-converter.gif");
-  // background-size: cover;
+
+  let test = false;
 
 </script>
 
@@ -16,7 +13,6 @@
   <!-- ------------ introduction ------------ -->
   <div class="about-section about-intro">
     <div class="about-intro-top">
-
       <div class="about-left">
           <h2 class="about-name">
             Hi, I'm <span>Christopher</span>
@@ -72,6 +68,7 @@
     width: 100%;
     height: auto;
 
+    border: 1px solid var(--ac-two);
     border-radius: .625em;
     background: var(--bg-one);
     box-shadow: 0 1px 3px 0 var(--ac-two), 0 1px 2px -1px var(--ac-two);
@@ -81,6 +78,7 @@
     z-index: 1;
   }
   .about-intro-top:hover {
+    border-color: var(--ac-one);
     box-shadow: 0 1px 3px 0 var(--ac-one), 0 1px 2px -1px var(--ac-one);
     transition: all var(--duration) var(--bounce-ease);
   }
@@ -113,9 +111,7 @@
   }
   .about-name span {
     font-size: 2rem;
-
     color: var(--ac-two);
-    
   }
   .about-name:hover > span{
     position: relative;
@@ -266,6 +262,7 @@
     .about-intro-top {
       flex-direction: row;
       height: 320px;
+      /* border */
     }
     .about-left {
       flex-basis: 90%;
