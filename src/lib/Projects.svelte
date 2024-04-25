@@ -7,36 +7,77 @@
   let data = null;
 
   let dataMenu = ["newest", "oldest"];
-  let languageMenu = ["javascript", "html", "css", "python", "rust", "cpp"];
+  let languageMenu = ["all", "javascript", "python", "rust", "lua"];
+
+  let curDate = "newest";
+  let curLanguage = "all";
   
+  let test = []
+
   async function getRepos() {
     const response = await fetch("https://api.github.com/users/fox5352/repos");
     const data = await response.json();
-    let test =await setTimeout(() => {}, 3000);
-    return data;
+    return data.filter(listItem =>!listItem.name.includes("PTO2401"));
   }
 
-  onMount(()=>{
+  async function filterRepos(date, language) {
+    let data = await getRepos();
+    let newList = data;
+
+    // if Language is selected then it filters out all projects other languages
+    if (language !== "all") {
+      newList = data.filter(listItem => listItem.language?.toLowerCase() == language);
+    }
+
+    // sort by .created_at date
+    newList.sort((a, b) => {
+      if (date == "oldest") {
+        const dateA = new Date(a.created_at);
+        const dateB = new Date(b.created_at);
+        return dateA - dateB;
+      } else {
+        const dateA = new Date(a.created_at);
+        const dateB = new Date(b.created_at);
+        return dateB - dateA;
+      }
+    });
+
+    return newList;
+  }
+
+  function updateDate(event) {
+    curDate = event.target.value;
+  }
+  function updateLanguage(event) {
+    curLanguage = event.target.value;
+  }
+
+  // -------------- state management ------------
+  onMount(() => {
     data = getRepos();
   })
+  
+  $: {
+    data = filterRepos(curDate, curLanguage)
+  }
 
 </script>
 
 <section id="projects" class="projects">
   {#if data}
+    <div class="bts-container">
+      <!-- Date selection -->
+      <SelectMenu list={dataMenu} on:change={updateDate}/>
+      <!-- Language selection -->
+      <SelectMenu list={languageMenu} on:change={updateLanguage} />
+    </div>
     {#await data}
       <Loading />
     {:then repos}
-      <div class="bts-container">
-        <!-- Date selection -->
-        <SelectMenu list={dataMenu} />
-        <!-- Language selection -->
-        <SelectMenu list={languageMenu} />
-      </div>
       <div transition:fade class="repo-container">
         {#each repos as repo}
           {#if repo.language}
-            <a class="repo-cell" href={repo.url} aria-label={`repository to ${repo.name} project`}>
+            <a class="repo-cell" href={`https://github.com/fox5352/${repo.name}`} aria-label={`repository to ${repo.name} project`} target="_blank">
               <!-- load name -->
               {#if repo.name.length > 20}
                 <h3 class="repo-heading">{repo.name.slice(0, 20)}...</h3>
@@ -62,17 +103,19 @@
 </section>
 
 <style>
-
-  /* ------------ control buttons ------------ */
-  .filter-btns {}
-
-
-  /* ------------ repository container and items ------------ */
   .projects {
     max-width: 80%;
     margin: 0 auto;
     margin-top: 0.9375em;
   }
+
+  /* ------------ control buttons ------------ */
+  .bts-container {
+    border-radius: 0.25em;
+    box-shadow: 0 4px 2px -2px gray;
+  }
+
+  /* ------------ repository container and items ------------ */
   .repo-container {
     width: 100%;
     max-height: 230px;
@@ -110,6 +153,7 @@
     box-shadow: 0 4px 6px -1px var(--ac-two), 0 2px 4px -2px var(--ac-two);
 
     transition: all var(--duration) var(--zip);
+    overflow: hidden;
   }
   .repo-cell:hover {
     background-color: var(--ac-two);

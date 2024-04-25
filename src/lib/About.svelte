@@ -199,6 +199,7 @@
 
     background: url("/bam-ezgif.com-video-to-gif-converter.gif");
     background-size: cover;
+    background-repeat: no-repeat;
     
     border-radius: 4px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3),
@@ -208,8 +209,8 @@
     position: relative;
   }
   .about-right .img-active {
-    width: 101%;
     height: 100%;
+    width: 101%;
 
     object-fit: cover;
     opacity: 0;

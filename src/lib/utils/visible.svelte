@@ -29,3 +29,9 @@
   <slot {visible} />
 </span>
 
+
+<style>
+  span {
+    display: flex;
+  }
+</style>

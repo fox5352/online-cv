@@ -17,6 +17,10 @@
 }
 body {
   color: aliceblue;
+
+  max-width: 1440px;
+
+  margin: 0 auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,11 +29,9 @@ body {
     /* background-color: #242424; */
   }
 }
-
+/* TODO: add better focus handling after page is created 
 *:focus {
-  /* outline-color: var(--primary-300); */
-  scale: 1.1;
-}
+} */
 
 *, *:after, *::before {
   box-sizing: border-box;
