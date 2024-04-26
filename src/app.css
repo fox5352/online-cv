@@ -15,13 +15,6 @@
   --bounce-ease: cubic-bezier(.4,-0.46,.39,1.4);
   --zip: cubic-bezier(.59,-0.08,.16,.87);
 }
-body {
-  color: aliceblue;
-
-  max-width: 1440px;
-
-  margin: 0 auto;
-}
 
 @media (prefers-color-scheme: dark) {
   :root {

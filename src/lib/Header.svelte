@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
   import { fade } from "svelte/transition";
   import staggerLoad from "./utils/staggerLoad"
+	import Visible from "./utils/visible.svelte";
 
   let displayHeader = false;
 
@@ -19,14 +20,17 @@
     displayMobileNavMenu = !displayMobileNavMenu;
     active = !active;
   }
+  // TODO: redo the mobile header dropdown button
 </script>
 
 <header class="header" id="header">
-  {#if displayHeader}
-    <h1 transition:staggerLoad class="header-title">My Portfolio</h1>
-  {:else}
-    <h1 class="header-title"> </h1>
-  {/if}
+  <Visible let:visible>
+    {#if displayHeader && visible}
+      <h1 transition:staggerLoad class="header-title">My Portfolio</h1>
+    {:else}
+      <h1 class="header-title"> </h1>
+    {/if}
+  </Visible>
 
   <nav class="header-nav">
     <button class="mobile-nav-toggle" aria-label="toggle navigation menu" on:click={toggleMobileNavMenu}>
@@ -50,9 +54,9 @@
         <li>
           <a class="header-mobile-nav-btn" href="#education">Education</a>
         </li>
-        <li>
+        <!-- <li>
           <a class="header-mobile-nav-btn" href="#footer">Socials</a>
-        </li>
+        </li> -->
       </ul>
     {/if}
 
@@ -73,9 +77,9 @@
       <li class="header-nav-menu-item">
         <a href="#education">Education</a>
       </li>
-      <li class="header-nav-menu-item">
+      <!-- <li class="header-nav-menu-item">
         <a href="#footer">Socials</a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </header>
@@ -92,6 +96,7 @@
 
     padding: .3em .7em;
     margin: 3px auto;
+    margin-bottom: 20px;
 
     color: var(--fg-one);
     
@@ -113,6 +118,7 @@
     font-size: 1.25rem;
 
     color: inherit;
+    transform: skewX(15deg);
   }
 
   .header-nav {

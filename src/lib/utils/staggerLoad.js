@@ -1,6 +1,6 @@
 import { tick } from "svelte";
 
-export default function typewriter(node, { speed = 1 }) {
+export default function typewriter(node, { speed = 2 }) {
   const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
 
   if (!valid) {

@@ -3,7 +3,7 @@
   import About from './lib/About.svelte';
   import Header from './lib/Header.svelte'
 	import Projects from './lib/Projects.svelte';
-  // import Counter from './lib/Counter.svelte'
+  import Footer from './lib/footer.svelte';
 </script>
 
 <Header />
@@ -11,6 +11,7 @@
   <About/>
   <Projects />  
 </main>
+<Footer />
 
 <style>
 

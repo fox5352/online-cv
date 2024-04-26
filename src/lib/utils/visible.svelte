@@ -1,5 +1,7 @@
 <!-- Visible.svelte -->
 <script>
+  export let width = "inherit";
+
   import { onMount, onDestroy } from 'svelte';
 
   let visible = false;
@@ -25,7 +27,7 @@
   });
 </script>
 
-<span bind:this={element}>
+<span bind:this={element} style="width: {width};">
   <slot {visible} />
 </span>
 

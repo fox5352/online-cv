@@ -65,14 +65,14 @@
 
 </script>
 
-<section id="projects" class="projects">
+<section class="projects">
   
   {#if data}
     <Visible let:visible>
       {#if visible}
         <h2 transition:staggerLoading>My Projects:</h2>
       {:else}
-        <h2>_</h2>
+        <h2></h2>
       {/if}
     </Visible>
     <div class="bts-container">
@@ -84,7 +84,7 @@
     {#await data}
       <Loading />
     {:then repos}
-      <div transition:fade class="repo-container">
+      <div transition:fade class="repo-container" id="projects">
         {#each repos as repo}
           {#if repo.language}
             <a class="repo-cell" href={`https://github.com/fox5352/${repo.name}`} aria-label={`repository to ${repo.name} project`} target="_blank">
@@ -130,8 +130,8 @@
     width: 100%;
     max-height: 240px;
     
-    /* margin-bottom: 10px; */
-    /* padding: 0.25em; */
+    margin-bottom: 10px;
+    padding: 0.25em;
     
     display: flex;
     justify-content: center;
@@ -150,8 +150,8 @@
     flex-direction: column;
     flex-grow: 1;
 
-    min-width: 250px;
-    max-width: 260px;
+    width: 250px;
+    max-width: 250px;
     height: 110px;
     
     padding: 0.3125em;
