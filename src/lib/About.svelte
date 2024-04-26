@@ -1,7 +1,7 @@
 <script>
   import Visible from "./utils/visible.svelte";
 
-  import image from "../assets/me.jpg"
+  import image from "../assets/me.webp"
 	import { fade } from "svelte/transition";
 
   // let 
@@ -39,7 +39,7 @@
       <div class="about-right">
         <Visible let:visible>
           {#if visible}
-            <img transition:fade class="img-active" loading="eager" src={image} alt="me sitting on the beach">
+            <img transition:fade class="img-active" loading="lazy" src={image} alt="me sitting on the beach">
           {/if}
         </Visible>
       </div>
