@@ -33,15 +33,16 @@
   </Visible>
 
   <nav class="header-nav">
-    <button class="mobile-nav-toggle" aria-label="toggle navigation menu" on:click={toggleMobileNavMenu}>
+    <button class="mobile-nav-toggle" aria-label="toggle navigation menu" 
+      on:blur={()=>setTimeout(()=>toggleMobileNavMenu(), 500)} on:click={toggleMobileNavMenu}>
       <span class="toggle-icon" class:active ></span>
     </button>
     <!-- ----------- mobile nav menu ----------- -->
     {#if displayMobileNavMenu}
       <ul transition:fade class="header-mobile-nav">
-        <li>
+        <!-- <li>
           <a class="header-mobile-nav-btn" href="/">Home</a>
-        </li>
+        </li> -->
         <li>
           <a class="header-mobile-nav-btn" href="#about">About</a>
         </li>
@@ -62,9 +63,9 @@
 
     <!-- ----------- other nav menu ----------- -->
     <ul class="header-nav-menu">
-      <li class="header-nav-menu-item">
+      <!-- <li class="header-nav-menu-item">
         <a href="#home">Home</a>
-      </li>
+      </li> -->
       <li class="header-nav-menu-item">
         <a href="#about">About</a>
       </li>
@@ -101,7 +102,7 @@
     color: var(--fg-one);
     
     border-radius: 2px;
-    background-color: var(--ac-two);
+    background: linear-gradient(36deg, var(--ac-one), var(--ac-two));
 
     box-shadow: 0 1px 3px 0 var(--fg-one), 0 1px 2px -1px var(--fg-one);
 
@@ -117,7 +118,7 @@
   .header-title {
     font-size: 1.25rem;
 
-    color: inherit;
+    color: var(--fg-two);
     transform: skewX(15deg);
   }
 
@@ -148,14 +149,14 @@
   }
 
   /* ----------- toggle nav menu button icon ----------- */
-  .toggle-icon {
+  .toggle-icon {  
     display: block;
   
     width: 100%;
     height: 0.1875rem;
 
     border-radius: 0.1875em;
-    background: var(--fg-one);
+    background: var(--fg-two);
 
     transition: all var(--duration) var(--zip);
 
@@ -172,7 +173,7 @@
     height: 0.1875rem;
 
     border-radius: 0.1875em;
-    background: var(--fg-one);
+    background: var(--fg-two);
 
     transition: all var(--duration) var(--zip);
   }
@@ -212,7 +213,7 @@
   /* ----------- mobile nav menu ----------- */
   .header-mobile-nav {
     position: absolute;
-    top: calc(100% + 0.25rem);
+    top: calc(100% + 0.3125rem);
     right: 0;
 
     margin: 0;
@@ -223,8 +224,7 @@
 
     border: 1px solid transparent;
     border-radius: 0.25em;
-    background-color: var(--ac-two);
-    box-shadow: 0 1px 3px 0 var(--fg-one), 0 1px 2px -1px var(--fg-one);
+    background: linear-gradient(36deg, var(--ac-one), var(--ac-two));
   }
   .header-mobile-nav-btn {
     display: flex;
@@ -238,7 +238,7 @@
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 0.0625em;
-    color: var(--bg-one);
+    color: var(--fg-two);
     text-decoration: none;
 
     border: 1px solid var(--bg-one);
@@ -275,20 +275,15 @@
 
     padding: 0 5px;
     
-    color:  var(--fg-one);
+    color:  var(--fg-two);
     
     border: 1px solid transparent;
-    border-right: 1px solid var(--bg-one);
-    border-left: 1px solid var(--bg-one);
-
+   
     transition: all var(--duration) var(--zip);
     background-color: transparent;
   }
-  .header-nav-menu-item:nth-child(1) {
-    border-left: 1px solid var(--bg-one);
-  }
   .header-nav-menu-item:hover {
-    color: var(--bg-one);
+    color: var(--fg-two);
 
     border-radius: 4px;
     border-color: var(--ac-one);

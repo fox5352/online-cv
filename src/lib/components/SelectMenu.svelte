@@ -72,7 +72,7 @@
     padding: 4px;
     width: 100%;
 
-    background-color: var(--ac-two);
+    background-color: var(--ac-one);
   }
   .custom-arrow {
     position: absolute;

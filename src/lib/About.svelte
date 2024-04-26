@@ -1,10 +1,14 @@
 <script>
   import Visible from "./utils/visible.svelte";
-  import Button from "./components/Button.svelte";
 
   import image from "../assets/me.jpg"
+	import { fade } from "svelte/transition";
 
-  let test = false;
+  // let 
+
+  // function tease(){
+
+  // }
 
 </script>
 
@@ -30,17 +34,13 @@
               </p>
             {/if}
           </Visible>
-          <div>
-            <Button>
-              <a class="about-link" href="#footer">Contact Me</a>
-            </Button>
-            
-          </div>
       </div>
 
       <div class="about-right">
         <Visible let:visible>
-          <img class="img-active" loading="eager" src={image} alt="me sitting on the beach">
+          {#if visible}
+            <img transition:fade class="img-active" loading="eager" src={image} alt="me sitting on the beach">
+          {/if}
         </Visible>
       </div>
     </div>
@@ -85,6 +85,10 @@
   .about-intro-top:hover .about-left .about-title .about-title-span::after  {
     transition: all var(--duration) var(--bounce-ease);
     background: var(--ac-one);
+  }
+  .about-intro-top:hover .about-name span {
+    transition: all var(--duration) var(--bounce-ease);
+    color: var(--ac-one);
   }
   /* ------------- left side ------------- */
   .about-left {
@@ -163,11 +167,11 @@
     }
     50% {
       left: 10px;
-      color: var(--ac-one);
+      color: var(--ac-two);
     }
     75% {
       top: 10px;
-      color: var(--ac-one);
+      color: var(--ac-two);
     }
     100% {
       top: 0;
@@ -198,7 +202,8 @@
     max-height: 320px;
 
     background: url("/bam-ezgif.com-video-to-gif-converter.gif");
-    background-size: cover;
+    background-size: contain;
+    background-position: center ;
     background-repeat: no-repeat;
     
     border-radius: 4px;
@@ -213,46 +218,16 @@
     width: 101%;
 
     object-fit: cover;
-    opacity: 0;
-    transform: translateY(-100%);
-    
-  }
-  .about-right .img-active {
-    animation: shift 2s linear 1 forwards;
+    opacity: 0;    
+    animation: shift 0.4s linear 1 forwards;
   }
 
   @keyframes shift {
     0% {
       opacity: 0;
-      transform: translateY(-100%);
-    }
-    50% {
-      opacity: 0.4;
-      transform: translateY(0);
-    }
-    70% {
-      opacity: 0.5 ;
-      transform: translateY(0);
-    }
-    80% {
-      opacity: 0.55;
-      transform: translateY(0);
-    }
-    85% {
-      opacity: 0.6;
-      transform: translateY(0);
-    }
-    90% {
-      opacity: 0.7;
-      transform: translateY(0);
-    }
-    95% {
-      opacity: 0.8;
-      transform: translateY(0);
     }
     100% {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 

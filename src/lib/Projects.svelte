@@ -128,7 +128,7 @@
   /* ------------ repository container and items ------------ */
   .repo-container {
     width: 100%;
-    max-height: 240px;
+    max-height: 345px;
     
     margin-bottom: 10px;
     padding: 0.25em;
@@ -158,15 +158,20 @@
 
     text-decoration: none;
 
-    border: 1px solid var(--ac-two);
+    border: 1px solid transparent;
     border-radius: 0.3125rem;
-    box-shadow: 0 4px 6px -1px var(--ac-two), 0 2px 4px -2px var(--ac-two);
+    box-shadow: 0 4px 6px -1px var(--ac-one), 0 2px 4px -2px var(--ac-one);
 
     transition: all var(--duration) var(--zip);
     overflow: hidden;
   }
   .repo-cell:hover {
-    background-color: var(--ac-two);
+    color: var(--fg-two);
+    background-color: var(--ac-one);
+    box-shadow: none;
+  }
+  .repo-cell:hover .repo-subheading {
+    color: var(--fg-two);
   }
   .repo-heading {
     font-weight: 600;
@@ -191,7 +196,7 @@
     }
     .repo-container {
       grid-template-columns: auto auto;
-      max-height: 230px;
+      max-height: 345px;
     }
   }
   @media screen and (min-width: 1024px) {
