@@ -71,6 +71,8 @@
     <Visible let:visible>
       {#if visible}
         <h2 transition:staggerLoading>My Projects:</h2>
+      {:else}
+        <h2>_</h2>
       {/if}
     </Visible>
     <div class="bts-container">
