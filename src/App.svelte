@@ -3,6 +3,7 @@
   import About from './lib/About.svelte';
   import Header from './lib/Header.svelte'
 	import Projects from './lib/Projects.svelte';
+	import Skills from './lib/Skills.svelte';
   import Footer from './lib/footer.svelte';
 </script>
 
@@ -10,6 +11,7 @@
 <main>
   <About/>
   <Projects />  
+  <Skills />
 </main>
 <Footer />
 

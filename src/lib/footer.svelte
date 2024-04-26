@@ -19,7 +19,8 @@
       <form class="form" id="contact" action="{url}/messages" method="post">
         <h3>Message Me:</h3>
         <textarea name="message" id=""></textarea>
-        <button type="submit">Submit</button>
+        <!-- TODO:  implement -->
+        <button type="submit" title="out of order :(" disabled>Submit</button>
       </form>
     </div>
     <!-- center -->
