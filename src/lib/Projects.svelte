@@ -3,6 +3,8 @@
   import { fade } from "svelte/transition";
 	import Loading from "./components/Loading.svelte";
 	import SelectMenu from "./components/SelectMenu.svelte";
+  import staggerLoading from "./utils/staggerLoad"
+	import Visible from "./utils/visible.svelte";
 
   let data = null;
 
@@ -46,10 +48,10 @@
   }
 
   function updateDate(event) {
-    curDate = event.target.value;
+    curDate = event.detail.value;
   }
   function updateLanguage(event) {
-    curLanguage = event.target.value;
+    curLanguage = event.detail.value;
   }
 
   // -------------- state management ------------
@@ -64,12 +66,18 @@
 </script>
 
 <section id="projects" class="projects">
+  
   {#if data}
+    <Visible let:visible>
+      {#if visible}
+        <h2 transition:staggerLoading>My Projects:</h2>
+      {/if}
+    </Visible>
     <div class="bts-container">
       <!-- Date selection -->
-      <SelectMenu list={dataMenu} on:change={updateDate}/>
+      <SelectMenu list={dataMenu} on:selectChange={updateDate}/>
       <!-- Language selection -->
-      <SelectMenu list={languageMenu} on:change={updateLanguage} />
+      <SelectMenu list={languageMenu} on:selectChange={updateLanguage} />
     </div>
     {#await data}
       <Loading />
@@ -118,10 +126,10 @@
   /* ------------ repository container and items ------------ */
   .repo-container {
     width: 100%;
-    max-height: 230px;
+    max-height: 240px;
     
-    margin-bottom: 10px;
-    padding: 0.25em;
+    /* margin-bottom: 10px; */
+    /* padding: 0.25em; */
     
     display: flex;
     justify-content: center;
