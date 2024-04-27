@@ -16,6 +16,7 @@
 </script>
 
 <button class="cell" on:click={toggleDisplay}>
+  
   <div class="head">
     <h3>{name}</h3>
     <div class="icon" class:active={isDisplay}>
