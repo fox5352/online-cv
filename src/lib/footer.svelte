@@ -1,4 +1,5 @@
 <script>
+  // @ts-ignore
   import { fade } from "svelte/transition"
 
   import icons from "../assets/icons.json"
