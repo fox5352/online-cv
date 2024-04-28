@@ -19,11 +19,12 @@
       
       const res = await fetch("/.netlify/functions/messages", options)
       
-      message = "";
       
       if (res.ok) {
         console.log("message send successfully");
       }
+      
+      message = "";
       
     } catch (error) {
       console.error('Error:', error);

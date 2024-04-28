@@ -6,6 +6,7 @@ import SkillCell from "./components/SkillCell.svelte";
     { name: "Html", detail: "capable of build fully functional web sites using sematic html and other template languages"},
     { name: "Css", detail: "Can use Css to make visual stunning pages and efficient animations"},
     { name: "JavaScript", detail: "capable of build fully functional web sites using javascript for both functionality and complex styling" },
+    { name: "TypeScript", detail: "capable of building basic application with it still learning more details"},
     { name: "nodes", detail: "capable of build fully functional servers using express and node"},
     { name: "React", detail: "capable of build fully functional web sites using react for both dynamic functionality and complex styling" },
     { name: "MongoDB", detail: "used to store data that scales easily while still customizable" },

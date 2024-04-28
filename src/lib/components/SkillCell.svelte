@@ -14,21 +14,23 @@
   }
 
 </script>
-<div class="cell">
+
+<button class="cell" on:click={toggleDisplay}>
+  
   <div class="head">
     <h3>{name}</h3>
-    <button on:click={toggleDisplay}>
+    <div class="icon" class:active={isDisplay}>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
         <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
       </svg>
-    </button>
+    </div>
   </div>
   {#if isDisplay}
     <div class="body" transition:fade>
       <p>{detail}</p>
     </div>
   {/if}
-</div>
+  </button>
 
 <style>
   .cell {
@@ -38,10 +40,12 @@
     
     border: none;
     border-radius: 4px;
+    background: var(--fg--two);
     /* background: linear-gradient(145deg, var(--ac-two), var(--ac-one)); */
     box-shadow: -2px 0px 1px var(--ac-two), 0px -2px 1px var(--ac-two), 
     2px 0px 1px var(--ac-one),0px 2px 1px var(--ac-one);
 
+    cursor: pointer;
     overflow: hidden;
   }
   .head {
@@ -53,7 +57,7 @@
 
     color: var(--fg-one);
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     font-size: 1.0625rem;
     font-family: inherit;
 
@@ -61,7 +65,7 @@
 
     transition: all var(--duration) var(--bounce-ease);
   }
-  .head button {
+  .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,8 +80,12 @@
 
     transition: all var(--duration) var(--bounce-ease);
   }
-  .head button:hover {
+  .icon:hover {
     color: var(--ac-two);
+  }
+  .active {
+    color: var(--ac-two);
+    transform: rotateX(180deg);
   }
 
   .body {
