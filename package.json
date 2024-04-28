@@ -14,5 +14,8 @@
     "svelte": "^4.2.12",
     "vite": "^5.2.0",
     "vite-plugin-pwa": "^0.19.8"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1"
   }
 }

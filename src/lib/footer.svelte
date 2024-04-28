@@ -1,26 +1,44 @@
 <script>
   import { fade } from "svelte/transition"
-	import Visible from "./utils/visible.svelte";
 
   import icons from "../assets/icons.json"
   
-  // server url
-  let url = import.meta.env.SERVER
-
   let techStack  = icons
+  let message = "";
 
-  // TODO: server url later
+  async function sendData(event) {
+    event.preventDefault()
+    try {
+      const options =  { 
+        method: "POST", 
+        body: JSON.stringify({message}),
+        headers: {
+            'Content-Type': 'application/json',
+          },
+      }
+      
+      const res = await fetch("/.netlify/functions/messages", options)
+      
+      message = "";
+      
+      if (res.ok) {
+        console.log("message send successfully");
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
 </script>
 <footer class="footer" id="footer">
   <div class="footer-container"transition:fade={{ delay: 200,duration: 300}}>
     <!-- left -->
     <div class="content">
-      <form class="form" id="contact" action="{url}/messages" method="post">
+      <form class="form" id="contact" method="post" on:submit={sendData}>
         <h3>Message Me:</h3>
-        <textarea name="message" id=""></textarea>
-        <!-- TODO:  implement -->
-        <button type="submit" title="out of order :(" disabled>Submit</button>
+        <textarea name="message" bind:value={message}></textarea>
+        <button type="submit">Submit</button>
       </form>
     </div>
     <!-- center -->
