@@ -12,7 +12,7 @@ async function botSendMessage(message, token, id) {
       throw new Error(`Couldn't find user with ID ${channel_id}`);
     }
     
-    await chanel.send(message);
+    await chanel.send(`@christopher_vos ${message}`);
 
     await client.destroy();
 

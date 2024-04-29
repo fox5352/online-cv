@@ -74,7 +74,7 @@
     <!-- ------------- tech stack ------------- -->
     {#if techStack}
       <div class="content">
-        <h3>Technologys used:</h3>
+        <h3>Technologies used:</h3>
         {#each techStack as item}
           <a href="{item.url}" target="_blank">
             <span class="icon">
