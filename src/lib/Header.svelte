@@ -104,8 +104,6 @@
     border-radius: 2px;
     background: linear-gradient(36deg, var(--ac-one), var(--ac-two));
 
-    box-shadow: 0 1px 3px 0 var(--fg-one), 0 1px 2px -1px var(--fg-one);
-
     position: relative;
     top: 0;
     left: 0%;

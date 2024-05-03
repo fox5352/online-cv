@@ -121,14 +121,16 @@
 
   /* ------------ control buttons ------------ */
   .bts-container {
+    margin-bottom: 0.375em;
+
     border-radius: 0.25em;
-    box-shadow: 0 4px 2px -2px gray;
+    box-shadow: 0 4px 2px -2px var(--ac-two);
   }
 
   /* ------------ repository container and items ------------ */
   .repo-container {
     width: 100%;
-    max-height: 345px;
+    max-height: 360px;
     
     margin-bottom: 10px;
     padding: 0.25em;
@@ -136,7 +138,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 12px;
 
     overflow-x: hidden;
   }
@@ -158,8 +160,8 @@
 
     text-decoration: none;
 
-    border: 1px solid transparent;
     border-radius: 0.3125rem;
+    border: 1px solid var(--ac-one);
     box-shadow: 0 4px 6px -1px var(--ac-one), 0 2px 4px -2px var(--ac-one);
 
     transition: all var(--duration) var(--zip);
@@ -196,7 +198,12 @@
     }
     .repo-container {
       grid-template-columns: auto auto;
-      max-height: 345px;
+      max-height: 375px;
+
+      gap: 16px;
+    }
+    .repo-cell {
+      box-shadow: 0 1px 3px 0 var(--ac-one), 0 1px 2px -1px var(--ac-one);
     }
   }
   @media screen and (min-width: 1024px) {

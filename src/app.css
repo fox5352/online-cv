@@ -21,10 +21,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* color: rgba(255, 255, 255, 0.87); */
-    /* background-color: #242424; */
+    --fg-one: #f0f0f0;
+    --bg-two: #2A2B2A;
+
+    --bg-one: rgb(39 39 42); 
   }
 }
+
 /* TODO: add better focus handling after page is created 
 *:focus {
 } */
