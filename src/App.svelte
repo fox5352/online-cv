@@ -1,12 +1,14 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 
-  
-  import About from './lib/About.svelte';
+  // Component imports
   import Header from './lib/Header.svelte'
+  import About from './lib/About.svelte';
 	import Projects from './lib/Projects.svelte';
 	import Skills from './lib/Skills.svelte';
+	import Education from './lib/Education.svelte';
   import Footer from './lib/footer.svelte';
+  // hooks imports
 	import { theme } from './lib/utils/toggleTheme';
 
   let currentTheme
@@ -31,6 +33,7 @@
   <About/>
   <Projects />  
   <Skills />
+  <Education />
 </main>
 <Footer />
 
