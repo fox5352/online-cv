@@ -22,11 +22,16 @@
     document.body.classList.add(currentTheme);
     document.body.classList.remove(currentTheme == "light" ? "dark" : "light" );
   }
-
   
   onDestroy(themeSub)
 
 </script>
+
+<svelte:head>
+  <link rel="shortcut icon" href="/foxIcon.png" type="image/png">
+  <meta name="description" content="A Portfolio made with svelte">
+  <title>Christopher Portfolio</title>
+</svelte:head>
 
 <Header />
 <main>

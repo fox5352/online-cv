@@ -12,7 +12,7 @@
 </script>
 
 <section class="education" id="education">
-    <Carousel bind:this={carousel} autoplay={true} autoplayDuration={4000} pauseOnFocus={true} autoplayProgressVisible={true}>
+    <Carousel bind:this={carousel} autoplay={true} autoplayDuration={5000} pauseOnFocus={true} autoplayProgressVisible={true}>
       {#each education as block}
         <div class="block">
           <h3 class="block-title">{block.name}</h3>
