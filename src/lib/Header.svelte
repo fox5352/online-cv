@@ -1,14 +1,19 @@
 <script>
-	import { onMount } from "svelte";
+	import { onDestroy, onMount } from "svelte";
   import { fade } from "svelte/transition";
+  
+  // local
   import staggerLoad from "./utils/staggerLoad"
 	import Visible from "./utils/visible.svelte";
-
-  let displayHeader = false;
+  import { theme, toggleTheme } from "./utils/toggleTheme";
 
   let displayMobileNavMenu = false;
-
+  let displayHeader = false;
   let active = false;
+  let currentTheme;
+
+
+  const themeSub = theme.subscribe(value => currentTheme = value);
 
   onMount(()=>{
     setTimeout(() => {
@@ -20,7 +25,9 @@
     displayMobileNavMenu = !displayMobileNavMenu;
     active = !active;
   }
-  // TODO: redo the mobile header dropdown button
+  
+  onDestroy(themeSub)
+
 </script>
 
 <header class="header" id="header">
@@ -40,9 +47,15 @@
     <!-- ----------- mobile nav menu ----------- -->
     {#if displayMobileNavMenu}
       <ul transition:fade class="header-mobile-nav">
-        <!-- <li>
-          <a class="header-mobile-nav-btn" href="/">Home</a>
-        </li> -->
+        <li>
+          <button class="header-mobile-nav-btn" on:click={toggleTheme}>
+            {#if currentTheme === "light"}
+              Dark
+            {:else}
+              Light
+            {/if}
+          </button>
+        </li>
         <li>
           <a class="header-mobile-nav-btn" href="#about">About</a>
         </li>
@@ -63,9 +76,15 @@
 
     <!-- ----------- other nav menu ----------- -->
     <ul class="header-nav-menu">
-      <!-- <li class="header-nav-menu-item">
-        <a href="#home">Home</a>
-      </li> -->
+      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <li class="header-nav-menu-item" on:click={toggleTheme}>
+        {#if currentTheme === "light"}  
+          Dark
+        {:else}
+          Light
+        {/if}
+      </li>
       <li class="header-nav-menu-item">
         <a href="#about">About</a>
       </li>
@@ -261,12 +280,28 @@
     list-style: none;
   }
   .header-nav-menu-item,
-  .header-nav-menu-item a {
+  .header-nav-menu-item a,
+  .header-nav-menu-item button  {
     color: inherit;
     font-size: inherit;
     font-weight: inherit;
     text-decoration: none;
+
+    cursor: pointer;
   }
+  .header-nav-menu-item button {
+    margin: inherit;
+    padding: inherit;
+    
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+
+    border: none;
+    background-color: transparent;
+  }
+
   .header-nav-menu-item {
     display: flex;
     align-items: center;

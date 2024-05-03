@@ -38,6 +38,21 @@
   margin: 0;
 }
 
+body.dark {
+  --fg-one: #f0f0f0;
+  --bg-two: #2A2B2A;
+
+  --bg-one: rgb(39 39 42); 
+
+}
+body.light {
+  --fg-one: #2A2B2A;
+  --fg-two: #f0f8ff;
+
+  --bg-one: aliceblue;
+
+}
+
 body {
   max-width: 1440px;
 
@@ -51,6 +66,8 @@ body {
   font-size: 1rem;
 
   background-color: var(--bg-one);
+  
+  transition: color var(--duration) var(--bounce-ease), background-color var(--duration) var(--bounce-ease);
 }
 
 a {
