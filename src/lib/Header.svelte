@@ -280,26 +280,13 @@
     list-style: none;
   }
   .header-nav-menu-item,
-  .header-nav-menu-item a,
-  .header-nav-menu-item button  {
+  .header-nav-menu-item a {
     color: inherit;
     font-size: inherit;
     font-weight: inherit;
     text-decoration: none;
 
     cursor: pointer;
-  }
-  .header-nav-menu-item button {
-    margin: inherit;
-    padding: inherit;
-    
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    text-decoration: none;
-
-    border: none;
-    background-color: transparent;
   }
 
   .header-nav-menu-item {

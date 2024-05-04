@@ -71,8 +71,6 @@
     <Visible let:visible>
       {#if visible}
         <h2 transition:staggerLoading>My Projects:</h2>
-      {:else}
-        <h2></h2>
       {/if}
     </Visible>
     <div class="bts-container">
@@ -142,9 +140,7 @@
 
     overflow-x: hidden;
   }
-  .loader {
-    width: 100%;
-  }
+  
   .repo-cell {
     display: flex;
     justify-content: start;

@@ -4,12 +4,6 @@
   import image from "../assets/me.webp"
 	import { fade } from "svelte/transition";
 
-  // let 
-
-  // function tease(){
-
-  // }
-
 </script>
 
 
@@ -188,12 +182,6 @@
     100% {
       width: 100%;
     }
-  }
-
-  .about-link {
-    display: flex;
-    text-decoration: none;
-    color: inherit;
   }
 
   /* ------------- right side ------------- */
