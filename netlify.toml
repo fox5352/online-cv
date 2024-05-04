@@ -1,0 +1,6 @@
+[build]
+  publish = "dist" # or "dist" if that's your build output folder
+  command = "npm run build"
+  
+[functions]
+  node_bundler = "esbuild"

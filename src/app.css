@@ -1,0 +1,76 @@
+:root {
+  color-scheme: light dark;
+  
+  --font: "Oswald", sans-serif;  
+
+  --fg-one: #2A2B2A;
+  --fg-two: #f0f8ff;
+  
+  --ac-one: crimson;
+  --ac-two: #008b8b;
+  
+  --bg-one: aliceblue;
+ 
+  --duration: 300ms;
+  --bounce-ease: cubic-bezier(.4,-0.46,.39,1.4);
+  --zip: cubic-bezier(.59,-0.08,.16,.87);
+}
+.test {
+  color: darkcyan;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg-one: #f0f0f0;
+    --bg-two: #2A2B2A;
+
+    --bg-one: rgb(39 39 42); 
+  }
+}
+
+/* TODO: add better focus handling after page is created 
+*:focus {
+} */
+
+*, *:after, *::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body.dark {
+  --fg-one: #f0f0f0;
+  --bg-two: #2A2B2A;
+
+  --bg-one: rgb(39 39 42); 
+
+}
+body.light {
+  --fg-one: #2A2B2A;
+  --fg-two: #f0f8ff;
+
+  --bg-one: aliceblue;
+
+}
+
+body {
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  font-weight: 400;
+  font-style: normal;
+  font-family: var(--font);
+  font-optical-sizing: auto;
+  color: var(--fg-one);
+  font-size: 1rem;
+
+  background-color: var(--bg-one);
+  
+  transition: color var(--duration) var(--bounce-ease), background-color var(--duration) var(--bounce-ease);
+}
+
+a {
+  color: var(--fg-one);
+}
+
