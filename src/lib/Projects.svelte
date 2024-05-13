@@ -8,8 +8,8 @@
 
   let data = null;
 
-  let dataMenu = ["newest", "oldest"];
-  let languageMenu = ["all", "javascript", "python", "rust", "lua"];
+  let dataMenu = ["Newest", "Oldest"];
+  let languageMenu = ["all", "JavaScript", "TypeScript", "Svelte", "Python", "Rust", "Lua"];
 
   let curDate = "newest";
   let curLanguage = "all";
@@ -28,12 +28,12 @@
 
     // if Language is selected then it filters out all projects other languages
     if (language !== "all") {
-      newList = data.filter(listItem => listItem.language?.toLowerCase() == language);
+      newList = data.filter(listItem => listItem.language?.toLowerCase() == language.toLowerCase());
     }
 
     // sort by .created_at date
     newList.sort((a, b) => {
-      if (date == "oldest") {
+      if (date.toLowerCase() == "oldest") {
         const dateA = new Date(a.created_at);
         const dateB = new Date(b.created_at);
         return dateA - dateB;
@@ -58,6 +58,8 @@
   onMount(() => {
     data = getRepos();
   })
+
+  
   
   $: {
     data = filterRepos(curDate, curLanguage)

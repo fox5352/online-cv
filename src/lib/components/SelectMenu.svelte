@@ -64,6 +64,8 @@
     border: 0;
     border-radius: 0.25em;
     background-color: var(--ac-two);
+
+    cursor: pointer;
   }
   .select-menu:focus {
     outline-offset: 2px;
