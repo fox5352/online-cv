@@ -6,6 +6,8 @@
   const dispatch = createEventDispatcher();
   let value;
 
+  let selected;
+
   // toggle options
   let display = false;
 
@@ -31,13 +33,19 @@
     }, 350);
   }
 
+  function closeMenu(event) {
+    if (display && !selected.contains(event.target)) {
+      toggleOptions()
+    }
+  }
+
   onMount(()=>{
     value = list[0];
   });
 
 </script>
 
-<div class="select-container">
+<div class="select-container" bind:this={selected}>
     
   <button class="select-menu" on:click={toggleOptions}>
     {value}
@@ -59,6 +67,7 @@
   </div>
 </div>
 
+<svelte:window on:click={closeMenu}/>
 
 <style>
   .select-container {
