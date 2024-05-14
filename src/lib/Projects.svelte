@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
   import { fade } from "svelte/transition";
-	import Loading from "./components/Loading.svelte";
-	import SelectMenu from "./components/SelectMenu.svelte";
-  import staggerLoading from "./utils/staggerLoad"
 	import Visible from "./utils/visible.svelte";
+  import staggerLoading from "./utils/staggerLoad"
+	import Loading from "./components/Loading.svelte";
+	import CustomSelect from "./components/CustomSelect.svelte";
 
   let data = null;
 
@@ -36,10 +36,12 @@
       if (date.toLowerCase() == "oldest") {
         const dateA = new Date(a.created_at);
         const dateB = new Date(b.created_at);
+        // @ts-ignore
         return dateA - dateB;
       } else {
         const dateA = new Date(a.created_at);
         const dateB = new Date(b.created_at);
+        // @ts-ignore
         return dateB - dateA;
       }
     });
@@ -50,6 +52,7 @@
   function updateDate(event) {
     curDate = event.detail.value;
   }
+
   function updateLanguage(event) {
     curLanguage = event.detail.value;
   }
@@ -58,8 +61,6 @@
   onMount(() => {
     data = getRepos();
   })
-
-  
   
   $: {
     data = filterRepos(curDate, curLanguage)
@@ -77,9 +78,9 @@
     </Visible>
     <div class="bts-container">
       <!-- Date selection -->
-      <SelectMenu list={dataMenu} on:selectChange={updateDate}/>
+      <CustomSelect list={dataMenu} on:selectChange={updateDate}/>
       <!-- Language selection -->
-      <SelectMenu list={languageMenu} on:selectChange={updateLanguage} />
+      <CustomSelect list={languageMenu} on:selectChange={updateLanguage} />
     </div>
     {#await data}
       <Loading />
