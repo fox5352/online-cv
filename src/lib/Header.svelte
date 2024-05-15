@@ -12,10 +12,18 @@
   let active = false;
   let currentTheme;
 
+  // theme button vars
+  let icon;
+
 
   const themeSub = theme.subscribe(value => currentTheme = value);
 
   onMount(()=>{
+    if (icon) {
+			const height = icon.offsetHeight;
+			icon.style.width = `${height}px`;
+		}
+    
     setTimeout(() => {
       displayHeader = !displayHeader;
     }, 500);
@@ -78,12 +86,12 @@
     <ul class="header-nav-menu">
       <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <li class="header-nav-menu-item" on:click={toggleTheme}>
-        {#if currentTheme === "light"}  
-          Dark
-        {:else}
-          Light
-        {/if}
+      <li>
+        <button class="theme-btn" on:click={toggleTheme}>
+          <span class={`cover ${currentTheme == "light" && "cover-slide"}`}>
+            <span class={`icon ${currentTheme == "light" && "icon-slide"}`} bind:this={icon}></span>
+          </span>
+        </button>
       </li>
       <li class="header-nav-menu-item">
         <a href="#about">About</a>
@@ -97,9 +105,6 @@
       <li class="header-nav-menu-item">
         <a href="#education">Education</a>
       </li>
-      <!-- <li class="header-nav-menu-item">
-        <a href="#footer">Socials</a>
-      </li> -->
     </ul>
   </nav>
 </header>
@@ -287,6 +292,72 @@
     text-decoration: none;
 
     cursor: pointer;
+  }
+
+  .theme-btn {
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 0.25em;
+    padding: 3px 10px;
+    
+    width:  60px;
+    min-height: 26px;
+    
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.0625em;
+    color: var(--fg-two);
+    text-decoration: none;
+
+    border: 1px solid var(--ac-two);
+    border-radius: 20px;
+
+    background: rgb(90,178,255);
+    background: linear-gradient(186deg, rgba(90,178,255,1) 36%, rgba(160,222,255,1) 72%, rgba(202,244,255,1) 100%); 
+
+    transition: all var(--duration) var(--bounce-ease);
+    
+    cursor: pointer;
+    
+    position: relative;
+    overflow: hidden;
+  }
+  .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+
+    height: 100%;
+    width: 100%;
+
+    border-radius: 20px;
+    background-image: url("/night.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: all var(--duration) var(--zip);
+  }
+  .cover-slide {
+    left: 60px;
+    transform: translateX(-45%);
+  }
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    height: 100%;
+    /* width: 30%; */
+    
+    border: none;
+    border-radius: 50%;
+    background-color: #EEEE;
+  }
+  .icon-slide {
+    background-color: #FFF917;
   }
 
   .header-nav-menu-item {
