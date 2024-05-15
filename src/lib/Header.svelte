@@ -76,9 +76,6 @@
         <li>
           <a class="header-mobile-nav-btn" href="#education">Education</a>
         </li>
-        <!-- <li>
-          <a class="header-mobile-nav-btn" href="#footer">Socials</a>
-        </li> -->
       </ul>
     {/if}
 
