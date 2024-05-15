@@ -67,6 +67,8 @@
     background: var(--bg-one);
     box-shadow: 0 1px 3px 0 var(--ac-two), 0 1px 2px -1px var(--ac-two);
 
+    transition: all var(--duration) var(--zip);
+
 
     position: relative;
     z-index: 1;
