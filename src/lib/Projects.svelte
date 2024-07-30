@@ -16,10 +16,39 @@
   
   let test = []
 
+  async function getAllRepos() {
+    let page = 1;
+    let allRepos = []
+    
+    while (true) {
+      const res = await fetch(`https://api.github.com/users/fox5352/repos?page=${page}&per_page=100`);
+
+      if (!res.ok) {
+        throw Error(`HTTP error! status: ${res.status}`)
+      }
+
+      const repos = await res.json();
+
+      if (repos.length === 0) {
+        break;
+      }
+
+      allRepos = allRepos.concat(repos);
+
+      page++;
+    }
+
+    return allRepos;
+  }
+
   async function getRepos() {
-    const response = await fetch("https://api.github.com/users/fox5352/repos");
-    const data = await response.json();
-    return data.filter(listItem =>!listItem.name.includes("PTO2401"));
+    // const response = await fetch("https://api.github.com/users/fox5352/repos?page=1");
+    const data = await getAllRepos()
+    const filteredData = data.filter(listItem =>!listItem.name.includes("PTO2401"));
+
+    languageMenu = [...(new Set(filteredData.map(data=>data.language).filter(data=> data != null)))]
+
+    return filteredData;
   }
 
   async function filterRepos(date, language) {
