@@ -1,421 +1,426 @@
 <script>
-	import { onDestroy, onMount } from "svelte";
-  import { fade } from "svelte/transition";
-  
-  // local
-  import staggerLoad from "./utils/staggerLoad"
-	import Visible from "./utils/visible.svelte";
-  import { theme, toggleTheme } from "./utils/toggleTheme";
+	import { onDestroy, onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
-  let displayMobileNavMenu = false;
-  let displayHeader = false;
-  let active = false;
-  let currentTheme;
+	// local
+	import staggerLoad from './utils/staggerLoad';
+	import Visible from './utils/visible.svelte';
+	import { theme, toggleTheme } from './utils/toggleTheme';
 
-  // theme button vars
-  let icon;
+	let displayMobileNavMenu = false;
+	let displayHeader = false;
+	let active = false;
+	let currentTheme;
 
+	// theme button vars
+	let icon;
 
-  const themeSub = theme.subscribe(value => currentTheme = value);
+	const themeSub = theme.subscribe((value) => (currentTheme = value));
 
-  onMount(()=>{
-    if (icon) {
+	onMount(() => {
+		if (icon) {
 			const height = icon.offsetHeight;
 			icon.style.width = `${height}px`;
 		}
-    
-    setTimeout(() => {
-      displayHeader = !displayHeader;
-    }, 500);
-  })
 
-  function toggleMobileNavMenu() {
-    displayMobileNavMenu = !displayMobileNavMenu;
-    active = !active;
-  }
-  
-  onDestroy(themeSub)
+		setTimeout(() => {
+			displayHeader = !displayHeader;
+		}, 500);
+	});
 
+	function toggleMobileNavMenu() {
+		displayMobileNavMenu = !displayMobileNavMenu;
+		active = !active;
+	}
+
+	onDestroy(themeSub);
 </script>
 
 <header class="header" id="header">
-  <Visible let:visible>
-    {#if displayHeader && visible}
-      <h1 transition:staggerLoad class="header-title">My Portfolio</h1>
-    {:else}
-      <h1 class="header-title"> </h1>
-    {/if}
-  </Visible>
+	<Visible let:visible>
+		{#if displayHeader && visible}
+			<h1 transition:staggerLoad class="header-title">My Portfolio</h1>
+		{:else}
+			<h1 class="header-title"></h1>
+		{/if}
+	</Visible>
 
-  <nav class="header-nav">
-    <button class="mobile-nav-toggle" aria-label="toggle navigation menu" 
-      on:blur={()=>setTimeout(()=>toggleMobileNavMenu(), 500)} on:click={toggleMobileNavMenu}>
-      <span class="toggle-icon" class:active ></span>
-    </button>
-    <!-- ----------- mobile nav menu ----------- -->
-    {#if displayMobileNavMenu}
-      <ul transition:fade class="header-mobile-nav">
-        <li>
-          <button class="header-mobile-nav-btn" on:click={toggleTheme}>
-            {#if currentTheme === "light"}
-              Dark
-            {:else}
-              Light
-            {/if}
-          </button>
-        </li>
-        <li>
-          <a class="header-mobile-nav-btn" href="#about">About</a>
-        </li>
-        <li>
-          <a class="header-mobile-nav-btn" href="#projects">Projects</a>
-        </li>
-        <li>
-          <a class="header-mobile-nav-btn" href="#skills">Skills</a>
-        </li>
-        <li>
-          <a class="header-mobile-nav-btn" href="#education">Education</a>
-        </li>
-      </ul>
-    {/if}
+	<nav class="header-nav">
+		<button
+			class="mobile-nav-toggle"
+			aria-label="toggle navigation menu"
+			on:blur={() => setTimeout(() => toggleMobileNavMenu(), 500)}
+			on:click={toggleMobileNavMenu}
+		>
+			<span class="toggle-icon" class:active></span>
+		</button>
+		<!-- ----------- mobile nav menu ----------- -->
+		{#if displayMobileNavMenu}
+			<ul transition:fade class="header-mobile-nav">
+				<li>
+					<button class="header-mobile-nav-btn" on:click={toggleTheme}>
+						{#if currentTheme === 'light'}
+							Dark
+						{:else}
+							Light
+						{/if}
+					</button>
+				</li>
+				<li>
+					<a class="header-mobile-nav-btn" href="#about">About</a>
+				</li>
+				<li>
+					<a class="header-mobile-nav-btn" href="#projects">Projects</a>
+				</li>
+				<li>
+					<a class="header-mobile-nav-btn" href="#skills">Skills</a>
+				</li>
+				<li>
+					<a class="header-mobile-nav-btn" href="#education">Education</a>
+				</li>
+			</ul>
+		{/if}
 
-    <!-- ----------- other nav menu ----------- -->
-    <ul class="header-nav-menu">
-      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <li>
-        <button class="theme-btn" on:click={toggleTheme}>
-          <span class={`cover ${currentTheme == "light" && "cover-slide"}`}>
-            <span class={`icon ${currentTheme == "light" && "icon-slide"}`} bind:this={icon}></span>
-          </span>
-        </button>
-      </li>
-      <li class="header-nav-menu-item">
-        <a href="#about">About</a>
-      </li>
-      <li class="header-nav-menu-item">
-        <a href="#projects">Projects</a>
-      </li>
-      <li class="header-nav-menu-item">
-        <a href="#skills">Skills</a>
-      </li>
-      <li class="header-nav-menu-item">
-        <a href="#education">Education</a>
-      </li>
-    </ul>
-  </nav>
+		<!-- ----------- other nav menu ----------- -->
+		<ul class="header-nav-menu">
+			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<li>
+				<button class="theme-btn" on:click={toggleTheme}>
+					<span class={`cover ${currentTheme == 'light' && 'cover-slide'}`}>
+						<span class={`icon ${currentTheme == 'light' && 'icon-slide'}`} bind:this={icon}></span>
+					</span>
+				</button>
+			</li>
+			<li class="header-nav-menu-item">
+				<a href="#about">About</a>
+			</li>
+			<li class="header-nav-menu-item">
+				<a href="#projects">Projects</a>
+			</li>
+			<li class="header-nav-menu-item">
+				<a href="#skills">Skills</a>
+			</li>
+			<li class="header-nav-menu-item">
+				<a href="#education">Education</a>
+			</li>
+		</ul>
+	</nav>
 </header>
 
-
 <style>
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    width: 90%;
-    min-height: 40px;
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-    padding: .3em .7em;
-    margin: 3px auto;
-    margin-bottom: 20px;
+		width: 90%;
+		min-height: 40px;
 
-    color: var(--fg-one);
-    
-    border-radius: 2px;
-    background: linear-gradient(36deg, var(--ac-one), var(--ac-two));
+		padding: 0.3em 0.7em;
+		margin: 3px auto;
+		margin-bottom: 20px;
 
-    position: relative;
-    top: 0;
-    left: 0%;
-    transform: skewX(-15deg);
-    z-index: 30;
-  }
-  .header>* {
-    transform: skewX(15deg);
-  }
-  .header-title {
-    font-size: 1.25rem;
+		color: var(--fg-one);
 
-    color: var(--fg-two);
-    transform: skewX(15deg);
-  }
+		border-radius: 2px;
+		background: linear-gradient(36deg, var(--ac-one), var(--ac-two));
 
-  .header-nav {
-    position: relative;
-  }
-  
-  /* ----------- toggle nav menu buttons ----------- */
-  .mobile-nav-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+		position: relative;
+		top: 0;
+		left: 0%;
+		transform: skewX(-15deg);
+		z-index: 30;
+	}
+	.header > * {
+		transform: skewX(15deg);
+	}
+	.header-title {
+		font-size: 1.25rem;
 
+		color: var(--fg-two);
+		transform: skewX(15deg);
+	}
 
-    width: 2rem;
-    height: 2rem;
+	.header-nav {
+		position: relative;
+	}
 
-    padding: 0.125em;
+	/* ----------- toggle nav menu buttons ----------- */
+	.mobile-nav-toggle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-    border: 1px solid transparent;
-    border-radius: 0.25em;
-    background: transparent;
+		width: 2rem;
+		height: 2rem;
 
-    transition: background-color var(--duration) var(--bounce-ease);
-  }
-  .mobile-nav-toggle:hover {
-    background: var(--ac-one);
-  }
+		padding: 0.125em;
 
-  /* ----------- toggle nav menu button icon ----------- */
-  .toggle-icon {  
-    display: block;
-  
-    width: 100%;
-    height: 0.1875rem;
+		border: 1px solid transparent;
+		border-radius: 0.25em;
+		background: transparent;
 
-    border-radius: 0.1875em;
-    background: var(--fg-two);
+		transition: background-color var(--duration) var(--bounce-ease);
+	}
+	.mobile-nav-toggle:hover {
+		background: var(--ac-one);
+	}
 
-    transition: all var(--duration) var(--zip);
+	/* ----------- toggle nav menu button icon ----------- */
+	.toggle-icon {
+		display: block;
 
-    position: relative;
-  }
-  .toggle-icon::before,
-  .toggle-icon::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-    width: 100%;
-    height: 0.1875rem;
+		width: 100%;
+		height: 0.1875rem;
 
-    border-radius: 0.1875em;
-    background: var(--fg-two);
+		border-radius: 0.1875em;
+		background: var(--fg-two);
 
-    transition: all var(--duration) var(--zip);
-  }
-  .toggle-icon::before {
-    top: -0.4375rem;
-  }
-  .toggle-icon::after {
-    top: 0.4375rem;
-  }
+		transition: all var(--duration) var(--zip);
 
-  .mobile-nav-toggle:hover .toggle-icon,
-  .mobile-nav-toggle:hover .toggle-icon::after,
-  .mobile-nav-toggle:hover .toggle-icon::before {
-    background: var(--fg-two);
-  }
-  
-  /* ----------- toggle button active ----------- */
-  .active {
-    background: transparent !important;
+		position: relative;
+	}
+	.toggle-icon::before,
+	.toggle-icon::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
 
-    transition: all var(--duration) var(--zip);
-  }
-  .active.toggle-icon::before,
-  .active.toggle-icon::after {
-    background: var(--bg-one);
-    top: 0;
+		width: 100%;
+		height: 0.1875rem;
 
-    transition: all var(--duration) var(--zip);
-  }
-  .active.toggle-icon::after {
-    rotate: 45deg;
-  }
-  .active.toggle-icon::before {
-    rotate: -45deg;
-  }
+		border-radius: 0.1875em;
+		background: var(--fg-two);
 
-  /* ----------- mobile nav menu ----------- */
-  .header-mobile-nav {
-    position: absolute;
-    top: calc(100% + 0.3125rem);
-    right: 0;
+		transition: all var(--duration) var(--zip);
+	}
+	.toggle-icon::before {
+		top: -0.4375rem;
+	}
+	.toggle-icon::after {
+		top: 0.4375rem;
+	}
 
-    margin: 0;
-    margin-top: 2px;
-    padding: 0.625em 0.4375em;
+	.mobile-nav-toggle:hover .toggle-icon,
+	.mobile-nav-toggle:hover .toggle-icon::after,
+	.mobile-nav-toggle:hover .toggle-icon::before {
+		background: var(--fg-two);
+	}
 
-    list-style: none;
+	/* ----------- toggle button active ----------- */
+	.active {
+		background: transparent !important;
 
-    border: 1px solid transparent;
-    border-radius: 0.25em;
-    background: linear-gradient(36deg, var(--ac-one), var(--ac-two));
-  }
-  .header-mobile-nav-btn {
-    display: flex;
-    justify-content: center;
+		transition: all var(--duration) var(--zip);
+	}
+	.active.toggle-icon::before,
+	.active.toggle-icon::after {
+		background: var(--bg-one);
+		top: 0;
 
-    margin-top: 0.25em;
-    padding: 3px 10px;
+		transition: all var(--duration) var(--zip);
+	}
+	.active.toggle-icon::after {
+		rotate: 45deg;
+	}
+	.active.toggle-icon::before {
+		rotate: -45deg;
+	}
 
-    min-width: 92px;
+	/* ----------- mobile nav menu ----------- */
+	.header-mobile-nav {
+		position: absolute;
+		top: calc(100% + 0.3125rem);
+		right: 0;
 
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 0.0625em;
-    color: var(--fg-two);
-    text-decoration: none;
+		margin: 0;
+		margin-top: 2px;
+		padding: 0.625em 0.4375em;
 
-    border: 1px solid var(--bg-one);
-    border-radius: 0.25em;
-    background-color: transparent;
+		list-style: none;
 
-    transition: all var(--duration) var(--bounce-ease);
-  }
-  .header-mobile-nav-btn:hover {
-    background-color: var(--ac-one);
-    border-color: var(--ac-one);
-  }
+		border: 1px solid transparent;
+		border-radius: 0.25em;
+		background: linear-gradient(36deg, var(--ac-one), var(--ac-two));
+	}
+	.header-mobile-nav-btn {
+		display: flex;
+		justify-content: center;
 
-  /* ----------- other nav menu ----------- */
-  .header-nav-menu {
-    display: none;
-    justify-content: center;
-    gap: 0.375em;
-    scale: 1;
+		margin-top: 0.25em;
+		padding: 3px 10px;
 
-    height: 100%;
+		min-width: 92px;
 
-    list-style: none;
-  }
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: 0.0625em;
+		color: var(--fg-two);
+		text-decoration: none;
 
-  .theme-btn {
-    display: flex;
-    justify-content: center;
-    
-    margin-top: 0.25em;
-    padding: 3px 10px;
-    
-    width:  60px;
-    min-height: 26px;
-    
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 0.0625em;
-    color: var(--fg-two);
-    text-decoration: none;
+		border: 1px solid var(--bg-one);
+		border-radius: 0.25em;
+		background-color: transparent;
 
-    border: 1px solid var(--ac-two);
-    border-radius: 20px;
+		transition: all var(--duration) var(--bounce-ease);
+	}
+	.header-mobile-nav-btn:hover {
+		background-color: var(--ac-one);
+		border-color: var(--ac-one);
+	}
 
-    background: rgb(90,178,255);
-    background: linear-gradient(186deg, rgba(90,178,255,1) 36%, rgba(160,222,255,1) 72%, rgba(202,244,255,1) 100%); 
+	/* ----------- other nav menu ----------- */
+	.header-nav-menu {
+		display: none;
+		justify-content: center;
+		gap: 0.375em;
+		scale: 1;
 
-    transition: all var(--duration) var(--bounce-ease);
-    
-    cursor: pointer;
-    
-    position: relative;
-    overflow: hidden;
-  }
-  .cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    
+		height: 100%;
 
-    height: 100%;
-    width: 100%;
+		list-style: none;
+	}
 
-    border-radius: 20px;
-    background-image: url("/night.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+	.theme-btn {
+		display: flex;
+		justify-content: center;
 
-    transition: all var(--duration) var(--zip);
-  }
-  .cover-slide {
-    left: 60px;
-    transform: translateX(-44%);
-  }
-  .icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-    height: 100%;
-    /* width: 30%; */
-    
-    border: none;
-    border-radius: 50%;
-    background-color: #EEEE;
-  }
-  .icon-slide {
-    background-color: #FFF917;
-  }
+		margin-top: 0.25em;
+		padding: 3px 10px;
 
-  .header-nav-menu-item,
-  .header-nav-menu-item a {
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    text-decoration: none;
-    text-align: center;
+		width: 60px;
+		min-height: 26px;
 
-    cursor: pointer;
-  }
-  .header-nav-menu-item {
-    display: flex;
-    align-items: center;
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: 0.0625em;
+		color: var(--fg-two);
+		text-decoration: none;
 
-    padding: 0 5px;
-    
-    color:  var(--fg-two);
-    text-align: center;
-    
-    border: 1px solid transparent;
-    background-color: transparent;
-    
-    transition: all var(--duration) var(--zip);
+		border: 1px solid var(--ac-two);
+		border-radius: 20px;
 
-    position: relative;
-  }
-  .header-nav-menu-item::after,
-  .header-nav-menu-item::before {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 0%;
+		background: rgb(90, 178, 255);
+		background: linear-gradient(
+			186deg,
+			rgba(90, 178, 255, 1) 36%,
+			rgba(160, 222, 255, 1) 72%,
+			rgba(202, 244, 255, 1) 100%
+		);
 
-    border: none;
-    border-radius: 0.25em;
-    background-color: var(--fg-two);
-    transition: all 400ms var(--bounce);
-  }
-  .header-nav-menu-item::before {
-    top: 0px;
-    left: 0px;
-  }
-  .header-nav-menu-item::after {
-    bottom: 0px;
-    right: 0px;
-  }
-  .header-nav-menu-item:hover::before,
-  .header-nav-menu-item:hover::after {
-    width: 100%;
-  }
-  /* .header-nav-menu-item:hover {
-    
+		transition: all var(--duration) var(--bounce-ease);
+
+		cursor: pointer;
+
+		position: relative;
+		overflow: hidden;
+	}
+	.cover {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		height: 100%;
+		width: 100%;
+
+		border-radius: 20px;
+		background-image: url('/night.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		transition: all var(--duration) var(--zip);
+	}
+	.cover-slide {
+		left: 60px;
+		transform: translateX(-44%);
+	}
+	.icon {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		height: 100%;
+		/* width: 30%; */
+
+		border: none;
+		border-radius: 50%;
+		background-color: #eeee;
+	}
+	.icon-slide {
+		background-color: #fff917;
+	}
+
+	.header-nav-menu-item,
+	.header-nav-menu-item a {
+		color: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		text-decoration: none;
+		text-align: center;
+
+		cursor: pointer;
+	}
+	.header-nav-menu-item {
+		display: flex;
+		align-items: center;
+
+		padding: 0 5px;
+
+		color: var(--fg-two);
+		text-align: center;
+
+		border: 1px solid transparent;
+		background-color: transparent;
+
+		transition: all var(--duration) var(--zip);
+
+		position: relative;
+	}
+	.header-nav-menu-item::after,
+	.header-nav-menu-item::before {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 0%;
+
+		border: none;
+		border-radius: 0.25em;
+		background-color: var(--fg-two);
+		transition: all 400ms var(--bounce);
+	}
+	.header-nav-menu-item::before {
+		top: 0px;
+		left: 0px;
+	}
+	.header-nav-menu-item::after {
+		bottom: 0px;
+		right: 0px;
+	}
+	.header-nav-menu-item:hover::before,
+	.header-nav-menu-item:hover::after {
+		width: 100%;
+	}
+	/* .header-nav-menu-item:hover {
+
   } */
-  .header-nav-menu-item:active {
-    scale: 0.95;
-  }
+	.header-nav-menu-item:active {
+		scale: 0.95;
+	}
 
-  /* media that starts from 640px and greater */
-  @media screen and (min-width: 640px) {
-    .mobile-nav-toggle {
-      display: none;
-    }
-    .header-mobile-nav {
-      display: none;
-    }
-    .header-nav-menu  {
-      display: flex;
-    }
-  }
+	/* media that starts from 640px and greater */
+	@media screen and (min-width: 640px) {
+		.mobile-nav-toggle {
+			display: none;
+		}
+		.header-mobile-nav {
+			display: none;
+		}
+		.header-nav-menu {
+			display: flex;
+		}
+	}
 </style>
+
