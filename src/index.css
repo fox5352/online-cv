@@ -1,0 +1,37 @@
+:root {
+  /* 
+  --ac-one: #6366f1;
+  --ac-two: #8b5cf6;
+  --ac-three: #ec4899;
+  --ac-four: #e11d48;
+  */
+
+  --bg-one: #e6ebe0;
+  --bg-two: #000807;
+
+  --fg-one: #000807;
+  --fg-two: #92828d;
+
+  --ac-one: #0fa3b1;
+  --ac-two: #ff1053;
+
+  --bd-one: #0fa3b1;
+  --bd-two: #ff1053;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+
+body {
+  background-color: var(--bg-one);
+
+  color: var(--fg-one);
+}
