@@ -9,6 +9,7 @@ import RootLayout from "./pages/RootLayout";
 
 // :pages
 import Home from "./pages/Home/Page";
+import NotFound from "./pages/NotFound/Page";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
-          <Route path="*" element={<div>404</div>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
