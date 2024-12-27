@@ -121,7 +121,7 @@ export default function Header() {
           animate={{
             scale: desktopNavBoardPos.x > 0 ? [0, 0, 0, 1] : 0,
             left: `${desktopNavBoardPos.x - 5}px`,
-            top: `${desktopNavBoardPos.y - 2}px`,
+            top: `${desktopNavBoardPos.y - 2.5}px`,
           }}
         ></motion.div>
       </motion.nav>
