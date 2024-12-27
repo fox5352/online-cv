@@ -2,11 +2,79 @@
   position: absolute;
   bottom: 15px;
   right: 0;
+  z-index: 12;
 
   width: 100%;
   overflow: hidden;
 }
+/* ------------------------ Desktop nav  ------------------------*/
+.desktopNavContainer {
+  display: none;
+  align-items: center;
 
+  width: 100%;
+  max-width: 450px;
+  height: 60px;
+
+  margin: 0 auto;
+  padding: 2px;
+
+  border-radius: 5px;
+
+  overflow: hidden;
+  position: relative;
+}
+.desktopNavContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+.desktopNavContainer ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 14;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 100%;
+  height: 100%;
+}
+.desktopNavLink {
+  display: flex;
+
+  height: 50px;
+  width: 50px;
+
+  color: var(--ac-two);
+}
+.desktopNavLink svg {
+  width: 100%;
+  height: 100%;
+
+  color: inherit;
+  background-color: inherit;
+}
+.desktopNavBoard {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 60px;
+  height: 55px;
+
+  border-radius: 5px;
+
+  background-color: var(--ac-one);
+}
+
+/* ------------------------ mobile nav  ------------------------*/
 .mobileNavContainer {
   display: flex;
   justify-content: end;
@@ -50,7 +118,7 @@
 
   padding-right: calc(45px + 4px);
 }
-.navLink {
+.mobileNavLink {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +136,7 @@
 
   background-color: var(--ac-two);
 }
-.navLink li {
+.mobileNavLink li {
   display: flex;
   align-items: center;
 }
@@ -111,6 +179,10 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .desktopNavContainer {
+    display: flex;
+  }
+
   .mobileNavContainer {
     display: none;
   }

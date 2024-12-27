@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
-import { NavLink } from "react-router";
-import { motion } from "motion/react";
+import { NavLink, useLocation } from "react-router";
+import { motion, animate } from "motion/react";
 import { MdHomeFilled } from "react-icons/md";
 import { IoHome, IoDesktop } from "react-icons/io5";
 import {
@@ -15,7 +15,13 @@ import styles from "./Header.module.css";
 const MB_DURATION = 0.7;
 
 export default function Header() {
+  const desktopNavBoardRef = useRef<HTMLDivElement | null>(null);
+  const { pathname } = useLocation();
+  //
   const [isMobileToggleNav, setIsMobileToggleNav] = useState(false);
+  //
+  const desktopNavRef = useRef<HTMLElement | null>(null);
+  const [desktopNavBoardPos, setDesktopNavBoardPos] = useState({ x: 0, y: 0 });
 
   const NAV_LINKS: { text: string; link: string; element: ReactNode }[] = [
     {
@@ -42,13 +48,82 @@ export default function Header() {
 
   const handleToggleMobileNav = () => setIsMobileToggleNav((prev) => !prev);
 
+  const setPos = () => {
+    const activeLink = document.querySelector(`[data-active="true"]`);
+    if (activeLink) {
+      const { top, left } = activeLink.getBoundingClientRect();
+
+      setDesktopNavBoardPos({ x: left, y: top });
+    }
+  };
+
+  useEffect(() => {
+    setPos();
+    document.addEventListener("resize", setPos);
+
+    return () => {
+      document.removeEventListener("resize", setPos);
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    const wheelHandler = (event: WheelEvent) => {
+      // Check the deltaY property of the wheel event to determine the direction
+      if (window.innerWidth < 1024 && !desktopNavRef.current) return;
+
+      if (event.deltaY > 0) {
+        animate(`.${styles.desktopNavContainer}`, {
+          display: "none",
+          scale: 0,
+        });
+      } else if (event.deltaY < 0) {
+        animate(`.${styles.desktopNavContainer}`, {
+          display: "flex",
+          scale: 1,
+        });
+      }
+    };
+
+    // Add wheel event listener
+    window.addEventListener("wheel", wheelHandler);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener("wheel", wheelHandler);
+    };
+  }, []);
+
   return (
     <header className={styles.header}>
-      {/* TODO: desktop nav */}
-      <div></div>
-      {/* TODO: mobile nav bar */}
+      {/* desktop nav */}
+      <motion.nav
+        className={styles.desktopNavContainer}
+        ref={desktopNavRef}
+        data-name="desktop-nav"
+      >
+        <ul>
+          {NAV_LINKS.map((link, index) => (
+            <motion.li className={styles.desktopNavLink} key={index}>
+              <NavLink to={link.link} data-active={pathname == link.link}>
+                {link.element}
+              </NavLink>
+            </motion.li>
+          ))}
+        </ul>
+        <motion.div
+          className={styles.desktopNavBoard}
+          ref={desktopNavBoardRef}
+          initial={{ scale: 0 }}
+          animate={{
+            scale: desktopNavBoardPos.x > 0 ? 1 : 0,
+            left: `${desktopNavBoardPos.x - 5}px`,
+            top: `${desktopNavBoardPos.y - 2}px`,
+          }}
+        ></motion.div>
+      </motion.nav>
 
-      <div className={styles.mobileNavContainer}>
+      {/* mobile nav bar */}
+      <div className={styles.mobileNavContainer} data-name="mobile-nav">
         <motion.nav
           className={styles.mobileNav}
           animate={{
@@ -69,8 +144,9 @@ export default function Header() {
                     delay: (index / 100) * 10,
                   },
                 }}
+                key={index}
               >
-                <NavLink className={styles.navLink} to={link.link}>
+                <NavLink className={styles.mobileNavLink} to={link.link}>
                   {link.element}
                 </NavLink>
               </motion.li>
