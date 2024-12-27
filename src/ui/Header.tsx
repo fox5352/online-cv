@@ -17,11 +17,15 @@ const MB_DURATION = 0.7;
 export default function Header() {
   const desktopNavBoardRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
+  const ogPoint = {
+    x: 0,
+    y: 0,
+  };
   //
   const [isMobileToggleNav, setIsMobileToggleNav] = useState(false);
   //
   const desktopNavRef = useRef<HTMLElement | null>(null);
-  const [desktopNavBoardPos, setDesktopNavBoardPos] = useState({ x: 0, y: 0 });
+  const [desktopNavBoardPos, setDesktopNavBoardPos] = useState(ogPoint);
 
   const NAV_LINKS: { text: string; link: string; element: ReactNode }[] = [
     {
@@ -48,6 +52,7 @@ export default function Header() {
 
   const handleToggleMobileNav = () => setIsMobileToggleNav((prev) => !prev);
 
+  // desktop effects
   const setPos = () => {
     const activeLink = document.querySelector(`[data-active="true"]`);
     if (activeLink) {
@@ -59,17 +64,12 @@ export default function Header() {
 
   useEffect(() => {
     setPos();
-    document.addEventListener("resize", setPos);
-
-    return () => {
-      document.removeEventListener("resize", setPos);
-    };
   }, [pathname]);
 
   useEffect(() => {
     const wheelHandler = (event: WheelEvent) => {
       // Check the deltaY property of the wheel event to determine the direction
-      if (window.innerWidth < 1024 && !desktopNavRef.current) return;
+      if (window.innerWidth < 1024 || !desktopNavRef.current) return;
 
       if (event.deltaY > 0) {
         animate(`.${styles.desktopNavContainer}`, {
@@ -113,9 +113,13 @@ export default function Header() {
         <motion.div
           className={styles.desktopNavBoard}
           ref={desktopNavBoardRef}
-          initial={{ scale: 0 }}
+          initial={{
+            scale: 0,
+            left: ogPoint.x,
+            top: ogPoint.y,
+          }}
           animate={{
-            scale: desktopNavBoardPos.x > 0 ? 1 : 0,
+            scale: desktopNavBoardPos.x > 0 ? [0, 0, 0, 1] : 0,
             left: `${desktopNavBoardPos.x - 5}px`,
             top: `${desktopNavBoardPos.y - 2}px`,
           }}
