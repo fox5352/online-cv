@@ -1,14 +1,15 @@
 import { motion } from "motion/react";
-import { ReactNode } from "react";
 
 export default function LetterHop({
   data,
+  splitChar = "",
   delay,
   color = "inherit",
   duration,
   stagger = true,
 }: {
-  data: string[] | ReactNode[];
+  data: string;
+  splitChar?: string;
   delay: number;
   color?: string;
   duration: number;
@@ -16,7 +17,7 @@ export default function LetterHop({
 }) {
   return (
     <>
-      {data.map((item, index) => (
+      {data.split(splitChar).map((item, index) => (
         <motion.span
           initial={{
             color: "inherit",
@@ -37,6 +38,7 @@ export default function LetterHop({
           }}
         >
           {item}
+          {splitChar === " " ? " " : ""}
         </motion.span>
       ))}
     </>

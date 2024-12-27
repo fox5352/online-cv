@@ -12,9 +12,10 @@ import {
 import styles from "./Header.module.css";
 
 // mobile constants
-const MB_DURATION = 0.7;
 
 export default function Header() {
+  const MB_DURATION = 0.7;
+
   const desktopNavBoardRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
   const ogPoint = {
