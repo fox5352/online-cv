@@ -19,8 +19,8 @@ export default function LetterHop({
     <>
       {data.split(splitChar).map((item, index) => (
         <motion.span
+          key={index}
           initial={{
-            color: "inherit",
             position: "relative",
           }}
           animate={{

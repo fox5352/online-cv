@@ -2,68 +2,12 @@ import { motion } from "motion/react";
 import LetterHop from "../../ui/animated/LetterHop";
 import styles from "./Page.module.css";
 import me from "../../assets/me.webp";
-import SlideIn from "../../ui/animated/SlideIn";
-import { Link } from "react-router";
+import Section from "./ui/Section.tsx";
 
 // Global Constants
 const DT_DURATION = 1;
 const DT_DELAY = DT_DURATION / 1.6;
 
-// Helper Functions
-function Section({
-  title,
-  direction = "left",
-  text,
-  link,
-  linkText,
-  linkFgColor = "inherit",
-  linkBgColor = "inherit",
-}: {
-  linkText: any;
-  title: any;
-  direction?: "left" | "right";
-  text: any;
-  className?: string;
-  link: string;
-  linkFgColor?: string;
-  linkBgColor?: string;
-}) {
-  return (
-    <motion.section
-      className={styles.section}
-      initial={{ backgroundColor: "var(--bg-one)" }}
-      animate={{ backgroundColor: "var(--bg-two)" }}
-      transition={{ duration: DT_DURATION / 1.5 }}
-    >
-      <SlideIn
-        className={styles.sectionContent}
-        direction={direction}
-        delay={0}
-        duration={DT_DURATION / 1.3}
-      >
-        <motion.h2>{title}</motion.h2>
-        <motion.p>{text}</motion.p>
-        <Link to={link}>
-          <motion.button
-            initial={{
-              scale: 1,
-              color: linkFgColor,
-              backgroundColor: linkBgColor,
-            }}
-            whileHover={{
-              scale: 0.9,
-            }}
-            whileTap={{
-              scale: 0.8,
-            }}
-          >
-            {linkText}
-          </motion.button>
-        </Link>
-      </SlideIn>
-    </motion.section>
-  );
-}
 
 function Home() {
   const NAME = "Christopher";
