@@ -5,12 +5,70 @@ import me from "../../assets/me.webp";
 import SlideIn from "../../ui/animated/SlideIn";
 import { Link } from "react-router";
 
+// Global Constants
 const DT_DURATION = 1;
 const DT_DELAY = DT_DURATION / 1.6;
-const NAME = "Christopher";
-const ROLE = "Software Developer";
+
+// Helper Functions
+function Section({
+  title,
+  direction = "left",
+  text,
+  link,
+  linkText,
+  linkFgColor = "inherit",
+  linkBgColor = "inherit",
+}: {
+  linkText: any;
+  title: any;
+  direction?: "left" | "right";
+  text: any;
+  className?: string;
+  link: string;
+  linkFgColor?: string;
+  linkBgColor?: string;
+}) {
+  return (
+    <motion.section
+      className={styles.section}
+      initial={{ backgroundColor: "var(--bg-one)" }}
+      animate={{ backgroundColor: "var(--bg-two)" }}
+      transition={{ duration: DT_DURATION / 1.5 }}
+    >
+      <SlideIn
+        className={styles.sectionContent}
+        direction={direction}
+        delay={0}
+        duration={DT_DURATION / 1.3}
+      >
+        <motion.h2>{title}</motion.h2>
+        <motion.p>{text}</motion.p>
+        <Link to={link}>
+          <motion.button
+            initial={{
+              scale: 1,
+              color: linkFgColor,
+              backgroundColor: linkBgColor,
+            }}
+            whileHover={{
+              scale: 0.9,
+            }}
+            whileTap={{
+              scale: 0.8,
+            }}
+          >
+            {linkText}
+          </motion.button>
+        </Link>
+      </SlideIn>
+    </motion.section>
+  );
+}
 
 function Home() {
+  const NAME = "Christopher";
+  const ROLE = "Software Developer";
+
   return (
     <main className={styles.main}>
       {/* :about section */}
@@ -54,14 +112,10 @@ function Home() {
             />
           </h4>
           <p>
-            I am a problem solver and quick learner, always eager to take on new
-            challenges and leverage emerging technologies. With a solid
-            foundation in UX design principles, I strive to create intuitive and
-            user-centric experiences. I also have a deep understanding of best
-            coding practices and enjoy applying them in the development of
-            dynamic, responsive websites and applications. Passionate about
-            continuous learning, I am always exploring new tools and frameworks
-            to enhance the functionality and performance of my projects.
+            I am a problem solver and quick learner who leverages emerging
+            technologies. With a foundation in coding best practices, I develop
+            dynamic, responsive web applications. I continuously explore new
+            tools and frameworks to meet project requirements.
           </p>
         </div>
         <motion.div className={styles.imageBox}>
@@ -125,26 +179,55 @@ function Home() {
         }
         link="/websites"
         linkText="Web Apps"
+        linkBgColor="var(--ac-one)"
       />
 
       {/* :Desktop Apps */}
       <Section
-        title="Native Applications"
+        title={
+          <LetterHop
+            data="Native Applications"
+            delay={DT_DURATION}
+            duration={DT_DURATION / 1.6}
+            color="var(--ac-one)"
+          />
+        }
         direction="right"
         text={
           <span>
             I have developed a range of desktop applications using languages
-            like TypeScript, C#, and Rust. These projects leverage a mix of web
-            and desktop frameworks, such as WinForms with C#, Tauri with Rust,
-            and React with TypeScript. Notably, one of my applications, a
-            Presentation Manager (PM) app, is actively used in real-world
-            settings, including my church. Each project demonstrates my
-            dedication to creating functional, efficient, and impactful software
-            solutions.
+            like{" "}
+            <LetterHop
+              data="TypeScript, C#, and Rust"
+              delay={DT_DURATION}
+              duration={DT_DURATION / 1.6}
+              color="var(--ac-two)"
+            />
+            . These projects leverage a mix of web and desktop frameworks, such
+            as{" "}
+            <LetterHop
+              data="WinForms"
+              delay={DT_DURATION}
+              duration={DT_DURATION / 1.6}
+              color="var(--ac-two)"
+            />{" "}
+            with C#,{" "}
+            <LetterHop
+              data="Tauri"
+              delay={DT_DURATION}
+              duration={DT_DURATION / 1.6}
+              color="var(--ac-two)"
+            />{" "}
+            with Rust, and React with TypeScript. Notably, one of my
+            applications, a Presentation Manager (PM) app, is actively used in
+            real-world settings, including my church. Each project demonstrates
+            my dedication to creating functional, efficient, and impactful
+            software solutions.
           </span>
         }
         link="/apps"
         linkText="Native Apps"
+        linkBgColor="var(--ac-two)"
       />
 
       {/* TODO: test section remove later */}
@@ -180,57 +263,6 @@ function Home() {
         officiis atque architecto!
       </section>
     </main>
-  );
-}
-
-function Section({
-  title,
-  direction = "left",
-  text,
-  link,
-  linkText,
-}: {
-  linkText: any;
-  title: any;
-  direction?: "left" | "right";
-  text: any;
-  className?: string;
-  link: string;
-}) {
-  return (
-    <motion.section
-      className={styles.section}
-      initial={{ backgroundColor: "var(--bg-one)" }}
-      animate={{ backgroundColor: "var(--bg-two)" }}
-      transition={{ duration: DT_DURATION / 1.5 }}
-    >
-      <SlideIn
-        className={styles.sectionContent}
-        direction={direction}
-        delay={0}
-        duration={DT_DURATION / 1.3}
-      >
-        <motion.h2>{title}</motion.h2>
-        <motion.p>{text}</motion.p>
-        <Link to={link}>
-          <motion.button
-            initial={{
-              scale: 1,
-              backgroundColor: "var(--ac-one)",
-            }}
-            whileHover={{
-              scale: 0.9,
-            }}
-            whileTap={{
-              scale: 0.8,
-              backgroundColor: "var(--ac-two)",
-            }}
-          >
-            {linkText}
-          </motion.button>
-        </Link>
-      </SlideIn>
-    </motion.section>
   );
 }
 
