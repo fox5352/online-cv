@@ -68,6 +68,7 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    // FIX: buggy on track pad
     const wheelHandler = (event: WheelEvent) => {
       // Check the deltaY property of the wheel event to determine the direction
       if (window.innerWidth < 1024 || !desktopNavRef.current) return;
