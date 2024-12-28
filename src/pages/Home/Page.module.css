@@ -8,6 +8,7 @@
   overflow: hidden;
   overflow-y: scroll;
 }
+
 /* --------------------------------------- ABOUT ---------------------------------------*/
 .about {
   display: flex;
@@ -24,6 +25,7 @@
   border-radius: var(--bd-r-sm);
   background-color: var(--bg-two);
 }
+
 .contentBox {
   flex-basis: 60%;
   display: flex;
@@ -31,6 +33,7 @@
   justify-content: center;
   align-items: flex-start;
 }
+
 .contentBox h2 {
   font-size: 1.875rem;
   font-weight: 500;
@@ -66,12 +69,14 @@
 
   border-radius: var(--bd-r-sm);
 }
+
 @media screen and (min-width: 365px) {
   .imageBox img {
     width: 90%;
     max-height: 300px;
   }
 }
+
 @media screen and (min-width: 425px) {
   .imageBox img {
     max-width: 300px;
@@ -83,16 +88,18 @@
   .about {
     flex-direction: row;
   }
+
   .imageBox {
     flex-basis: 50%;
   }
+
   .imageBox img {
     width: 100%;
     height: 100%;
   }
 }
-/* --------------------------------------- Web Apps  --------------------------------------- */
-.webApps {
+
+.section {
   display: flex;
   justify-content: center;
 
@@ -104,7 +111,8 @@
 
   background-color: var(--bg-two);
 }
-.webAppsContent {
+
+.sectionContent {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -116,15 +124,17 @@
   padding: 13px;
 }
 
-.webAppsContent h2 {
+.sectionContent h2 {
   font-size: 1.875rem;
   font-weight: 500;
 }
-.webAppsContent p {
+
+.sectionContent p {
   font-size: 1rem;
   line-height: 1.3;
 }
-.webAppsContent button {
+
+.sectionContent button {
   width: fit-content;
 
   padding: 8px;
@@ -140,8 +150,10 @@
 
 @media screen and (min-width: 365px) {
 }
+
 @media screen and (min-width: 425px) {
 }
+
 @media screen and (min-width: 660px) {
 }
 
@@ -153,5 +165,6 @@
 /* ---------------------------------------  ---------------------------------------*/
 @media screen and (min-width: 768px) {
 }
+
 @media screen and (min-width: 1024px) {
 }

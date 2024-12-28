@@ -5,12 +5,12 @@ import me from "../../assets/me.webp";
 import SlideIn from "../../ui/animated/SlideIn";
 import { Link } from "react-router";
 
-function Home() {
-  const DT_DURATION = 1;
-  const DT_DELAY = DT_DURATION / 1.6;
-  const NAME = "Christopher";
-  const ROLE = "Software Developer";
+const DT_DURATION = 1;
+const DT_DELAY = DT_DURATION / 1.6;
+const NAME = "Christopher";
+const ROLE = "Software Developer";
 
+function Home() {
   return (
     <main className={styles.main}>
       {/* :about section */}
@@ -75,28 +75,18 @@ function Home() {
         </motion.div>
       </motion.section>
       {/* :webApps section */}
-      <motion.section
-        className={styles.webApps}
-        initial={{ backgroundColor: "var(--bg-one)" }}
-        animate={{ backgroundColor: "var(--bg-two)" }}
-        transition={{ duration: DT_DURATION / 1.5 }}
-      >
-        <SlideIn
-          className={styles.webAppsContent}
-          delay={0}
-          duration={DT_DURATION / 1.3}
-        >
-          <motion.h2>
-            Live{" "}
-            <LetterHop
-              data="web applications."
-              splitChar=""
-              delay={DT_DURATION}
-              duration={DT_DURATION / 1.6}
-              color="var(--ac-two)"
-            />
-          </motion.h2>
-          <motion.p>
+      <Section
+        title={
+          <LetterHop
+            data="Web Applications."
+            splitChar=""
+            delay={DT_DURATION}
+            duration={DT_DURATION / 1.6}
+            color="var(--ac-two)"
+          />
+        }
+        text={
+          <span>
             I have multiple projects deployed that showcase my expertise in
             building dynamic web applications. These projects are built with
             powerful technologies like{" "}
@@ -131,26 +121,31 @@ function Home() {
             From implementing seamless user interfaces to optimizing performance
             and ensuring responsiveness, I approach every project with
             enthusiasm and a commitment to excellence
-          </motion.p>
-          <Link to="/websites">
-            <motion.button
-              initial={{
-                scale: 1,
-                backgroundColor: "var(--ac-one)",
-              }}
-              whileHover={{
-                scale: 0.9,
-              }}
-              whileTap={{
-                scale: 0.8,
-                backgroundColor: "var(--ac-two)",
-              }}
-            >
-              Web Apps
-            </motion.button>
-          </Link>
-        </SlideIn>
-      </motion.section>
+          </span>
+        }
+        link="/websites"
+        linkText="Web Apps"
+      />
+
+      {/* :Desktop Apps */}
+      <Section
+        title="Native Applications"
+        direction="right"
+        text={
+          <span>
+            I have developed a range of desktop applications using languages
+            like TypeScript, C#, and Rust. These projects leverage a mix of web
+            and desktop frameworks, such as WinForms with C#, Tauri with Rust,
+            and React with TypeScript. Notably, one of my applications, a
+            Presentation Manager (PM) app, is actively used in real-world
+            settings, including my church. Each project demonstrates my
+            dedication to creating functional, efficient, and impactful software
+            solutions.
+          </span>
+        }
+        link="/apps"
+        linkText="Native Apps"
+      />
 
       {/* TODO: test section remove later */}
       <section style={{ width: "30px" }}>
@@ -185,6 +180,57 @@ function Home() {
         officiis atque architecto!
       </section>
     </main>
+  );
+}
+
+function Section({
+  title,
+  direction = "left",
+  text,
+  link,
+  linkText,
+}: {
+  linkText: any;
+  title: any;
+  direction?: "left" | "right";
+  text: any;
+  className?: string;
+  link: string;
+}) {
+  return (
+    <motion.section
+      className={styles.section}
+      initial={{ backgroundColor: "var(--bg-one)" }}
+      animate={{ backgroundColor: "var(--bg-two)" }}
+      transition={{ duration: DT_DURATION / 1.5 }}
+    >
+      <SlideIn
+        className={styles.sectionContent}
+        direction={direction}
+        delay={0}
+        duration={DT_DURATION / 1.3}
+      >
+        <motion.h2>{title}</motion.h2>
+        <motion.p>{text}</motion.p>
+        <Link to={link}>
+          <motion.button
+            initial={{
+              scale: 1,
+              backgroundColor: "var(--ac-one)",
+            }}
+            whileHover={{
+              scale: 0.9,
+            }}
+            whileTap={{
+              scale: 0.8,
+              backgroundColor: "var(--ac-two)",
+            }}
+          >
+            {linkText}
+          </motion.button>
+        </Link>
+      </SlideIn>
+    </motion.section>
   );
 }
 
