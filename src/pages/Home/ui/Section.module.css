@@ -47,8 +47,11 @@
   transition: height 450ms linear;
 }
 
-@media screen and (min-width: 365px) {}
+@media screen and (min-width: 365px) {
+}
 
-@media screen and (min-width: 425px) {}
+@media screen and (min-width: 425px) {
+}
 
-@media screen and (min-width: 660px) {}
+@media screen and (min-width: 660px) {
+}

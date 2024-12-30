@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 export default function LetterHop({
   data,
   splitChar = "",
+  trigger = "onLoad",
   delay,
   color = "inherit",
   duration,
@@ -10,6 +11,7 @@ export default function LetterHop({
 }: {
   data: string;
   splitChar?: string;
+  trigger?: "inView" | "onLoad";
   delay: number;
   color?: string;
   duration: number;
@@ -22,16 +24,34 @@ export default function LetterHop({
           key={index}
           initial={{
             position: "relative",
+            color: "inherit",
           }}
-          animate={{
-            color,
-            top: [
-              0,
-              `-${stagger ? index : 6}px`,
-              `${stagger ? index : 6}px`,
-              0,
-            ],
-          }}
+          animate={
+            trigger == "onLoad"
+              ? {
+                  color,
+                  top: [
+                    0,
+                    `-${stagger ? index : 6}px`,
+                    `${stagger ? index : 6}px`,
+                    0,
+                  ],
+                }
+              : {}
+          }
+          whileInView={
+            trigger == "inView"
+              ? {
+                  color,
+                  top: [
+                    0,
+                    `-${stagger ? index : 6}px`,
+                    `${stagger ? index : 6}px`,
+                    0,
+                  ],
+                }
+              : {}
+          }
           transition={{
             delay: stagger ? index / 15 + delay : index / 200,
             duration: stagger ? duration : duration / 2,
