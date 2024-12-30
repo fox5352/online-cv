@@ -3,29 +3,42 @@ import LetterHop from "../../ui/animated/LetterHop";
 import styles from "./Page.module.css";
 import me from "../../assets/me.webp";
 import Section from "./ui/Section.tsx";
+import { Education, getUserData, UserData } from "../../model/user.model.ts";
+import { useEffect, useState } from "react";
 
 // Global Constants
 const DT_DURATION = 1;
 const DT_DELAY = DT_DURATION / 1.6;
 
 function Home() {
-  // TODO: get this data from a db later
-  const NAME = "Christopher";
-  const ROLE = "Software Developer";
-  const EDUCATION = [
-    {
-      title: "WestCliff school",
-      sub: "2015 - 2017",
-      content:
-        "Westcliff School of Skills provides specialized education for students needing alternative paths to success. Our tailored approach combines academic excellence with hands-on technical training, preparing students for the workforce or further technical education.We where prioritize holistic development, offering diverse sports and cultural activities alongside rigorous academics. At Westcliff, we empower students to excel academically, technically, and personally. ",
-    },
-    {
-      title: "CodeSpace Academy",
-      sub: "2024 - 2024",
-      content:
-        "Take the most direct route to starting your career in tech. Our core program equips you with mastery and fluency in fundamental software development concepts that will be your foundation for success. After this course, you can land a junior developer role and learn on the job or expand your skills with specialized career tracks. With expertise in HTML, CSS, JavaScript, Git, Tailwind, React.js, and an introduction to TypeScript, Svelte.js ",
-    },
-  ];
+  const [{ name, bio, role, education }, setUserData] = useState<UserData>({
+    name: "Christoper",
+    role: "Software Developer",
+    bio: "I am a problem solver and quick learner who leverages emerging \n technologies. With a foundation in coding best practices, I develop \n dynamic, responsive web applications. I continuously explore new \n tools and frameworks to meet project requirements.",
+    education: [
+      {
+        title: "WestCliff school",
+        sub: "2015 - 2017",
+        content:
+          "Westcliff School of Skills provides specialized education for students needing alternative paths to success. Our tailored approach combines academic excellence with hands-on technical training, preparing students for the workforce or further technical education.We where prioritize holistic development, offering diverse sports and cultural activities alongside rigorous academics. At Westcliff, we empower students to excel academically, technically, and personally.",
+      },
+      {
+        title: "CodeSpace Academy",
+        sub: "2024 - 2024",
+        content:
+          "Take the most direct route to starting your career in tech. Our core program equips you with mastery and fluency in fundamental software development concepts that will be your foundation for success. After this course, you can land a junior developer role and learn on the job or expand your skills with specialized career tracks. With expertise in HTML, CSS, JavaScript, Git, Tailwind, React.js, and an introduction to TypeScript, Svelte.js",
+      },
+    ],
+  });
+
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await getUserData();
+      if (!res) return;
+      setUserData(res);
+    };
+    fetch();
+  }, []);
 
   return (
     <main className={styles.main}>
@@ -54,7 +67,7 @@ function Home() {
             </motion.span>
             m{" "}
             <LetterHop
-              data={NAME}
+              data={name}
               delay={DT_DELAY}
               color="var(--ac-two)"
               duration={DT_DURATION}
@@ -63,18 +76,13 @@ function Home() {
           <h4>
             Graduate{" "}
             <LetterHop
-              data={ROLE}
+              data={role}
               delay={DT_DELAY}
               color="var(--ac-one)"
               duration={DT_DURATION}
             />
           </h4>
-          <p>
-            I am a problem solver and quick learner who leverages emerging
-            technologies. With a foundation in coding best practices, I develop
-            dynamic, responsive web applications. I continuously explore new
-            tools and frameworks to meet project requirements.
-          </p>
+          <p>{bio}</p>
         </div>
         <motion.div className={styles.imageBox}>
           <motion.img
@@ -204,7 +212,7 @@ function Home() {
         </motion.div>
 
         <motion.div className={styles.educationContent}>
-          {EDUCATION.map((edu, index) => (
+          {education.map((edu, index) => (
             <motion.div
               key={index}
               className={styles.educationItem}
