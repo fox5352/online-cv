@@ -1,0 +1,10 @@
+.header {
+    padding: 8px;
+
+    color: var(--fg-two);
+
+    background-color: var(--bg-two);
+}
+.header h2 {
+    font-size: 1.875rem;
+}

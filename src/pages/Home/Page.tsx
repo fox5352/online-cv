@@ -115,7 +115,7 @@ function Home() {
               <LetterHop
                 data="React"
                 delay={DT_DURATION}
-                duration={DT_DURATION / 1.6}
+                duration={DT_DURATION / 1.6}  
                 color="var(--ac-one)"
               />
               ,{" "}
