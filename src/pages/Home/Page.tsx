@@ -3,12 +3,9 @@ import LetterHop from "../../ui/animated/LetterHop";
 import styles from "./Page.module.css";
 import me from "../../assets/me.webp";
 import Section from "./ui/Section.tsx";
-import { Education, getUserData, UserData } from "../../model/user.model.ts";
+import { getUserData, UserData } from "../../model/user.model.ts";
 import { useEffect, useState } from "react";
-
-// Global Constants
-const DT_DURATION = 1;
-const DT_DELAY = DT_DURATION / 1.6;
+import { DT_DELAY, DT_DURATION } from "../RootLayout.tsx";
 
 function Home() {
   const [{ name, bio, role, education }, setUserData] = useState<UserData>({
@@ -115,7 +112,7 @@ function Home() {
               <LetterHop
                 data="React"
                 delay={DT_DURATION}
-                duration={DT_DURATION / 1.6}  
+                duration={DT_DURATION / 1.6}
                 color="var(--ac-one)"
               />
               ,{" "}

@@ -24,7 +24,6 @@ export default function LetterHop({
           key={index}
           initial={{
             position: "relative",
-            color: "inherit",
           }}
           animate={
             trigger == "onLoad"
