@@ -2,6 +2,9 @@ import fetch from 'node-fetch';
 
 export default async (event, context) => {
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+  const topic = event.queryStringParameters?.topic; // Get topic if it exists
+  console.log(topic)
+
 
   if (!GITHUB_TOKEN) {
     return {
@@ -15,8 +18,13 @@ export default async (event, context) => {
     const allRepos = [];
 
     while (true) {
+      // const url = `https://api.github.com/users/fox5352/repos?page=${page}&per_page=100`;
+      const url = topic 
+        ? `https://api.github.com/search/repositories?q=topic:${topic}+user:fox5352&page=${page}&per_page=100`
+        : `https://api.github.com/users/fox5352/repos?page=${page}&per_page=100`;
+      
       const response = await fetch(
-        `https://api.github.com/users/fox5352/repos?page=${page}&per_page=100`,
+        url,
         {
           method: "GET",
           headers: {
@@ -50,10 +58,6 @@ export default async (event, context) => {
 
   } catch (error) {
     console.error("Fetch Error:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to fetch repos" })
-      ,{
-      statusCode: 500
-    });
+    E
   }
 };

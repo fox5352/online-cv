@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 export type Owner = {
   login: string;
   id: number;
@@ -51,62 +50,39 @@ export type RepoData = {
 };
 
 export type NativeRepoData = {
-  releases?: any[]
+  releases?: any[];
 } & RepoData;
 
-/*
-    "name": "Algorithms",
-    "full_name": "fox5352/Algorithms",
-    "owner": Owner,
+export async function getAllRepos(): Promise<any[] | null> {
+  const res = await fetch(`/.netlify/functions/getRepos`); // Call the function
 
-    "description": "A repo on all the algorithms i know made in multiple languages",
-    "url": "https://api.github.com/repos/fox5352/Algorithms",
-    "languages_url": "https://api.github.com/repos/fox5352/Algorithms/languages",
-
-    "releases_url": "https://api.github.com/repos/fox5352/Algorithms/releases{/id}",
-
-    "created_at": "2024-03-20T13:59:25Z",
-    "updated_at": "2024-07-16T16:23:23Z",
-    "pushed_at": "2024-07-16T16:23:19Z",
-
-    "homepage": "",
-
-    "size": 13,
-        "language": "Rust",
- */
-
-
-export async function getAllRepos(): Promise<any[]| null> {
-  try {
-    const res = await fetch(`/.netlify/functions/getRepos`); // Call the function
-  
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(`HTTP error! status: ${res.status} error: ${errorData.error}`);
-    }
-
-    const repos = await res.json();
-
-    return repos.filter(repo => !repo.name.includes("CHRVOS352")|| !repo.name.includes("online-cv"));
-  }catch(error) {
-    console.error("failed to fetch repo data :", error);
-    return null;
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(
+      `HTTP error! status: ${res.status} error: ${errorData.error}`,
+    );
   }
+
+  const repos = await res.json();
+
+  return repos.filter(
+    (repo) =>
+      !repo.name.includes("CHRVOS352") || !repo.name.includes("online-cv"),
+  );
 }
 
-
-export async function getNativeAppsRepos(): Promise<NativeRepoData[]|null> {
-  const repos: RepoData[]|null = await getAllRepos();
-
-  if (repos == null) return null
-
-  return repos.filter(repo=>repo.topics.includes("native-apps"));
-}
-
-export async function getWebSitesRepos(): Promise<RepoData[], null> {
-  const repos: RepoData[]|null = await getAllRepos();
+export async function getNativeAppsRepos(): Promise<NativeRepoData[] | null> {
+  const repos: RepoData[] | null = await getAllRepos();
 
   if (repos == null) return null;
 
-  return repos.filter(repo=>repo.topics.includes("website"));
+  return repos.filter((repo) => repo.topics.includes("native-apps"));
+}
+
+export async function getWebSitesRepos(): Promise<RepoData[], null> {
+  const repos: RepoData[] | null = await getAllRepos();
+
+  if (repos == null) return null;
+
+  return repos.filter((repo) => repo.topics.includes("website"));
 }

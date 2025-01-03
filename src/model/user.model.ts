@@ -1,6 +1,3 @@
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import db from "./db";
-
 export interface Education {
   title: string;
   sub: string;
@@ -14,34 +11,40 @@ export interface UserData {
   education: Education[];
 }
 
+function isUserData(data: any): data is UserData {
+  return (
+    typeof data === "object" &&
+    typeof data.name === "string" &&
+    typeof data.role === "string" &&
+    typeof data.bio === "string" &&
+    Array.isArray(data.education) &&
+    data.education.every(
+      (edu: any) =>
+        typeof edu.title === "string" &&
+        typeof edu.sub === "string" &&
+        typeof edu.content === "string",
+    )
+  );
+}
+
 export async function getUserData(): Promise<UserData | null> {
   try {
-    const userDocRef = doc(db, "user_id", import.meta.env.VITE_USER_ID);
-    const userDocSnap = await getDoc(userDocRef);
+    const res = await fetch(`/.netlify/functions/getUserData`); // Call the function
 
-    if (!userDocSnap.exists()) {
-      console.error("User document does not exist!");
-      return null;
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(
+        `HTTP error! status: ${res.status} error: ${errorData.error}`,
+      );
     }
 
-    const userData: UserData = {
-      name: userDocSnap.data()?.name || "",
-      role: userDocSnap.data()?.role || "",
-      bio: userDocSnap.data()?.bio || "",
-      education: [],
-    };
+    const data = await res.json();
 
-    const educationCollectionRef = collection(db, "education");
-    const educationDocsSnap = await getDocs(educationCollectionRef);
-    educationDocsSnap.forEach((doc) => {
-      userData.education.push({
-        title: doc.data().title || "",
-        sub: doc.data().sub || "",
-        content: doc.data().content || "",
-      });
-    });
-
-    return userData;
+    if (isUserData(data)) {
+      return data;
+    } else {
+      throw new Error("Invalid user data format");
+    }
   } catch (error) {
     console.error(`failed to fetch user Data ${error}`);
     return null;
