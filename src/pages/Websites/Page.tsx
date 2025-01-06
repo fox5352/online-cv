@@ -31,14 +31,14 @@ function Websites() {
           setRepos(data);
         } else {
           setError({
-            message: "No native apps found on GitHub",
+            message: "No web apps found on GitHub",
             type: "warning",
           });
         }
       } catch (error) {
         console.error(error);
         setError({
-          message: "failed to fetch native Apps data from GitHub",
+          message: "failed to fetch web Apps data from GitHub",
           type: "error",
         });
       } finally {
