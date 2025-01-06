@@ -1,0 +1,79 @@
+.dialogRoot {
+  /* Custom styles for the dialog root */
+  margin: 0;
+}
+
+.dialogPaper {
+  /* Style the dialog paper component */
+  width: calc(100% - 32px);
+  max-width: 1000px;
+  max-height: calc(100% - 32px);
+
+  background-color: var(--bg-two) !important;
+  color: var(--fg-two) !important;
+}
+
+/* Full screen on mobile */
+@media screen and (max-width: 425px) {
+  .dialogRoot :global(.MuiDialog-paper),
+  .dialogRoot [class*="MuiDialog-paper"] {
+    margin: 0 !important;
+  }
+  .dialogPaper {
+    margin: 0 !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0;
+  }
+}
+
+.dialogTitle a {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--ac-two);
+}
+.dialogTitle span {
+  color: var(--fg-two);
+}
+
+.dialogContent {
+}
+
+.languageBox {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+  border-radius: var(--bd-r-sm);
+
+  overflow: hidden;
+}
+.languageBox span {
+  flex-grow: 1;
+  padding: 0 5px;
+}
+
+.dialogActions {
+  padding: 8px 24px;
+}
+.dialogActions button {
+  padding: 4px 7px;
+
+  font-size: 0.9375rem;
+
+  border: none;
+  border-radius: 4px;
+  background-color: var(--ac-one);
+}
+
+@media screen and (min-width: 365px) {
+}
+@media screen and (min-width: 425px) {
+  .dialogTitle a {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 660px) {
+}

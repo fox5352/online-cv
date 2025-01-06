@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 
-import Alert from "@mui/material/Alert";
-
-import { getNativeAppsRepos, RepoData } from "../../model/project.model";
-
-import { DT_DURATION } from "../RootLayout";
 import LetterHop from "../../ui/animated/LetterHop";
 
-import styles from "./Page.module.css";
-import Card from "../../ui/Card";
-import Loading from "../../ui/Loading";
+import { DT_DURATION } from "../RootLayout";
 
-export default function Apps() {
+import styles from "./Page.module.css";
+import { useEffect, useState } from "react";
+import { getWebSitesRepos, RepoData } from "../../model/project.model";
+import Loading from "../../ui/Loading";
+import { Alert } from "@mui/material";
+import Card from "../../ui/Card";
+
+function Websites() {
   const [isLoading, setIsLoading] = useState(true);
   const [repos, setRepos] = useState<RepoData[]>([]);
   const [error, setError] = useState<{
@@ -26,7 +25,7 @@ export default function Apps() {
         setIsLoading(true);
         setError(null);
 
-        const data = await getNativeAppsRepos();
+        const data = await getWebSitesRepos();
 
         if (data != null && data.length > 0) {
           setRepos(data);
@@ -68,7 +67,7 @@ export default function Apps() {
         >
           <h2>
             <LetterHop
-              data="Native Apps"
+              data="Websites"
               delay={DT_DURATION}
               duration={DT_DURATION / 1.6}
               color="var(--ac-one)"
@@ -76,34 +75,40 @@ export default function Apps() {
           </h2>
           <p>
             <span>
-              I have developed a range of desktop applications using languages
-              like{" "}
+              I have multiple projects deployed that showcase my expertise in
+              building dynamic web applications. These projects are built with
+              powerful technologies like{" "}
               <LetterHop
-                data="TypeScript, C#, and Rust"
+                data="React"
                 delay={DT_DURATION}
                 duration={DT_DURATION / 1.6}
                 color="var(--ac-two)"
               />
-              . These projects leverage a mix of web and desktop frameworks,
-              such as{" "}
+              ,{" "}
               <LetterHop
-                data="WinForms"
+                data="TypeScript"
+                delay={DT_DURATION}
+                duration={DT_DURATION / 1.6}
+                color="var(--ac-two)"
+              />
+              , and backend integrations with{" "}
+              <LetterHop
+                data="databases"
                 delay={DT_DURATION}
                 duration={DT_DURATION / 1.6}
                 color="var(--ac-two)"
               />{" "}
-              with C#,{" "}
+              and . Each project is designed with a strong focus on{" "}
               <LetterHop
-                data="Tauri"
+                data="user experience"
                 delay={DT_DURATION}
                 duration={DT_DURATION / 1.6}
                 color="var(--ac-two)"
-              />{" "}
-              with Rust, and React with TypeScript. Notably, one of my
-              applications, a Presentation Manager (PM) app, is actively used in
-              real-world settings, including my church. Each project
-              demonstrates my dedication to creating functional, efficient, and
-              impactful software solutions.
+              />
+              . and follows best practices for clean, documented, scalable code.
+              From implementing seamless user interfaces to optimizing
+              performance and ensuring responsiveness, I approach every project
+              with enthusiasm and a commitment to excellence
             </span>
           </p>
         </motion.div>
@@ -124,3 +129,5 @@ export default function Apps() {
     </>
   );
 }
+
+export default Websites;

@@ -7,6 +7,7 @@ export type ProgrammingLanguage =
   | "JavaScript"
   | "TypeScript"
   | "Python"
+  | "Svelte"
   | string; // For other languages
 
 export const languageColors: Record<ProgrammingLanguage, string> = {
@@ -19,6 +20,7 @@ export const languageColors: Record<ProgrammingLanguage, string> = {
   JavaScript: "#F1E05A",
   TypeScript: "#3178C6",
   Python: "#3572A5",
+  Svelte: "#FF3E00",
   // Default color for unknown languages
   default: "#858585",
 } as const;

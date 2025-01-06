@@ -12,8 +12,6 @@ export default async (event, context) => {
       });
     }
 
-    console.error("name query parameter missing:",params);
-
     if (!params.get("name")) {
         return new Response(JSON.stringify({ error: "Please provide a GitHub repo name" }), {
             status: 400,

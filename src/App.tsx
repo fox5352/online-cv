@@ -11,6 +11,7 @@ import RootLayout from "./pages/RootLayout";
 import Home from "./pages/Home/Page";
 import Apps from "./pages/Apps/Page";
 import NotFound from "./pages/NotFound/Page";
+import Websites from "./pages/Websites/Page";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/apps" element={<Apps />} />
+          <Route path="/websites" element={<Websites />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

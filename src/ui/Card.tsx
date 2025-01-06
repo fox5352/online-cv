@@ -7,19 +7,27 @@ import { DT_DELAY, DT_DURATION } from "../pages/RootLayout";
 import LetterHop from "./animated/LetterHop";
 
 import styles from "./Card.module.css";
+import { useDialog } from "../store/Dialog/DialogContext";
+import { getLanguageColor } from "../lib/languageColors";
 
 type Card = RepoData & {
   index: number;
 };
-
-function Card({ name, language, description, index }: Card) {
+function Card({ ...props }: Card) {
+  const { name, language, description, index } = props;
+  const { addRepo } = useDialog();
   const isEven = useMemo(() => index % 2 == 0, [index]);
 
   const colorPicker = (val: boolean) =>
     val ? "var(--ac-one)" : "var(--ac-two)";
 
+  const handleClick = () => {
+    addRepo(props as RepoData);
+  };
+
   return (
     <motion.button
+      onClick={handleClick}
       className={styles.card}
       initial={{
         border: `0px solid ${colorPicker(!isEven)}`,
@@ -42,7 +50,13 @@ function Card({ name, language, description, index }: Card) {
           delay={DT_DELAY}
         />
       </h3>
-      <h4>main lang: {language}</h4>
+      <motion.h4
+        initial={{ color: "inherit" }}
+        animate={{ color: getLanguageColor(language) }}
+        transition={{ duration: DT_DURATION }}
+      >
+        {language}
+      </motion.h4>
       <p>
         {description
           ? description.slice(0, 145) + "..."
