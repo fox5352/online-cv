@@ -34,11 +34,11 @@ export default function Header() {
       link: "/",
       element: <IoHome aria-description="Home Page" />,
     },
-    {
-      text: "about",
-      link: "/about",
-      element: <BsFillQuestionSquareFill aria-description="About Page" />,
-    },
+    // {
+    //   text: "about",
+    //   link: "/about",
+    //   element: <BsFillQuestionSquareFill aria-description="About Page" />,
+    // },
     {
       text: "web sites",
       link: "/websites",
