@@ -4,44 +4,41 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 export default async (event, context) => {
-    const KEYS = {
-        API_KEY: process.env.API_KEY,
-        AUTH_DOMAIN: process.env.AUTH_DOMAIN,
-        PROJECT_ID: process.env.PROJECT_ID,
-        STORAGE_BUCKET: process.env.STORAGE_BUCKET,
-        MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
-        APP_ID: process.env.APP_ID,
-        USER_ID: process.env.USER_ID
+  const KEYS = {
+    API_KEY: process.env.API_KEY,
+    AUTH_DOMAIN: process.env.AUTH_DOMAIN,
+    PROJECT_ID: process.env.PROJECT_ID,
+    STORAGE_BUCKET: process.env.STORAGE_BUCKET,
+    MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
+    APP_ID: process.env.APP_ID,
+    USER_ID: process.env.USER_ID,
+  };
+
+  for (const [key, value] of Object.entries(KEYS)) {
+    if (!value) {
+      console.error(`Failed to get env var ${key} is undefined`);
+
+      return new Response(JSON.stringify({ error: "Token no valid" }), {
+        statusCode: 500,
+      });
     }
+  }
 
-    for (const [key,value] of Object.entries(KEYS)) {
-        if (!value) {
-            console.error(`Failed to get env var ${key} is undefined`);
-            
-            return new Response(
-                JSON.stringify({error: "Token no valid"})
-                , {
-                    statusCode: 500
-                }
-            )
-        }
-    }
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: KEYS.API_KEY,
+    authDomain: KEYS.AUTH_DOMAIN,
+    projectId: KEYS.PROJECT_ID,
+    storageBucket: KEYS.STORAGE_BUCKET,
+    messagingSenderId: KEYS.MESSAGING_SENDER_ID,
+    appId: KEYS.APP_ID,
+  };
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: KEYS.API_KEY,
-      authDomain: KEYS.AUTH_DOMAIN,
-      projectId: KEYS.PROJECT_ID,
-      storageBucket: KEYS.STORAGE_BUCKET,
-      messagingSenderId: KEYS.MESSAGING_SENDER_ID,
-      appId: KEYS.APP_ID,
-    };
-    
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    try {
+  try {
     const userDocRef = doc(db, "user_id", USER_ID);
     const userDocSnap = await getDoc(userDocRef);
 
@@ -67,18 +64,13 @@ export default async (event, context) => {
       });
     });
 
-    return new Response(
-      JSON.stringify(userData)
-      ,{
-      statusCode: 200
+    return new Response(JSON.stringify(userData), {
+      statusCode: 200,
     });
-
   } catch (error) {
     console.error(`failed to fetch user Data ${error}`);
-   return new Response(
-      JSON.stringify({ error: "Failed to fetch repos" })
-      ,{
-      statusCode: 500
+    return new Response(JSON.stringify({ error: "Failed to fetch repos" }), {
+      statusCode: 500,
     });
   }
-}
+};

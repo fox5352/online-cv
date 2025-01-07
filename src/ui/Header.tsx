@@ -4,10 +4,7 @@ import { NavLink, useLocation } from "react-router";
 import { motion, animate } from "motion/react";
 import { MdHomeFilled } from "react-icons/md";
 import { IoHome, IoDesktop } from "react-icons/io5";
-import {
-  BsFillQuestionSquareFill,
-  BsGlobeCentralSouthAsia,
-} from "react-icons/bs";
+import { BsGlobeCentralSouthAsia } from "react-icons/bs";
 
 import styles from "./Header.module.css";
 
