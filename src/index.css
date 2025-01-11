@@ -49,3 +49,9 @@ body {
 
   color: var(--fg-one);
 }
+
+/* ---------------------------------------  ---------------------------------------
+@media screen and (min-width: 365px) {}
+@media screen and (min-width: 425px) {}
+@media screen and (min-width: 660px) {}
+*/
