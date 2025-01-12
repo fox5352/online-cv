@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# Live CV Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This website serves as a live, interactive version of my CV, showcasing my skills and projects. It automatically fetches and displays my website and native app repositories from GitHub in a card view, complete with links to live demos (where available) and the repository's README.
 
-Currently, two official plugins are available:
+**Key Features:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Live CV:** Provides an up-to-date overview of my skills and experience.
+*   **Automated Project Display:** Automatically retrieves and displays website and native app projects from my GitHub repositories.
+*   **Card View:** Presents projects in a visually appealing card format.
+*   **Live Demo Links:** Provides direct links to live demos of deployed projects.
+*   **README Integration:** Links directly to the README files of each project repository.
+*   **Dynamic Updates:** The website will continue to receive updates and improvements.
 
-## Expanding the ESLint configuration
+**Technologies Used:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+*   **Styling:** `@emotion/react`, `@emotion/styled`, `@mui/material`
+*   **Markdown Rendering:** `marked`, `react-markdown`
+*   **Security:** `dompurify`
+*   **Syntax Highlighting:** `highlight.js`
+*   **State Management:** `zustand`
+*   **Animations:** `motion`
+*   **Data Fetching:** `node-fetch`
+*   **Firebase:** `firebase`
+*   **Core Libraries:** `react`, `react-dom`, `react-router`
+*   **Icons:** `react-icons`
+*   **Types:** `@types/dompurify`, `@types/marked`
 
-- Configure the top-level `parserOptions` property like this:
+**Work in Progress:**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+This website is currently under active development and will continue to be updated with new features and improvements.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+**Usage (If applicable, for local development):**
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+(If you have instructions for running the site locally, include them here. For example:)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
+1.  Clone the repository:
+
+    ```bash
+    git clone [<repository-url>](https://github.com/fox5352/online-cv).git
+    ```
+
+2.  Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3.  Start the development server:
+
+    ```bash
+    npm start
+    ```
