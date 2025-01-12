@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
@@ -22,6 +22,9 @@ function splitListIntoThree<T>(list: T[]): [T[], T[], T[]] {
 }
 
 function Footer() {
+  const footerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const contactDetails: { link: string; text: string; icon: ReactNode }[][] =
     splitListIntoThree([
       {
@@ -51,9 +54,40 @@ function Footer() {
       },
     ]);
 
+  useEffect(() => {
+    const sizeCheck = () => {
+      if (!footerRef.current || !containerRef.current) return;
+      footerRef.current.style.height = `${containerRef.current.getBoundingClientRect().height}px`;
+    };
+
+    const checkInView = () => {
+      sizeCheck();
+      if (!footerRef.current || !containerRef.current) return;
+      const footerBottom = footerRef.current.getBoundingClientRect().bottom;
+
+      if (window.innerHeight >= footerBottom) {
+        containerRef.current.style.position = "fixed";
+        containerRef.current.style.bottom = `0px`;
+      } else {
+        containerRef.current.style.position = "relative";
+      }
+    };
+
+    sizeCheck();
+    checkInView();
+
+    document.addEventListener("scroll", checkInView);
+    document.addEventListener("resize", sizeCheck);
+
+    return () => {
+      document.removeEventListener("scroll", checkInView);
+      document.removeEventListener("resize", sizeCheck);
+    };
+  }, []);
+
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
+    <footer ref={footerRef} className={styles.footer}>
+      <div ref={containerRef} className={styles.container}>
         <div className={styles.title}>
           <h3>
             <LetterHop
