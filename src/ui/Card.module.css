@@ -14,7 +14,16 @@
   border: none;
   border-radius: var(--bd-r-sm);
   background-color: var(--bg-two);
+
+  transition: all 250ms ease-in-out;
 }
+.card:hover {
+  scale: 1.05;
+}
+.card:active {
+  scale: 0.95;
+}
+
 .card h3 {
   font-size: 1.5625rem;
   font-weight: 500;
