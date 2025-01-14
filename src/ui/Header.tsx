@@ -31,7 +31,7 @@ export default function Header() {
       link: "/",
       element: <IoHome aria-description="Home Page" />,
     },
-    // {
+    // { TODO: add section later
     //   text: "about",
     //   link: "/about",
     //   element: <BsFillQuestionSquareFill aria-description="About Page" />,
@@ -65,9 +65,17 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    const checkSize = () => {
+      if (window.innerWidth < 1024 || !desktopNavRef.current) {
+        animate(`.${styles.desktopNavContainer}`, {
+          display: "none",
+        });
+      }
+    };
     // FIX: buggy on track pad
     const wheelHandler = (event: WheelEvent) => {
       // Check the deltaY property of the wheel event to determine the direction
+      checkSize();
       if (window.innerWidth < 1024 || !desktopNavRef.current) return;
 
       if (event.deltaY > 0) {
@@ -83,11 +91,14 @@ export default function Header() {
       }
     };
 
+    const interval = setInterval(() => checkSize(), 500);
+
     // Add wheel event listener
     window.addEventListener("wheel", wheelHandler);
 
     // Cleanup the event listener
     return () => {
+      clearInterval(interval);
       window.removeEventListener("wheel", wheelHandler);
     };
   }, []);
@@ -126,7 +137,13 @@ export default function Header() {
       </motion.nav>
 
       {/* mobile nav bar */}
-      <div className={styles.mobileNavContainer} data-name="mobile-nav">
+      <motion.div
+        className={styles.mobileNavContainer}
+        data-name="mobile-nav"
+        animate={{
+          width: isMobileToggleNav ? "calc(100vw - 24px)" : "45px",
+        }}
+      >
         <motion.nav
           className={styles.mobileNav}
           animate={{
@@ -156,6 +173,7 @@ export default function Header() {
             ))}
           </motion.ul>
         </motion.nav>
+        {/* App Button */}
         <motion.button
           onClick={handleToggleMobileNav}
           className={styles.appBarBtn}
@@ -174,7 +192,7 @@ export default function Header() {
             <MdHomeFilled />
           </motion.div>
         </motion.button>
-      </div>
+      </motion.div>
     </header>
   );
 }
