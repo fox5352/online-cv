@@ -6,6 +6,9 @@ import { SiLeetcode } from "react-icons/si";
 import { FaCodepen } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 
+import { animate } from "motion";
+import { motion } from "motion/react";
+
 import { DT_DURATION } from "../pages/RootLayout";
 import LetterHop from "./animated/LetterHop";
 
@@ -65,29 +68,47 @@ function Footer() {
       if (!footerRef.current || !containerRef.current) return;
       const footerBottom = footerRef.current.getBoundingClientRect().bottom;
 
+      const animation = {
+        position: "relative",
+        bottom: "none",
+      };
+
       if (window.innerHeight >= footerBottom) {
-        containerRef.current.style.position = "fixed";
-        containerRef.current.style.bottom = `0px`;
+        animation.position = "fixed";
+        animation.bottom = "0px";
       } else {
-        containerRef.current.style.position = "relative";
+        animation.position = "relative";
+        animation.bottom = "none";
       }
+
+      animate(containerRef.current, animation);
     };
 
-    sizeCheck();
     checkInView();
+
+    const intervale = setInterval(() => checkInView(), 500);
 
     document.addEventListener("scroll", checkInView);
     document.addEventListener("resize", sizeCheck);
 
     return () => {
+      clearInterval(intervale);
       document.removeEventListener("scroll", checkInView);
       document.removeEventListener("resize", sizeCheck);
     };
-  }, []);
+  });
 
   return (
     <footer ref={footerRef} className={styles.footer}>
-      <div ref={containerRef} className={styles.container}>
+      <motion.div
+        ref={containerRef}
+        className={styles.container}
+        initial={{ opacity: 0 }}
+        whileInView={{
+          opacity: 1,
+        }}
+        transition={{ duration: DT_DURATION / 1 / 4, delay: 0.5 }}
+      >
         <div className={styles.title}>
           <h3>
             <LetterHop
@@ -113,7 +134,7 @@ function Footer() {
             </ul>
           ))}
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

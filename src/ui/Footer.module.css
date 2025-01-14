@@ -8,7 +8,7 @@
 
 .container {
   position: relative;
-  z-index: 50;
+  z-index: 13;
 
   display: flex;
   flex-direction: column;
