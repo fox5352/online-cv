@@ -122,10 +122,10 @@ function Footer() {
         </div>
         <div className={styles.content}>
           {/* TODO: */}
-          {contactDetails.map((block) => (
-            <ul className={styles.list}>
-              {block.map((link) => (
-                <a href={link.link} target="_blank">
+          {contactDetails.map((block, index) => (
+            <ul key={index} className={styles.list}>
+              {block.map((link, index) => (
+                <a href={link.link} key={index} target="_blank">
                   <li>
                     <span>{link.icon}</span> {link.text}
                   </li>
